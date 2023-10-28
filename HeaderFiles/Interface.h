@@ -5,12 +5,14 @@
 #ifndef POO_2324_INTERFACE_H
 #define POO_2324_INTERFACE_H
 #include <string>
+#include "Habitacao.h"
 
 using namespace std;
 
 class interface {
 public:
     interface(); // construtor por defeito
+    ~interface();
     void menu(); // lista inical
     void config(); // estado da aplicacao
     void cmd_validator(const string& line); // execucao dos comandos inseridos pelo utilizador
@@ -22,6 +24,8 @@ public:
 private:
     string error;
     bool map = false;
+    habitacao *habit;
+
 };
 
 #endif //POO_2324_INTERFACE_H

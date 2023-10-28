@@ -6,10 +6,15 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iostream>
 
 
 interface::interface() {
+    cout << "Contrutor Interface" << endl;
+}
 
+interface::~interface() {
+    cout << "Destrutor Interface" << endl;
 }
 
 void interface::menu() {
@@ -98,6 +103,7 @@ void interface::cmd_validator(const string& line) {
             in >> paramc;
             if(paraml != 0 && paramc != 0) {
                 cout << "Parametros validados com sucesso";
+                habit = new habitacao(paraml,paramc);
             }
             else{
                 cout << "Parametros nao corresponder ao tipo de comando";
@@ -105,7 +111,8 @@ void interface::cmd_validator(const string& line) {
             set_map_state(true);
         }
         else if(cmd == "hrem") {
-
+            habit->~habitacao();
+            set_map_state(false);
         }
         else if(cmd == "znova"){
 
@@ -202,34 +209,114 @@ void interface::cmd_validator(const string& line) {
             }
 
         }
-        else if(cmd == ""){
+        else if(cmd == "rnova"){
 
         }
-        else if(cmd == "") {
+        else if(cmd == "pmuda") {
+            int param1, param2;
+            string param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "rlista"){
+            int param1, param2;
+            in >> param1;
+            in >> param2;
+
+            if(param1 != 0 && param2 != 0) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "rrem") {
+            int param1, param2, param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && param3 != 0) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "asoc"){
+            int param1, param2, param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && param3 != 0) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "ades") {
+            int param1, param2, param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && param3 != 0) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "acom"){
+            int param1, param2;
+            string param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "psalva") {
+            int param1, param2;
+            string param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+
+            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
+        }
+        else if(cmd == "prepoe"){
+            string param;
+
+            if(!param.empty()) {
+                cout << "Parametros validados com sucesso";
+            }
+            else{
+                cout << "Parametros nao corresponder ao tipo de comando";
+            }
 
         }
-        else if(cmd == ""){
-
-        }
-        else if(cmd == "") {
-
-        }
-        else if(cmd == ""){
-
-        }
-        else if(cmd == "") {
-
-        }
-        else if(cmd == ""){
-
-        }
-        else if(cmd == "") {
-
-        }
-        else if(cmd == ""){
-
-        }
-        else if(cmd == "") {
+        else if(cmd == "plista") {
 
         }
         else if(cmd == "exec"){
@@ -253,7 +340,7 @@ void interface::cmd_validator(const string& line) {
 
     }
     else {
-        cout << "Tamanho do mapa do simulador não existe ... cria antes de efetuar qualquer outro comando (hnova <num linhas><num colunas>)";
+        cout << "Tamanho do mapa do simulador nao existe ... cria antes de efetuar qualquer outro comando (hnova <num linhas><num colunas>)";
     }
 
 
@@ -278,7 +365,8 @@ void interface::start(bool flag) {
 
 void interface::cmd_input() {
     cout << error << endl;
-    cout << "Comando: ";
+    std::cout << "Comando: ";
+
 }
 
 void interface::set_map_state(bool active) {

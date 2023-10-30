@@ -1,17 +1,16 @@
 # ninja log v5
-29	1573	7204035894716806	CMakeFiles/POO_2324.dir/main.cpp.obj	7fd9cdcdfda9d7d8
-1589	2008	7204035899199995	POO_2324.exe	a80baf1db5fb75a
+4	1940	7204057088382209	CMakeFiles/POO_2324.dir/main.cpp.obj	7fd9cdcdfda9d7d8
+837	1191	7204048291637509	POO_2324.exe	a80baf1db5fb75a
 34	1155	7198788007913909	CMakeFiles/POO_2324.dir/HeaderFiles/Interface.cpp.obj	a0448285c819d474
 46	1578	7204035894746813	CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj	a17bf172ed57e847
 39	451	7198743672890631	CMakeFiles/POO_2324.dir/Habitacao.cpp.obj	49c1120f7e1e5372
 4	987	7198744019115112	CMakeFiles/POO_2324.dir/Interface.cpp.obj	fd082da5ab640695
-2	412	7204044227473767	build.ninja	285d08438ff5f759
+2	412	7204068902497852	build.ninja	285d08438ff5f759
 9	1584	7204035894787428	CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj	74e508df61653fe7
 19	1589	7204035894807450	CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj	a0529f0e81ad46
 33	246	7202014672767427	CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj	b276a0229051ef34
 58	293	7202014673079923	CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj	afc4bd8a9f31cd2f
 45	298	7202014673236155	CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj	dbb171cd58856d8d
 57	1551	7204035894612378	CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj	993522ebae4f8a55
-4	840	7204047155680003	CMakeFiles/POO_2324.dir/main.cpp.obj	7fd9cdcdfda9d7d8
-6	835	7204048288089517	CMakeFiles/POO_2324.dir/main.cpp.obj	7fd9cdcdfda9d7d8
-837	1191	7204048291637509	POO_2324.exe	a80baf1db5fb75a
+19	841	7204068945082899	CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj	8aa2e400e7b6b4d3
+843	1281	7204068949477984	POO_2324.exe	e204410d46ded39b

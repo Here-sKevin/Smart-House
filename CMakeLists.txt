@@ -20,5 +20,6 @@ add_executable(POO_2324 main.cpp
         SourceFiles/Propriedade.cpp
         HeaderFiles/curses.h
         library/Terminal.h
+        library/Terminal.cpp
 )
 target_link_libraries(${PROJECT_NAME} C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a)

@@ -105,9 +105,9 @@ build CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj: CXX_COMPILER__POO
 #############################################
 # Link the executable POO_2324.exe
 
-build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj
+build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj | C$:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\POO_2324.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

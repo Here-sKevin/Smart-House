@@ -102,13 +102,20 @@ void interface::cmd_validator(const string& line) {
             in >> paraml;
             in >> paramc;
             if(paraml != 0 && paramc != 0) {
-                cout << "Parametros validados com sucesso";
-                habit = new habitacao(paraml,paramc);
+                cout << "Parametros validados com sucesso" << endl;
+                if((paraml >= 0 && paraml <= 4) && (paramc >= 0 && paramc <= 4)){
+                    habit = new habitacao(paraml,paramc);
+                    set_map_state(true);
+                }
+                else {
+                    cout << "A habitacao devera ter um tamanho minimo de 2x2 e maximo de 4x4" << endl;
+                }
+
             }
             else{
                 cout << "Parametros nao corresponder ao tipo de comando";
             }
-            set_map_state(true);
+
         }
         else if(cmd == "hrem") {
             habit->~habitacao();

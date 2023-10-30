@@ -7,7 +7,9 @@
 
 class processador {
 public:
+
 private:
+
 };
 
 #endif //POO_2324_PROCESSADOR_H

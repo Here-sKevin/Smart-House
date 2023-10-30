@@ -7,6 +7,7 @@
 #include "Sensor.h"
 #include "Aparelho.h"
 #include "Processador.h"
+#include "Propriedade.h"
 #include <string>
 #include <vector>
 
@@ -25,6 +26,7 @@ private:
     vector<sensor*> sensor;
     vector<aparelho*> aparelho;
     vector<processador*> processador;
+    vector<propriedade*> propriedade;
     int id;
 };
 

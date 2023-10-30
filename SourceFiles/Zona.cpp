@@ -18,3 +18,11 @@ void zona::mod_props(int id, string nome, int val) {
 int zona::get_id() const {
     return this->id;
 }
+
+void zona::delete_comp(int id, char type, int id_comp) {
+
+}
+
+void zona::create_comp(int id, char type, string cmd) {
+
+}

@@ -4,11 +4,16 @@
 
 #ifndef POO_2324_PROPRIEDADE_H
 #define POO_2324_PROPRIEDADE_H
+#include <string>
+
+using namespace std;
 
 class propriedade{
 public:
 
+
 private:
+    // auto key[2];
 };
 
 class temperatura : public propriedade {

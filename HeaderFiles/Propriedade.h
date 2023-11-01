@@ -5,26 +5,28 @@
 #ifndef POO_2324_PROPRIEDADE_H
 #define POO_2324_PROPRIEDADE_H
 #include <string>
+#include <map>
 
 using namespace std;
 
 class propriedade{
 public:
-
+     propriedade(string type);
 
 private:
-    // auto key[2];
+    map<string, int> id;
 };
 
 class temperatura : public propriedade {
 public:
-
+    temperatura(string type);
 private:
-    int val_min = -273;
+    int val_min;
 };
 
 class luz : public propriedade {
 public:
+    luz(string type);
 
 private:
     int val_min = 0;
@@ -32,21 +34,21 @@ private:
 
 class radiacao : public propriedade {
 public:
-
+    radiacao(string type);
 private:
     int val_min = 0;
 };
 
 class vibracao : public propriedade {
 public:
-
+    vibracao(string type);
 private:
     int val_min = 0;
 };
 
 class humidade : public propriedade {
 public:
-
+    humidade(string type);
 private:
     int val_min = 0;
     int val_max = 100;
@@ -54,7 +56,7 @@ private:
 
 class fumo : public propriedade {
 public:
-
+    fumo(string type);
 private:
     int val_min = 0;
     int val_max = 100;
@@ -62,7 +64,7 @@ private:
 
 class som : public propriedade {
 public:
-
+    som(string type);
 private:
     int val_min = 0;
 };

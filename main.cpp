@@ -1,10 +1,10 @@
-/*#include <iostream>
+#include <iostream>
 #include "HeaderFiles/Interface.h"
 
 int main() {
     interface i;
     i.menu();
-}*/
+}
 
 // POO 23/24
 // Biblioteca para manipulação da consola
@@ -14,7 +14,7 @@ int main() {
 //
 // Pode ser aumentada com funcionalidades novas (desde que funcionem)
 
-#include <string>
+/*#include <string>
 #include <sstream>
 #include <iomanip>
 #include "library/Terminal.h"
@@ -70,4 +70,4 @@ int main() {
 
     t.getchar();
     return 0;
-}
+}*/

@@ -16,11 +16,12 @@ public:
     ~habitacao();//Destrutor por defeito
     int get_linhas() const; // Devolve as linhas do mapa
     int get_colunas() const; // Devolve as colunas do mapa
-    std::string list_zonas() const; // Lista informacao
+    string list_zonas() const; // Lista informacao
     void create_zona(int x, int y); //cria uma zona na limitacao do tamanho do mapa, indicado pelo utilizador
     void delete_zona(int id); //elimina zona pelo ID da zona
     bool state2create_zona(int x, int y) const; //Verifica se pode criar a zona nas coordenadas indicadas
-
+    void cria_comp(int id, string c, string cmd);
+    void draw_map(int x, int y);
 
 private:
     vector <zona*> zonas;

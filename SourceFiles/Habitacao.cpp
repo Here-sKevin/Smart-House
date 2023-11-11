@@ -6,12 +6,15 @@
 #include <vector>
 #include <stdlib.h>
 #include <string>
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 
 habitacao::habitacao(int linhas, int colunas) {
     this->linhas = linhas;
     this->colunas = colunas;
+    this->generate_id_zona = 1;
 
     cout << "Habitacao criado com sucesso!" << endl;
 }
@@ -32,7 +35,9 @@ std::string habitacao::list_zonas() const {
 
 void habitacao::create_zona(int x, int y) {
     if(state2create_zona(x,y)){
-        zonas.push_back(new zona(zonas.size() + 1, x, y));
+        zonas.push_back(new zona(get_generate_id_zona(), x, y));
+        zonas[zonas.size()-1]->add_propriedades();
+        set_generate_id_zona();
     }
     else {
         cout << "Nao e possivel criar zona nestas coordenadas!" << endl;
@@ -103,6 +108,26 @@ void habitacao::draw_map(int x, int y) {
         }
     }
 
+}
+
+string habitacao::to_string() const {
+    ostringstream out;
+    for(const auto& zona : zonas){
+        out << "Zona com id: " << zona->get_id() <<
+        "Tem " << zona->get_quant_sensores() << " sensores; " <<
+        "Tem" << zona->get_quant_aparelhos() << " aparelhos; " <<
+        "Tem" << zona->get_quant_processadores() << " processadores; " <<
+        "\n";
+    }
+    return out.str();
+}
+
+int habitacao::get_generate_id_zona() const {
+    return generate_id_zona;
+}
+
+void habitacao::set_generate_id_zona() {
+    generate_id_zona = generate_id_zona + 1;
 }
 
 

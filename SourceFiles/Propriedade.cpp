@@ -6,34 +6,27 @@
 
 propriedade::propriedade(string type) {
     this->id.insert(pair<string,int>(type,0));
+    this->has_sensor = false;
 }
 
-temperatura::temperatura(string type) : propriedade(type) {
-    this->val_min = 0;
+bool propriedade::get_sensor() const {
+    return has_sensor;
 }
 
-luz::luz(string type) : propriedade(type) {
-    this->val_min = 0;
+void propriedade::set_sensor(bool sensor) {
+    has_sensor = sensor;
 }
 
-radiacao::radiacao(string type) : propriedade(type) {
-    this->val_min = 0;
-}
 
-vibracao::vibracao(string type) : propriedade(type) {
-    this->val_min = 0;
-}
 
-humidade::humidade(string type) : propriedade(type) {
-    this->val_min = 0;
-    this->val_max = 100;
-}
 
-fumo::fumo(string type) : propriedade(type) {
-    this->val_min = 0;
-    this->val_max = 100;
-}
 
-som::som(string type) : propriedade(type) {
-    this->val_min = 0;
-}
+
+
+
+
+
+
+
+
+

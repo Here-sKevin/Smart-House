@@ -7,21 +7,19 @@
 #include <string>
 #include "Sensor.h"
 #include <vector>
+#include "../HeaderFiles/Regra.h"
 
 using namespace std;
 
 class processador {
 public:
-
+    processador(int id);
+    ~processador();
+    int get_id() const; // retorna o id do processador
+    void add_regra(int id, string cmd);
 private:
-    vector<sensor> sensores;
-};
-
-class regra : processador {
-public:
-
-private:
-
+    int id;
+    vector<regra*> regras;
 };
 
 #endif //POO_2324_PROCESSADOR_H

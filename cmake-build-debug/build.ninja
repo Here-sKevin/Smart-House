@@ -103,6 +103,78 @@ build CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj: CXX_COMPILER__POO_2324_u
   OBJECT_DIR = CMakeFiles\POO_2324.dir
   OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\library
 
+build CMakeFiles/POO_2324.dir/SourceFiles/Regra.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Regra.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Regra.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Temperatura.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Temperatura.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Temperatura.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Luz.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Luz.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Luz.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Radiacao.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Radiacao.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Radiacao.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Vibracao.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Vibracao.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Vibracao.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Humidade.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Humidade.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Humidade.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Fumo.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Fumo.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Fumo.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Som.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Som.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Som.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Aquecedor.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Aquecedor.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Aquecedor.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Aspersor.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Aspersor.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Aspersor.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Refrigerador.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Refrigerador.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Refrigerador.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
+build CMakeFiles/POO_2324.dir/SourceFiles/Lampada.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Lampada.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Lampada.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target POO_2324
@@ -111,7 +183,7 @@ build CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj: CXX_COMPILER__POO_2324_u
 #############################################
 # Link the executable POO_2324.exe
 
-build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj | C$:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a
+build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Regra.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Temperatura.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Luz.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Radiacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Vibracao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Humidade.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Fumo.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Som.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aquecedor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aspersor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Refrigerador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Lampada.cpp.obj | C$:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\POO_2324.dir

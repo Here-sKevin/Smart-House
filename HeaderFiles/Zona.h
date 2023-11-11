@@ -24,15 +24,36 @@ public:
     int get_id() const; //devolve id da zona
     int get_x() const; // devolve a posicao x
     int get_y() const; // devolve a posicao y
+    int get_quant_sensores() const; // devolve a quantidade de sensores na zona indicada
+    int get_quant_aparelhos() const; // devolve a quantidade de aparelhos na zona indicada
+    int get_quant_processadores() const;// devolve a quantidade de processadores na zona indicada
+
+    int get_generate_id_proc() const;
+    void set_generate_id_proc();
+
+    int get_generate_id_sensor() const;
+    void set_generate_id_sensor();
+
+    int get_generate_id_aparelho() const;
+    void set_generate_id_aparelho();
+
+    int get_generate_id_regra() const;
+    void set_generate_id_regra();
+
+    void add_propriedades();
 
 private:
     vector<sensor*> sensores;
     vector<aparelho*> aparelhos;
+    vector<propriedade*> propriedades;
     vector<processador*> processadores;
-    // vector<propriedade> propriedades;
     int id;
     int x;
     int y;
+    int generate_id_proc;
+    int generate_id_sensor;
+    int generate_id_aparelho;
+    int generate_id_regra;
 };
 
 #endif //POO_2324_ZONA_H

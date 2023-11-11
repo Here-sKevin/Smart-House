@@ -5,12 +5,12 @@
 
 sensor::sensor(int id, string cmd) {
     this->id = id;
-    this->has_prop = false;
+    this->has_prop = cmd == "" ? false : true;
+    this->prop = cmd;
     // propriedade prop(cmd);
 
-    if(cmd == "temperatura") {
-        temperatura t(cmd);
-        prop= &t;
+    /*if(cmd == "temperatura") {
+        //temperatura prop(cmd);
     }
     else if(cmd == "luz"){
 
@@ -29,5 +29,5 @@ sensor::sensor(int id, string cmd) {
     }
     else if(cmd == "som"){
 
-    }
+    }*/
 }

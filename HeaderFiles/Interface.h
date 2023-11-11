@@ -12,7 +12,7 @@ using namespace std;
 class interface {
 public:
     interface(); // construtor por defeito
-    ~interface();
+    ~interface(); // destrutor por defeito
     void menu(); // lista inical
     void config(); // estado da aplicacao
     void cmd_validator(const string& line); // execucao dos comandos inseridos pelo utilizador

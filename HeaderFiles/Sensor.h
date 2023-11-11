@@ -14,7 +14,8 @@ public:
 private:
     int id;
     bool has_prop;
-    propriedade *prop;
+    string prop;
+    // temperatura prop;
 };
 
 #endif //POO_2324_SENSOR_H

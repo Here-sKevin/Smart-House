@@ -20,13 +20,18 @@ public:
     void create_zona(int x, int y); //cria uma zona na limitacao do tamanho do mapa, indicado pelo utilizador
     void delete_zona(int id); //elimina zona pelo ID da zona
     bool state2create_zona(int x, int y) const; //Verifica se pode criar a zona nas coordenadas indicadas
-    void cria_comp(int id, string c, string cmd);
-    void draw_map(int x, int y);
+    void cria_comp(int id, string c, string cmd); // Identificacao do component e chamada do construtor correspondente
+    void draw_map(int x, int y); // desenha o mapa do simulador
+    string to_string() const;
+
+    int get_generate_id_zona() const;
+    void set_generate_id_zona();
 
 private:
     vector <zona*> zonas;
     int linhas;
     int colunas;
+    int generate_id_zona;
 };
 
 #endif //POO_2324_HABITACAO_H

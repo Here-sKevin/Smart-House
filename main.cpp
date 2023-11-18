@@ -1,6 +1,13 @@
 #include <iostream>
 #include "HeaderFiles/Interface.h"
 
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include "library/Terminal.h"
+
+using namespace term;
+
 int main() {
     interface i;
     i.menu();

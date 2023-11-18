@@ -23,9 +23,11 @@ public:
     void cria_comp(int id, string c, string cmd); // Identificacao do component e chamada do construtor correspondente
     void draw_map(int x, int y); // desenha o mapa do simulador
     string to_string() const;
+    int quant_zonas() const;
 
     int get_generate_id_zona() const;
     void set_generate_id_zona();
+    int get_zona_specs(const string& spec, int zona) const;
 
 private:
     vector <zona*> zonas;

@@ -130,6 +130,23 @@ void habitacao::set_generate_id_zona() {
     generate_id_zona = generate_id_zona + 1;
 }
 
+int habitacao::quant_zonas() const {
+    return zonas.size();
+}
+
+int habitacao::get_zona_specs(const string& spec, int zona) const {
+    if(spec == "id") {
+        return zonas[zona]->get_id();
+    }
+    if(spec == "x"){
+        return zonas[zona]->get_x();
+    }
+    if(spec == "y"){
+        return zonas[zona]->get_y();
+    }
+    return 0;
+}
+
 
 
 

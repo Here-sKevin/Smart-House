@@ -56,17 +56,31 @@ void interface::menu() {
             break;
     }
 }
+void print_size(Terminal& t) {
+    std::ostringstream o;
+    o << "tamanho do terminal: " << std::setw(7) << t.getNumCols() << "x" << t.getNumRows();
+    std::string str = o.str();
+    t.clear();
+    t << set_color(0) << move_to(t.getNumCols()-str.length(), t.getNumRows()-1) << str;
+}
 
 void interface::config() {
     string line, cmd;
     bool flag = false;
+    Terminal &t = Terminal::instance();
+
+    for(int i=1; i<20; i++) {
+        t.init_color(i, i, 0);
+    }
+
+    print_size(t);
     while (true) {
-        start(flag);
+        start(flag, t);
         flag = true;
     }
 }
 
-bool interface::file_reader(const string& file_name) {
+bool interface::file_reader(const string& file_name, Terminal& t) {
     ifstream data(file_name);
     string line;
 
@@ -77,18 +91,20 @@ bool interface::file_reader(const string& file_name) {
         getline(data, line);
         istringstream in(line);
         string cmd; in >> cmd;
-        cmd_validator(line);
+        //cmd_validator(line);
+        cmd_validator(line, t);
     }
     data.close();
     return true;
 }
 
-void interface::cmd_validator(const string& line) {
+void interface::cmd_validator(const string& line, Terminal& t) {
     if (line.empty())
         return;
 
     istringstream in(line);
     string cmd;
+    t.clear();
 
     in >> cmd;
     if(map || cmd == "hnova" || cmd == "exec" || cmd == "sair") {
@@ -105,18 +121,31 @@ void interface::cmd_validator(const string& line) {
             in >> paraml;
             in >> paramc;
             if(paraml != 0 && paramc != 0) {
-                cout << "Parametros validados com sucesso" << endl;
+                // set_info_lines();
+                t << move_to(80, get_info_lines()) << "Parametros validados com sucesso";
+
+                // cout << "Parametros validados com sucesso" << endl;
                 if((paraml >= 2 && paraml <= 4) && (paramc >= 2 && paramc <= 4)){
-                    habit = new habitacao(paraml,paramc);
-                    set_map_state(true);
-                    habit->draw_map(paraml, paramc);
+                    if(!get_map_state()) {
+                        habit = new habitacao(paraml,paramc);
+                        set_map_state(true);
+                        habit->draw_map(paraml, paramc);
+                    }
+                    else{
+                        // set_info_lines();
+                        t << move_to(80, get_info_lines()) << "Habitacao ja criada";
+                    }
                 }
                 else {
-                    cout << "A habitacao devera ter um tamanho minimo de 2x2 e maximo de 4x4" << endl;
+                    // set_info_lines();
+                    t << move_to(80, get_info_lines()) << "A habitacao devera ter um tamanho minimo";
+                    // set_info_lines();
+                    t << move_to(80, get_info_lines()) << "de 2x2 e maximo de 4x4";
                 }
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                // set_info_lines();
+                t << move_to(80, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "hrem") {
@@ -334,7 +363,7 @@ void interface::cmd_validator(const string& line) {
             string param;
             in >> param;
             if(file_type(param)) {
-                if(!file_reader(param)) {
+                if(!file_reader(param, t)) {
                     cout << "Ficheiro nao existe!" << endl;
                 }
             }
@@ -358,27 +387,28 @@ void interface::cmd_validator(const string& line) {
 
 }
 
-void interface::start(bool flag) {
+void interface::start(bool flag, Terminal& t) {
 
     string line, cmd;
-    if (flag)
-        cmd_input();
 
-    getline(cin, line);
+    /*if (flag)
+        cmd_input();*/
+    if(flag)
+        create_visual(t);
 
-    istringstream in(line); in >> cmd;
+    // getline(cin, line);
 
-    if (!in)
-        return;
+    // istringstream in(line); in >> cmd;
 
-    cmd_validator(line);
+    //if (!in)
+        //return;
+
+    //cmd_validator(line);
 }
 
 void interface::cmd_input() {
-
     cout << error << endl;
     std::cout << "Comando: ";
-
 }
 
 void interface::set_map_state(bool active) {
@@ -393,4 +423,50 @@ bool interface::file_type(const string& file_name) {
         return true;
     }
     return false;
+}
+
+void interface::create_visual_zonas(int x, int y, Terminal& t) {
+    int pos_x_init = 5;
+    int pos_y_init = 4;
+    int id = 1;
+    int total_zonas = habit->quant_zonas();
+    for(int i = 0; i < x; i++) {
+        for(int j = 0; j < y; j++) {
+            if(total_zonas != 0) {
+                visual_zonas.push_back(new Window(pos_x_init, pos_y_init, 15, 4));
+                t << move_to(pos_x_init+7, pos_y_init+1) << id;
+                id++;
+                pos_x_init = pos_x_init + 15;
+                total_zonas--;
+            }
+        }
+        pos_x_init = 5;
+        pos_y_init = pos_y_init + 4;
+    }
+}
+
+
+
+void interface::create_visual(Terminal& t) {
+    if(get_map_state())
+        create_visual_zonas(habit->get_linhas(),habit->get_colunas(), t);
+
+    // Window w = Window(2, t.getNumRows()-2, 15, 4);
+    std::string str_in;
+    t << move_to(6, t.getNumRows()-1) << "Comando: ";
+    t >> str_in;
+    t.clear();
+    cmd_validator(str_in, t);
+}
+
+bool interface::get_map_state() const {
+    return map;
+}
+
+int interface::get_info_lines() const {
+    return quant_info_lines;
+}
+
+void interface::set_info_lines() {
+    quant_info_lines = quant_info_lines + 1;
 }

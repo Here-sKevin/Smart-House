@@ -128,3 +128,5 @@ void zona::add_propriedades() {
     propriedades.push_back(new fumo("fumo"));
 
 }
+
+zona::~zona() = default;

@@ -33,14 +33,14 @@ std::string habitacao::list_zonas() const {
     return {};
 }
 
-void habitacao::create_zona(int x, int y) {
+void habitacao::create_zona(int x, int y, Terminal& t) {
     if(state2create_zona(x,y)){
         zonas.push_back(new zona(get_generate_id_zona(), x, y));
         zonas[zonas.size()-1]->add_propriedades();
         set_generate_id_zona();
     }
     else {
-        cout << "Nao e possivel criar zona nestas coordenadas!" << endl;
+        t << move_to(70, 0) << "Nao e possivel criar zona nestas coordenadas!";
     }
 }
 
@@ -114,9 +114,9 @@ string habitacao::to_string() const {
     ostringstream out;
     for(const auto& zona : zonas){
         out << "Zona com id: " << zona->get_id() <<
-        "Tem " << zona->get_quant_sensores() << " sensores; " <<
-        "Tem" << zona->get_quant_aparelhos() << " aparelhos; " <<
-        "Tem" << zona->get_quant_processadores() << " processadores; " <<
+        " Tem " << zona->get_quant_sensores() << " sensores; " <<
+        " Tem " << zona->get_quant_aparelhos() << " aparelhos; " <<
+        " Tem " << zona->get_quant_processadores() << " processadores; " <<
         "\n";
     }
     return out.str();
@@ -134,15 +134,20 @@ int habitacao::quant_zonas() const {
     return zonas.size();
 }
 
-int habitacao::get_zona_specs(const string& spec, int zona) const {
-    if(spec == "id") {
-        return zonas[zona]->get_id();
+bool habitacao::can_draw_inGrid(int i, int j) {
+    for(auto & zona : zonas) {
+        if(zona->get_x() == i && zona->get_y() == j){
+            return true;
+        }
     }
-    if(spec == "x"){
-        return zonas[zona]->get_x();
-    }
-    if(spec == "y"){
-        return zonas[zona]->get_y();
+    return false;
+}
+
+int habitacao::get_zona_id(int x, int y) {
+    for(auto & zona : zonas) {
+        if(zona->get_x() == x && zona->get_y() == y){
+            return zona->get_id();
+        }
     }
     return 0;
 }

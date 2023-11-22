@@ -16,6 +16,7 @@ using namespace std;
 class zona {
 public:
     zona(int id, int x, int y);
+    ~zona();
     string list_zona_comp(int id) const; // lista os componentes da zona
     string list_zona_prop(int id) const; // lista as propriedades da zona
     void mod_props(int id, string nome, int val); // modifica a propriedade

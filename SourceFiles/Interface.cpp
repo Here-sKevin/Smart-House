@@ -74,7 +74,7 @@ void interface::config() {
     }
 
     print_size(t);
-    while (true) {
+    while(true) {
         start(flag, t);
         flag = true;
     }
@@ -91,7 +91,6 @@ bool interface::file_reader(const string& file_name, Terminal& t) {
         getline(data, line);
         istringstream in(line);
         string cmd; in >> cmd;
-        //cmd_validator(line);
         cmd_validator(line, t);
     }
     data.close();
@@ -121,10 +120,8 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> paraml;
             in >> paramc;
             if(paraml != 0 && paramc != 0) {
-                // set_info_lines();
                 t << move_to(80, get_info_lines()) << "Parametros validados com sucesso";
 
-                // cout << "Parametros validados com sucesso" << endl;
                 if((paraml >= 2 && paraml <= 4) && (paramc >= 2 && paramc <= 4)){
                     if(!get_map_state()) {
                         habit = new habitacao(paraml,paramc);
@@ -132,25 +129,22 @@ void interface::cmd_validator(const string& line, Terminal& t) {
                         habit->draw_map(paraml, paramc);
                     }
                     else{
-                        // set_info_lines();
                         t << move_to(80, get_info_lines()) << "Habitacao ja criada";
                     }
                 }
                 else {
-                    // set_info_lines();
                     t << move_to(80, get_info_lines()) << "A habitacao devera ter um tamanho minimo";
-                    // set_info_lines();
                     t << move_to(80, get_info_lines()) << "de 2x2 e maximo de 4x4";
                 }
             }
             else{
-                // set_info_lines();
                 t << move_to(80, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "hrem") {
             habit->~habitacao();
             set_map_state(false);
+            t << move_to(80, get_info_lines()) << "Habitacao eliminada!";
         }
         else if(cmd == "znova"){
 
@@ -159,11 +153,11 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> paramc;
 
             if(paraml != 0 && paramc != 0) {
-                cout << "Parametros validados com sucesso" << endl;
-                habit->create_zona(paraml, paramc);
+                t << move_to(80, get_info_lines()) << "Parametros validados com sucesso";
+                habit->create_zona(paraml, paramc, t);
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(80, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "zrem") {
@@ -171,25 +165,25 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
 
             if(param != 0) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
                 habit->delete_zona(param);
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "zlista"){
-            cout << habit->to_string();
+            t << move_to(70, get_info_lines()) << habit->to_string();
         }
         else if(cmd == "zcomp") {
             int param;
             in >> param;
 
             if(param != 0) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "zprops"){
@@ -197,10 +191,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
 
             if(param != 0) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "pmod") {
@@ -211,10 +205,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && param3 != 0) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
 
         }
@@ -228,11 +222,11 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
                 habit->cria_comp(param1, param2, param3);
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "crem") {
@@ -243,10 +237,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && param3 != 0) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "rnova"){
@@ -260,10 +254,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "rlista"){
@@ -272,10 +266,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param2;
 
             if(param1 != 0 && param2 != 0) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "rrem") {
@@ -285,10 +279,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && param3 != 0) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "asoc"){
@@ -298,10 +292,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && param3 != 0) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "ades") {
@@ -311,10 +305,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && param3 != 0) {
-                cout << "Parametros validados com sucesso"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando"<< endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "acom"){
@@ -325,10 +319,10 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "psalva") {
@@ -339,17 +333,17 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
-                cout << "Parametros nao corresponder ao tipo de comando" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "prepoe"){
             string param;
 
             if(!param.empty()) {
-                cout << "Parametros validados com sucesso" << endl;
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
             }
             else{
                 cout << "Parametros nao corresponder ao tipo de comando" << endl;
@@ -364,46 +358,37 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
             if(file_type(param)) {
                 if(!file_reader(param, t)) {
-                    cout << "Ficheiro nao existe!" << endl;
+                    t << move_to(70, get_info_lines()) << "Ficheiro nao existe!";
                 }
             }
             else {
-                cout << "Extensao do ficheiro nao e um ficheiro de texto (<NomeFicheiro>.txt)" << endl;
+                t << move_to(70, get_info_lines()) << "Extensao do ficheiro nao e um ficheiro de texto ";
+                set_info_lines();
+                t << move_to(70, get_info_lines()) << "(<NomeFicheiro>.txt)";
+                reset_info_lines();
             }
         }
         else if(cmd == "sair") {
             exit(0);
         }
         else{
-            cout << "Comando nao exist ! Inserir comando valido" << endl;
+            t << move_to(70, get_info_lines()) << "Comando nao existe ! Inserir comando valido";
         }
 
     }
     else {
-        cout << "Tamanho do mapa do simulador nao existe ... cria antes de efetuar qualquer outro comando (hnova <num linhas><num colunas>)"<< endl;
+        t << move_to(70, get_info_lines()) << "Tamanho do mapa do simulador nao existe! ";
+        set_info_lines();
+        t << move_to(70, get_info_lines()) << "Cria antes de efetuar qualquer outro comando";
+        set_info_lines();
+        t << move_to(70, get_info_lines()) << "(hnova <num linhas><num colunas>)";
+        reset_info_lines();
     }
-
-
-
 }
 
 void interface::start(bool flag, Terminal& t) {
-
-    string line, cmd;
-
-    /*if (flag)
-        cmd_input();*/
     if(flag)
         create_visual(t);
-
-    // getline(cin, line);
-
-    // istringstream in(line); in >> cmd;
-
-    //if (!in)
-        //return;
-
-    //cmd_validator(line);
 }
 
 void interface::cmd_input() {
@@ -428,16 +413,16 @@ bool interface::file_type(const string& file_name) {
 void interface::create_visual_zonas(int x, int y, Terminal& t) {
     int pos_x_init = 5;
     int pos_y_init = 4;
-    int id = 1;
     int total_zonas = habit->quant_zonas();
-    for(int i = 0; i < x; i++) {
-        for(int j = 0; j < y; j++) {
+
+    for(int i = 1; i <= x; i++) {
+        for(int j = 1; j <= y; j++) {
             if(total_zonas != 0) {
-                visual_zonas.push_back(new Window(pos_x_init, pos_y_init, 15, 4));
-                t << move_to(pos_x_init+7, pos_y_init+1) << id;
-                id++;
+                if(habit->can_draw_inGrid(i,j)) {
+                    visual_zonas.push_back(new Window(pos_x_init, pos_y_init, 15, 4));
+                    t << move_to(pos_x_init+7, pos_y_init+1) << habit->get_zona_id(i,j);
+                }
                 pos_x_init = pos_x_init + 15;
-                total_zonas--;
             }
         }
         pos_x_init = 5;
@@ -451,7 +436,6 @@ void interface::create_visual(Terminal& t) {
     if(get_map_state())
         create_visual_zonas(habit->get_linhas(),habit->get_colunas(), t);
 
-    // Window w = Window(2, t.getNumRows()-2, 15, 4);
     std::string str_in;
     t << move_to(6, t.getNumRows()-1) << "Comando: ";
     t >> str_in;
@@ -469,4 +453,8 @@ int interface::get_info_lines() const {
 
 void interface::set_info_lines() {
     quant_info_lines = quant_info_lines + 1;
+}
+
+void interface::reset_info_lines() {
+    quant_info_lines = 0;
 }

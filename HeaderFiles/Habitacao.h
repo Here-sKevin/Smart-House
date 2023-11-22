@@ -7,6 +7,10 @@
 #include <vector>
 #include "Zona.h"
 #include <string>
+#include "../library/Terminal.h"
+
+
+using namespace term;
 
 using namespace std;
 
@@ -17,7 +21,7 @@ public:
     int get_linhas() const; // Devolve as linhas do mapa
     int get_colunas() const; // Devolve as colunas do mapa
     string list_zonas() const; // Lista informacao
-    void create_zona(int x, int y); //cria uma zona na limitacao do tamanho do mapa, indicado pelo utilizador
+    void create_zona(int x, int y, Terminal& t); //cria uma zona na limitacao do tamanho do mapa, indicado pelo utilizador
     void delete_zona(int id); //elimina zona pelo ID da zona
     bool state2create_zona(int x, int y) const; //Verifica se pode criar a zona nas coordenadas indicadas
     void cria_comp(int id, string c, string cmd); // Identificacao do component e chamada do construtor correspondente
@@ -27,7 +31,8 @@ public:
 
     int get_generate_id_zona() const;
     void set_generate_id_zona();
-    int get_zona_specs(const string& spec, int zona) const;
+    bool can_draw_inGrid(int i, int j);
+    int get_zona_id(int x, int y);
 
 private:
     vector <zona*> zonas;

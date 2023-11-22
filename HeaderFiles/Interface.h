@@ -24,10 +24,11 @@ public:
     bool get_map_state() const;
     void set_map_state(bool active); //estado de criação do mapa do simulador
     bool file_type(const string& file_name); // verificacao da extencao do ficheiro (helper)
-    void create_visual(Terminal& t);
-    void create_visual_zonas(int x, int y, Terminal& t);
+    void create_visual(Terminal& t); // desenha na console com recurso a bibioteca
+    void create_visual_zonas(int x, int y, Terminal& t); // desenha as zonas na console com recurso a bibioteca
     int get_info_lines() const;
     void set_info_lines();
+    void reset_info_lines();
 
 private:
     string error;

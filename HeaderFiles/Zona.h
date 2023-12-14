@@ -38,6 +38,8 @@ public:
 
     void set_prop(string nome, int valor);
 
+    void delete_comp(string type, int id);
+
 
 private:
     vector<sensor*> sensores;

@@ -172,6 +172,16 @@ void habitacao::set_prop(int id_zona, string nome, int valor) {
     }
 }
 
+void habitacao::delete_comp(int id_zona, string type, int id) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            zona->delete_comp(type,id);
+        }
+    }
+}
+
+
+
 
 
 

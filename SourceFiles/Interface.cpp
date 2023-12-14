@@ -237,13 +237,15 @@ void interface::cmd_validator(const string& line, Terminal& t) {
         }
         else if(cmd == "crem") {
             int param1, param3;
-            char param2;
+            string param2;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && param3 != 0) {
+            if(param1 != 0 && !param2.empty()  && param3 != 0) {
                 t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
+                habit->delete_comp(param1,param2,param3);
+
             }
             else{
                 t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
@@ -256,10 +258,12 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             in >> param2;
             in >> param3;
             in >> param4;
+            in >> param5;
+            in >> param6;
 
             if(param1 != 0 && param2 != 0 && !param3.empty() && param4 != 0) {
                 t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
-                habit->cria_regra(param1,param2,param3,param4, param5,param5);
+                habit->cria_regra(param1,param2,param3,param4, param5,param6);
             }
             else{
                 t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";

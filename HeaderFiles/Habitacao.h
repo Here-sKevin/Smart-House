@@ -36,6 +36,8 @@ public:
 
     void set_prop(int id_zona, string nome, int valor);
 
+    void delete_comp(int id_zona, string type, int id);
+
 private:
     vector <zona*> zonas;
     int linhas;

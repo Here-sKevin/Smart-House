@@ -8,6 +8,10 @@
 #include "../HeaderFiles/Humidade.h"
 #include "../HeaderFiles/Som.h"
 #include "../HeaderFiles/Fumo.h"
+#include "../HeaderFiles/Aquecedor.h"
+#include "../HeaderFiles/Aspersor.h"
+#include "../HeaderFiles/Refrigerador.h"
+#include "../HeaderFiles/Lampada.h"
 #include <vector>
 
 using namespace std;
@@ -38,19 +42,22 @@ void zona::create_comp(string type, string cmd, int zone_id) {
     if(type == "s") {
         sensores.push_back(new sensor(cmd));
     }
-    else if(type == "p") {
-        if(cmd != "liga" || cmd != "desliga" ){
-            cout << "comando nao reconhecido" <<endl;
-        }
-        else{
-            processadores.push_back(new processador(cmd));
-            // processadores[processadores.size()-1]->add_regra(cmd);
-        }
-
+    if(type == "p") {
+        processadores.push_back(new processador(cmd));
     }
-    else {
-        // aparelhos.push_back(new aparelho(get_generate_id_aparelho()));
-        // set_generate_id_aparelho()
+    if(type == "a") {
+        if(cmd == "aquecedor") {
+            aparelhos.push_back(new aquecedor("desliga"));
+        }
+        if(cmd == "aspersor") {
+            aparelhos.push_back(new aspersor("desliga"));
+        }
+        if(cmd == "refrigerador") {
+            aparelhos.push_back(new refrigerador("desliga"));
+        }
+        if(cmd == "lampada") {
+            aparelhos.push_back(new lampada("desliga"));
+        }
     }
 }
 
@@ -152,6 +159,46 @@ void zona::set_prop(string nome, int valor) {
     for(auto & prop : propriedades) {
         if(prop->get_id_name(nome)){
             prop->set_id_val(nome,valor);
+        }
+    }
+}
+
+void zona::delete_comp(string type, int id) {
+    int i = -1, index = -1;
+    if(type == "s") {
+        for(auto & sensor : sensores) {
+            i++;
+            if(id == sensor->get_id()) {
+                index = i;
+            }
+        }
+        if(index > -1) {
+            delete sensores[index];
+            sensores.erase(sensores.begin() + i);
+        }
+    }
+    if(type == "p") {
+        for(auto & processador : processadores) {
+            i++;
+            if(id == processador->get_id()) {
+                index = i;
+            }
+        }
+        if(index > -1) {
+            delete processadores[index];
+            processadores.erase(processadores.begin() + i);
+        }
+    }
+    if(type == "a") {
+        for(auto & aparelho : aparelhos) {
+            i++;
+            if(id == aparelho->get_id()) {
+                index = i;
+            }
+        }
+        if(index > -1) {
+            delete aparelhos[index];
+            aparelhos.erase(aparelhos.begin() + i);
         }
     }
 }

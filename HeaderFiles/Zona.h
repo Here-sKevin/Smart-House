@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 10/28/2023.
-//
 
 #ifndef POO_2324_ZONA_H
 #define POO_2324_ZONA_H
@@ -15,7 +12,7 @@ using namespace std;
 
 class zona {
 public:
-    zona(int id, int x, int y);
+    zona(int x, int y);
     ~zona();
     string list_zona_comp(int id) const; // lista os componentes da zona
     string list_zona_prop(int id) const; // lista as propriedades da zona
@@ -29,19 +26,18 @@ public:
     int get_quant_aparelhos() const; // devolve a quantidade de aparelhos na zona indicada
     int get_quant_processadores() const;// devolve a quantidade de processadores na zona indicada
 
-    int get_generate_id_proc() const;
-    void set_generate_id_proc();
-
-    int get_generate_id_sensor() const;
-    void set_generate_id_sensor();
-
-    int get_generate_id_aparelho() const;
-    void set_generate_id_aparelho();
-
-    int get_generate_id_regra() const;
-    void set_generate_id_regra();
-
     void add_propriedades();
+
+    static int get_zona_id() ;
+    static void set_zona_id();
+
+    void cria_regra(int id_proc, string regra, int id_sensor, int val1, int val2);
+    void change_proc_cmd(int id_proc, string cmd);
+
+    void delete_regra(int id_proc, int id_regra);
+
+    void set_prop(string nome, int valor);
+
 
 private:
     vector<sensor*> sensores;
@@ -51,10 +47,8 @@ private:
     int id;
     int x;
     int y;
-    int generate_id_proc;
-    int generate_id_sensor;
-    int generate_id_aparelho;
-    int generate_id_regra;
+
+    static int zona_id;
 };
 
 #endif //POO_2324_ZONA_H

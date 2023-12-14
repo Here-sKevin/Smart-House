@@ -1,12 +1,9 @@
-//
-// Created by KevinRodrigues on 10/28/2023.
-//
+
 #include "../HeaderFiles/Propriedade.h"
 
 
-propriedade::propriedade(string type) {
+propriedade::propriedade(string type) : has_sensor(false) {
     this->id.insert(pair<string,int>(type,0));
-    this->has_sensor = false;
 }
 
 bool propriedade::get_sensor() const {
@@ -15,6 +12,23 @@ bool propriedade::get_sensor() const {
 
 void propriedade::set_sensor(bool sensor) {
     has_sensor = sensor;
+}
+
+propriedade::~propriedade() {
+    cout << "propriedade destruida" <<endl;
+}
+
+bool propriedade::get_id_name(string nome) const {
+    if(id.find(nome) != id.end()) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+void propriedade::set_id_val(string nome, int valor) {
+    id[nome] = valor;
 }
 
 

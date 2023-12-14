@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #ifndef POO_2324_SOM_H
 #define POO_2324_SOM_H
@@ -9,6 +6,8 @@
 class som : public propriedade {
 public:
     som(string type);
+    ~som();
+    void ativa_efeito(string cmd, string aparelho) override;
 private:
     int val_min = 0;
 };

@@ -1,6 +1,4 @@
-//
-// Created by KevinRodrigues on 10/28/2023.
-//
+
 #include "../HeaderFiles/Habitacao.h"
 #include <iostream>
 #include <vector>
@@ -11,15 +9,14 @@
 
 using namespace std;
 
-habitacao::habitacao(int linhas, int colunas) {
-    this->linhas = linhas;
-    this->colunas = colunas;
-    this->generate_id_zona = 1;
+habitacao::habitacao(int linhas, int colunas) : linhas(linhas), colunas(colunas) {}
 
-    cout << "Habitacao criado com sucesso!" << endl;
+habitacao::~habitacao() {
+    for(auto & zona : zonas) {
+        delete zona;
+    }
+    zonas.clear();
 }
-
-habitacao::~habitacao() = default;
 
 int habitacao::get_linhas() const {
     return this->linhas;
@@ -35,9 +32,8 @@ std::string habitacao::list_zonas() const {
 
 void habitacao::create_zona(int x, int y, Terminal& t) {
     if(state2create_zona(x,y)){
-        zonas.push_back(new zona(get_generate_id_zona(), x, y));
+        zonas.push_back(new zona(x, y));
         zonas[zonas.size()-1]->add_propriedades();
-        set_generate_id_zona();
     }
     else {
         t << move_to(70, 0) << "Nao e possivel criar zona nestas coordenadas!";
@@ -56,7 +52,7 @@ void habitacao::delete_zona(int id) {
         }
     }
     if(can_delete) {
-        zonas[index]->~zona();
+        delete zonas[index];
         zonas.erase(zonas.begin()+index);
     }
     else {
@@ -122,14 +118,6 @@ string habitacao::to_string() const {
     return out.str();
 }
 
-int habitacao::get_generate_id_zona() const {
-    return generate_id_zona;
-}
-
-void habitacao::set_generate_id_zona() {
-    generate_id_zona = generate_id_zona + 1;
-}
-
 int habitacao::quant_zonas() const {
     return zonas.size();
 }
@@ -150,6 +138,38 @@ int habitacao::get_zona_id(int x, int y) {
         }
     }
     return 0;
+}
+
+void habitacao::cria_regra(int id_zona, int id_proc, string regra, int id_sensor, int val1, int val2) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            zona->cria_regra(id_proc, regra, id_sensor, val1, val2);
+        }
+    }
+}
+
+void habitacao::change_proc_cmd(int id_zona, int id_proc, string cmd) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            zona->change_proc_cmd(id_proc, cmd);
+        }
+    }
+}
+
+void habitacao::delete_regra(int id_zona, int id_proc, int id_regra) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            zona->delete_regra(id_proc, id_regra);
+        }
+    }
+}
+
+void habitacao::set_prop(int id_zona, string nome, int valor) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+           zona->set_prop(nome, valor);
+        }
+    }
 }
 
 

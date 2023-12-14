@@ -1,9 +1,12 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #include "../HeaderFiles/Vibracao.h"
 
-vibracao::vibracao(string type) : propriedade(type) {
-    this->val_min = 0;
+vibracao::vibracao(string type) : propriedade(type), val_min(0) {}
+
+vibracao::~vibracao() {}
+
+void vibracao::ativa_efeito(string cmd, string aparelho) {
+
 }
+
+

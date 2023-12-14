@@ -1,9 +1,14 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
+
 #include "../HeaderFiles/Aspersor.h"
 
-aspersor::aspersor() {
+aspersor::aspersor(string cmd) : aparelho(cmd) {}
+
+aspersor::~aspersor() {}
+
+void aspersor::set_cmd(string comando) {
 
 }
+
+
+
 

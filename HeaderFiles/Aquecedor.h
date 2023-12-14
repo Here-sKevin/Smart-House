@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #ifndef POO_2324_AQUECEDOR_H
 #define POO_2324_AQUECEDOR_H
@@ -8,7 +5,10 @@
 
 class aquecedor : public aparelho{
 public:
-    aquecedor();
+    aquecedor(string cmd);
+    ~aquecedor();
+
+    virtual void set_cmd(string comando) override;
 private:
 };
 

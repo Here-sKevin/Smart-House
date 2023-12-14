@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 10/24/2023.
-//
 
 #include "../HeaderFiles/Interface.h"
 #include <iostream>
@@ -15,11 +12,13 @@
 
 using namespace term;
 
-interface::interface() {
-
-}
+interface::interface() {}
 
 interface::~interface() {
+    for(auto & visual_zona : visual_zonas) {
+        delete visual_zona;
+    }
+    visual_zonas.clear();
     cout << "Destrutor Interface" << endl;
 }
 
@@ -73,6 +72,12 @@ void interface::config() {
         t.init_color(i, i, 0);
     }
 
+    //Window cmdWin = Window(1, 1, 20, 20);
+    //Window zonasWin = Window(1, 1, 20, 20);
+    //Window msgWin = Window(2, t.getNumRows(), 20, 20);
+
+
+
     print_size(t);
     while(true) {
         start(flag, t);
@@ -103,7 +108,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
     istringstream in(line);
     string cmd;
-    t.clear();
+    //t.clear();
 
     in >> cmd;
     if(map || cmd == "hnova" || cmd == "exec" || cmd == "sair") {
@@ -134,7 +139,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
                 }
                 else {
                     t << move_to(80, get_info_lines()) << "A habitacao devera ter um tamanho minimo";
-                    t << move_to(80, get_info_lines()) << "de 2x2 e maximo de 4x4";
+                    t  << move_to(80, get_info_lines()) <<"de 2x2 e maximo de 4x4";
                 }
             }
             else{
@@ -142,7 +147,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "hrem") {
-            habit->~habitacao();
+            delete habit;
             set_map_state(false);
             t << move_to(80, get_info_lines()) << "Habitacao eliminada!";
         }
@@ -206,6 +211,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && !param2.empty() && param3 != 0) {
                 t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
+                habit->set_prop(param1,param2,param3);
             }
             else{
                 t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
@@ -244,6 +250,20 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "rnova"){
+            int param1, param2, param4, param5, param6;
+            string param3;
+            in >> param1;
+            in >> param2;
+            in >> param3;
+            in >> param4;
+
+            if(param1 != 0 && param2 != 0 && !param3.empty() && param4 != 0) {
+                t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
+                habit->cria_regra(param1,param2,param3,param4, param5,param5);
+            }
+            else{
+                t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
+            }
 
         }
         else if(cmd == "pmuda") {
@@ -255,6 +275,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
                 t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
+                habit->change_proc_cmd(param1,param2,param3);
             }
             else{
                 t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
@@ -280,6 +301,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && param2 != 0 && param3 != 0) {
                 t << move_to(70, get_info_lines()) << "Parametros validados com sucesso";
+                habit->delete_regra(param1,param2,param3);
             }
             else{
                 t << move_to(70, get_info_lines()) << "Parametros nao corresponder ao tipo de comando";
@@ -433,14 +455,23 @@ void interface::create_visual_zonas(int x, int y, Terminal& t) {
 
 
 void interface::create_visual(Terminal& t) {
+    //Window wzonas = Window(1, 1, 80, 24);
+    //Window wmsg = Window(81, 1, 39, 24);
+    //Window wcmd = Window(1, 25, 119, 4);
+
     if(get_map_state())
         create_visual_zonas(habit->get_linhas(),habit->get_colunas(), t);
 
+
     std::string str_in;
-    t << move_to(6, t.getNumRows()-1) << "Comando: ";
+    t << move_to(6, t.getNumRows()-4) << "Comando: ";
     t >> str_in;
     t.clear();
     cmd_validator(str_in, t);
+
+    //new Window(1, 1, 20, 20);
+    //new Window(1, 1, 20, 20);
+
 }
 
 bool interface::get_map_state() const {
@@ -458,3 +489,4 @@ void interface::set_info_lines() {
 void interface::reset_info_lines() {
     quant_info_lines = 0;
 }
+

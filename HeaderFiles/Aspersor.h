@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #ifndef POO_2324_ASPERSOR_H
 #define POO_2324_ASPERSOR_H
@@ -9,7 +6,10 @@
 
 class aspersor : public aparelho{
 public:
-    aspersor();
+    aspersor(string cmd);
+    ~aspersor();
+
+    virtual void set_cmd(string comando) override;
 private:
 };
 

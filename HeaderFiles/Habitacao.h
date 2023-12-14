@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 10/28/2023.
-//
 
 #ifndef POO_2324_HABITACAO_H
 #define POO_2324_HABITACAO_H
@@ -29,16 +26,20 @@ public:
     string to_string() const;
     int quant_zonas() const;
 
-    int get_generate_id_zona() const;
-    void set_generate_id_zona();
     bool can_draw_inGrid(int i, int j);
     int get_zona_id(int x, int y);
+
+    void cria_regra(int id_zona, int id_proc, string regra, int id_sensor, int val1, int val2);
+    void change_proc_cmd(int id_zona,int id_proc, string cmd);
+
+    void delete_regra(int id_zona, int id_proc, int id_regra);
+
+    void set_prop(int id_zona, string nome, int valor);
 
 private:
     vector <zona*> zonas;
     int linhas;
     int colunas;
-    int generate_id_zona;
 };
 
 #endif //POO_2324_HABITACAO_H

@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #ifndef POO_2324_TEMPERATURA_H
 #define POO_2324_TEMPERATURA_H
@@ -9,9 +6,9 @@
 class temperatura : public propriedade {
 public:
     temperatura(string type);
+    ~temperatura();
+    void ativa_efeito(string cmd, string aparelho) override;
 
-    bool get_sensor() const;
-    void set_sensor(bool sensor);
 private:
     int val_min;
 };

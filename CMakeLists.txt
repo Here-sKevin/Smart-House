@@ -45,5 +45,15 @@ add_executable(POO_2324 main.cpp
         SourceFiles/Refrigerador.cpp
         HeaderFiles/Lampada.h
         SourceFiles/Lampada.cpp
+        HeaderFiles/Igual.h
+        SourceFiles/Igual.cpp
+        HeaderFiles/Menor.h
+        SourceFiles/Menor.cpp
+        HeaderFiles/Maior.h
+        SourceFiles/Maior.cpp
+        HeaderFiles/Entre.h
+        SourceFiles/Entre.cpp
+        HeaderFiles/Fora.h
+        SourceFiles/Fora.cpp
 )
 target_link_libraries(${PROJECT_NAME} C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a)

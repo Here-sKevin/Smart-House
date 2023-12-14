@@ -1,6 +1,3 @@
-//
-// Created by KevinRodrigues on 11/11/2023.
-//
 
 #ifndef POO_2324_VIBRACAO_H
 #define POO_2324_VIBRACAO_H
@@ -9,6 +6,8 @@
 class vibracao : public propriedade {
 public:
     vibracao(string type);
+    ~vibracao();
+    void ativa_efeito(string cmd, string aparelho) override;
 private:
     int val_min = 0;
 };

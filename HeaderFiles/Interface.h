@@ -1,6 +1,4 @@
-//
-// Created by KevinRodrigues on 10/24/2023.
-//
+
 
 #ifndef POO_2324_INTERFACE_H
 #define POO_2324_INTERFACE_H
@@ -29,6 +27,7 @@ public:
     int get_info_lines() const;
     void set_info_lines();
     void reset_info_lines();
+
 
 private:
     string error;

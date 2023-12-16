@@ -16,3 +16,7 @@ bool igual::check_interval_regra(int val) const {
     return false;
 }
 
+igual *igual::clone() {
+    return new igual(*this);
+}
+

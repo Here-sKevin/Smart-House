@@ -15,3 +15,7 @@ bool entre::check_interval_regra(int val) const {
 bool entre::check_regra(int val) const {
     return false;
 }
+
+entre *entre::clone() {
+    return new entre(*this);
+}

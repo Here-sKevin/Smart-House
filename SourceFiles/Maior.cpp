@@ -15,3 +15,7 @@ bool maior::check_regra(int val) const {
 bool maior::check_interval_regra(int val) const {
     return false;
 }
+
+maior *maior::clone() {
+    return new maior(*this);
+}

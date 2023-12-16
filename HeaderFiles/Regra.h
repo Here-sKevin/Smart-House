@@ -9,11 +9,13 @@ using namespace std;
 class regra {
 public:
     regra(int id_sensor);
+    // regra(regra& o);
     ~regra();
     int get_id() const;
     string get_cmd_regra() const;
     virtual bool check_regra(int val) const = 0;
     virtual bool check_interval_regra(int val) const = 0;
+    virtual regra* clone() = 0;
 
     static int get_id_regra();
     static void set_id_regra();

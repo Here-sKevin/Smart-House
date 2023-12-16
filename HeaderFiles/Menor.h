@@ -9,6 +9,7 @@ public:
     ~menor();
     virtual bool check_regra(int val) const override;
     bool check_interval_regra(int val) const override;
+    virtual menor* clone() override;
 
 private:
     int valor;

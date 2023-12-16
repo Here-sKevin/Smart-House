@@ -15,3 +15,7 @@ bool fora::check_interval_regra(int val) const {
 bool fora::check_regra(int val) const {
     return false;
 }
+
+fora *fora::clone() {
+    return new fora(*this);
+}

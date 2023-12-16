@@ -16,3 +16,7 @@ bool menor::check_regra(int val) const {
 bool menor::check_interval_regra(int val) const {
     return false;
 }
+
+menor *menor::clone() {
+    return new menor(*this);
+}

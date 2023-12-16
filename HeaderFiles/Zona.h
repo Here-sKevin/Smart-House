@@ -40,6 +40,18 @@ public:
 
     void delete_comp(string type, int id);
 
+    void set_id_proc_aparelho(int id_proc, int id_aparelho);
+    void remove_id_proc_aparelho(int id_proc, int id_aparelho);
+
+    void send_cmd(int id_aparelho, string cmd);
+
+    processador* duplica(int id_proc, string nome);
+
+    void set_proc_saved(processador& p);
+
+    string getAsStringProps() const;
+    string getAsStringComp() const;
+
 
 private:
     vector<sensor*> sensores;

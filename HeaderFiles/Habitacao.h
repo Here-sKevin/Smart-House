@@ -38,10 +38,27 @@ public:
 
     void delete_comp(int id_zona, string type, int id);
 
+    void set_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho);
+    void remove_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho);
+
+    void send_cmd(int id_zona, int id_aparelho, string comando);
+
+    processador* duplica(int id_zona, int id_proc, string nome);
+
+    void set_proc_saved(processador& p);
+
+    string getAsStringProps() const;
+    string getAsStringComp() const;
+    int get_srczona() const;
+    void set_srczona(int zona);
+
 private:
     vector <zona*> zonas;
     int linhas;
     int colunas;
+    int srczona;
 };
+
+std::ostream& operator<<(std::ostream& out, const habitacao& h);
 
 #endif //POO_2324_HABITACAO_H

@@ -9,6 +9,7 @@ public:
     ~igual();
     virtual bool check_regra(int val) const override;
     bool check_interval_regra(int val) const override;
+    virtual igual* clone() override;
 private:
     int valor;
 };

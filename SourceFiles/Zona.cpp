@@ -13,6 +13,7 @@
 #include "../HeaderFiles/Refrigerador.h"
 #include "../HeaderFiles/Lampada.h"
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -43,7 +44,7 @@ void zona::create_comp(string type, string cmd, int zone_id) {
         sensores.push_back(new sensor(cmd));
     }
     if(type == "p") {
-        processadores.push_back(new processador(cmd));
+        processadores.push_back(new processador(cmd, zone_id));
     }
     if(type == "a") {
         if(cmd == "aquecedor") {
@@ -129,7 +130,7 @@ void zona::cria_regra(int id_proc, string regra, int id_sensor, int val1, int va
             for(auto & sensor : sensores) {
                 if(sensor->get_id() == id_sensor) {
                     processador->add_regra(regra, id_sensor, val1, val2);
-                    sensor->set_regras_ids(processador->get_last_id_regra());
+                    // sensor->set_regras_ids(processador->get_last_id_regra());
                 }
             }
         }
@@ -201,4 +202,78 @@ void zona::delete_comp(string type, int id) {
             aparelhos.erase(aparelhos.begin() + i);
         }
     }
+}
+
+void zona::set_id_proc_aparelho(int id_proc, int id_aparelho) {
+    for(auto & processador : processadores) {
+        if(id_proc == processador->get_id()) {
+            processador->set_asoc_aparelho(id_aparelho);
+        }
+    }
+}
+
+void zona::remove_id_proc_aparelho(int id_proc, int id_aparelho) {
+    for(auto & processador : processadores) {
+        if(id_proc == processador->get_id()) {
+            processador->set_ades_aparelho(id_aparelho);
+        }
+    }
+}
+
+void zona::send_cmd(int id_aparelho, string cmd) {
+
+}
+
+processador *zona::duplica(int id_proc, string nome) {
+    for(auto & processador : processadores) {
+        if(id_proc == processador->get_id()) {
+            return new class processador(*processador, nome);
+        }
+    }
+
+    return nullptr;
+}
+
+void zona::set_proc_saved(processador &p) {
+    bool flag = false;
+    int i=-1, index=-1;
+    for(auto & processador : processadores) {
+        i++;
+        if(processador->get_id() == p.get_id()) {
+            flag = true;
+            index = i;
+        }
+    }
+    if(flag) {
+        delete processadores[index];
+        processadores.erase(processadores.begin() + i);
+        processadores.push_back(new processador(p,""));
+    }
+    else{
+        processadores.push_back(new processador(p,""));
+    }
+}
+
+string zona::getAsStringProps() const {
+    std::ostringstream os;
+    for(auto & propriedade : propriedades) {
+        os << "Propriedade: " << propriedade->get_type() <<
+        " / valor: " << propriedade->get_value() << "\n";
+    }
+    return os.str();
+}
+
+string zona::getAsStringComp() const {
+    std::ostringstream os;
+    for(auto & sensor : sensores) {
+        os << "s " << sensor->get_id() << " " << sensor->get_prop() << "\n";
+    }
+    for(auto & aparelho : aparelhos) {
+        os << "a " << aparelho->get_id() << "\n";
+    }
+    for(auto & processador : processadores) {
+        os << "p " << processador->get_id() << "\n";
+    }
+
+    return os.str();
 }

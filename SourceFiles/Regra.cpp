@@ -27,3 +27,4 @@ int regra::get_id_regra() {
 void regra::set_id_regra() {
     id_regra++;
 }
+

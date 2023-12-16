@@ -8,7 +8,7 @@
 
 int processador::id_proc=1;
 
-processador::processador(string cmd) : id(get_id_proc()), comando(cmd){
+processador::processador(string cmd, int zone_id) : id(get_id_proc()), comando(cmd), id_aparelho(0), zona_id(zone_id){
     set_id_proc();
 }
 
@@ -74,7 +74,55 @@ void processador::delete_regra(int id_regra) {
         delete regras[index];
         regras.erase(regras.begin() + i);
     }
+}
 
+void processador::set_asoc_aparelho(int id) {
+    bool flag = false;
+    for(auto & id_ap : id_aparelho) {
+        if(id_ap == id){
+            flag = true;
+        }
+    }
+    if(!flag)
+        id_aparelho.push_back(id);
+}
+
+void processador::set_ades_aparelho(int id) {
+    int i = -1, index = -1;
+    for(auto & id_ap : id_aparelho) {
+        i++;
+        if(id_ap == id){
+            index = i;
+        }
+    }
+    if(index > -1) {
+        id_aparelho.erase(id_aparelho.begin() + i);
+    }
+}
+
+processador::processador(const processador &o, string nome) {
+    *this = o;
+    this->nome = nome;
+}
+
+processador &processador::operator=(const processador &ref) {
+    if(this != &ref) {
+        id = ref.id;
+        comando=ref.comando;
+        zona_id = ref.zona_id;
+        for(auto & refregras : ref.regras) {
+           regras.push_back(refregras->clone());
+        }
+    }
+    return *this;
+}
+
+string processador::get_nome_saved() const {
+    return nome;
+}
+
+int processador::get_zona_asoc() const {
+    return zona_id;
 }
 
 

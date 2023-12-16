@@ -31,6 +31,18 @@ void propriedade::set_id_val(string nome, int valor) {
     id[nome] = valor;
 }
 
+int propriedade::get_value() const {
+    for (auto itr = id.begin(); itr != id.end(); itr++) {
+        return itr->second;
+    }
+}
+
+string propriedade::get_type() const {
+    for (auto itr = id.begin(); itr != id.end(); itr++) {
+        return itr->first;
+    }
+}
+
 
 
 

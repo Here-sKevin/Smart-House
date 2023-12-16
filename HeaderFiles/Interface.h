@@ -3,6 +3,7 @@
 #ifndef POO_2324_INTERFACE_H
 #define POO_2324_INTERFACE_H
 #include <string>
+#include <map>
 #include "Habitacao.h"
 #include "../library/Terminal.h"
 
@@ -35,6 +36,9 @@ private:
     habitacao *habit;
     vector <Window*> visual_zonas;
     int quant_info_lines = 0;
+    vector<processador*> procSave;
+    std::map<string, processador*> ps;
+
 
 };
 

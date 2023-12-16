@@ -9,6 +9,7 @@ public:
     ~fora();
     virtual bool check_interval_regra(int val) const override;
     bool check_regra(int val) const override;
+    virtual fora* clone() override;
 private:
     int min;
     int max;

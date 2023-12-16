@@ -40,3 +40,7 @@ void sensor::delete_regra_assoc(int id_regra) {
     }
 }
 
+string sensor::get_prop() const {
+    return prop;
+}
+

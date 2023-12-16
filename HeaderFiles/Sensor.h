@@ -17,6 +17,8 @@ public:
 
     void delete_regra_assoc(int id_regra);
 
+    string get_prop() const;
+
 private:
     int id;
     bool has_prop;

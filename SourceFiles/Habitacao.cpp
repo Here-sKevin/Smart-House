@@ -109,10 +109,10 @@ void habitacao::draw_map(int x, int y) {
 string habitacao::to_string() const {
     ostringstream out;
     for(const auto& zona : zonas){
-        out << "Zona com id: " << zona->get_id() <<
-        " Tem " << zona->get_quant_sensores() << " sensores; " <<
-        " Tem " << zona->get_quant_aparelhos() << " aparelhos; " <<
-        " Tem " << zona->get_quant_processadores() << " processadores; " <<
+        out << "Zona com id: " << zona->get_id() << "\n" <<
+        " Tem " << zona->get_quant_sensores() << " sensores; " << "\n" <<
+        " Tem " << zona->get_quant_aparelhos() << " aparelhos; " << "\n" <<
+        " Tem " << zona->get_quant_processadores() << " processadores; " <<"\n" <<
         "\n";
     }
     return out.str();
@@ -178,6 +178,84 @@ void habitacao::delete_comp(int id_zona, string type, int id) {
             zona->delete_comp(type,id);
         }
     }
+}
+
+void habitacao::set_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == zona_id) {
+            zona->set_id_proc_aparelho(id_proc,id_aparelho);
+        }
+    }
+}
+
+void habitacao::remove_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == zona_id) {
+            zona->remove_id_proc_aparelho(id_proc,id_aparelho);
+        }
+    }
+}
+
+void habitacao::send_cmd(int id_zona, int id_aparelho, string comando) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+
+        }
+    }
+}
+
+processador *habitacao::duplica(int id_zona, int id_proc, string nome) {
+
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            return zona->duplica(id_proc, nome);
+        }
+    }
+
+    return nullptr;
+}
+
+void habitacao::set_proc_saved(processador &p) {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == p.get_zona_asoc()) {
+            zona->set_proc_saved(p);
+        }
+    }
+}
+
+string habitacao::getAsStringProps() const {
+
+    for(auto & zona : zonas) {
+        if(zona->get_id() == get_srczona()) {
+            return zona->getAsStringProps();
+        }
+    }
+
+    return "" ;
+}
+
+int habitacao::get_srczona() const {
+    return srczona;
+}
+
+void habitacao::set_srczona(int zona) {
+    srczona = zona;
+}
+
+string habitacao::getAsStringComp() const {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == get_srczona()) {
+            return zona->getAsStringComp();
+        }
+    }
+    return "";
+}
+
+std::ostream& operator<<(std::ostream& out, const habitacao& h)
+{
+    out << h.getAsStringProps();
+
+    return out;
 }
 
 

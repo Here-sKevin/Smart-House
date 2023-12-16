@@ -19,6 +19,9 @@ public:
     void set_id_val(string nome, int valor);
 
     virtual void ativa_efeito(string cmd, string aparelho) = 0;
+    int get_value() const;
+    string get_type() const;
+
 
 private:
     map<string, int> id;

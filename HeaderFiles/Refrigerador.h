@@ -6,7 +6,7 @@
 
 class refrigerador : public aparelho{
 public:
-    refrigerador(string cmd);
+    refrigerador(string cmd, string type);
     ~refrigerador();
 
     virtual void set_cmd(string comando) override;

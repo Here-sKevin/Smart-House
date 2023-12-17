@@ -300,6 +300,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && param2 != 0) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << habit->getAsStringRegras(param1,param2);
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
@@ -419,7 +420,12 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
         }
         else if(cmd == "plista") {
-
+            std::ostringstream os;
+            os << "Procesadores gravados em memoria \n";
+            for(auto & save : procSave) {
+                os << "Nome: " << save->get_nome_saved() << " Id: " << save->get_id() << " ZonaId: " << save->get_zona_asoc() << "\n";
+            }
+            t << os.str();
         }
         else if(cmd == "exec"){
             string param;

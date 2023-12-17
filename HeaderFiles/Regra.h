@@ -8,7 +8,7 @@ using namespace std;
 
 class regra {
 public:
-    regra(int id_sensor);
+    regra(int id_sensor, string nome);
     // regra(regra& o);
     ~regra();
     int get_id() const;
@@ -19,9 +19,14 @@ public:
 
     static int get_id_regra();
     static void set_id_regra();
+
+    string get_nome() const;
+    int get_id_sensor() const;
 private:
     int id;
     int id_sensor;
+
+    string nome;
 
     static int id_regra;
 };

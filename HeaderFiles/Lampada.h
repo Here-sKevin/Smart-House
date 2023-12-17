@@ -6,7 +6,7 @@
 
 class lampada : public aparelho{
 public:
-    lampada(string cmd);
+    lampada(string cmd, string type);
     ~lampada();
 
     virtual void set_cmd(string comando) override;

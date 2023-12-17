@@ -251,6 +251,15 @@ string habitacao::getAsStringComp() const {
     return "";
 }
 
+string habitacao::getAsStringRegras(int id_zona, int id_proc) const {
+    for(auto & zona : zonas) {
+        if(zona->get_id() == id_zona) {
+            return zona->getAsStringRegras(id_proc);
+        }
+    }
+    return "";
+}
+
 std::ostream& operator<<(std::ostream& out, const habitacao& h)
 {
     out << h.getAsStringProps();

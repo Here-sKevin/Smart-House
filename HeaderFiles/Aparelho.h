@@ -6,12 +6,14 @@ using namespace std;
 
 class aparelho{
 public:
-    aparelho(string cmd);
+    aparelho(string cmd, string type);
     ~aparelho();
     int get_id() const;
 
     int get_id_aparelho() const;
     void set_id_aparelho() const;
+
+    string get_type() const;
 
     virtual void set_cmd(string comando) = 0;
 
@@ -20,6 +22,7 @@ private:
     int id;
     string cmd;
     static int id_aparelho;
+    string type;
 };
 
 #endif //POO_2324_APARELHO_H

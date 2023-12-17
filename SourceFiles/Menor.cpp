@@ -2,7 +2,7 @@
 #include "../HeaderFiles/Menor.h"
 
 
-menor::menor(int idSensor, int val) : regra(idSensor), valor(val) {}
+menor::menor(int idSensor, int val, string nome) : regra(idSensor, nome), valor(val) {}
 
 menor::~menor() {}
 

@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Maior.h"
 
-maior::maior(int idSensor, int val) : regra(idSensor), valor(val) {}
+maior::maior(int idSensor, int val, string nome) : regra(idSensor, nome), valor(val) {}
 
 maior::~maior() {}
 

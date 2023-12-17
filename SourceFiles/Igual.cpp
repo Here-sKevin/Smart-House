@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Igual.h"
 
-igual::igual(int idSensor, int val) : regra(idSensor), valor(val) {}
+igual::igual(int idSensor, int val, string nome) : regra(idSensor, nome), valor(val) {}
 
 igual::~igual() {}
 

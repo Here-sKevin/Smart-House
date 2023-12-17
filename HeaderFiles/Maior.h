@@ -5,7 +5,7 @@
 
 class maior : public regra{
 public:
-    maior(int idSensor, int val);
+    maior(int idSensor, int val, string nome);
     ~maior();
     virtual bool check_regra(int val) const override;
     bool check_interval_regra(int val) const override;

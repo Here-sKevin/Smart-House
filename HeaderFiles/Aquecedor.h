@@ -5,7 +5,7 @@
 
 class aquecedor : public aparelho{
 public:
-    aquecedor(string cmd);
+    aquecedor(string cmd, string type);
     ~aquecedor();
 
     virtual void set_cmd(string comando) override;

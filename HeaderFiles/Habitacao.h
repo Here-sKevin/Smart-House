@@ -49,6 +49,7 @@ public:
 
     string getAsStringProps() const;
     string getAsStringComp() const;
+    string getAsStringRegras(int id_zona, int id_proc) const;
     int get_srczona() const;
     void set_srczona(int zona);
 

@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Aspersor.h"
 
-aspersor::aspersor(string cmd) : aparelho(cmd) {}
+aspersor::aspersor(string cmd, string type) : aparelho(cmd, type) {}
 
 aspersor::~aspersor() {}
 

@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Fora.h"
 
-fora::fora(int idSensor, int min, int max) : regra(idSensor), min(min), max(max) {}
+fora::fora(int idSensor, int min, int max, string nome) : regra(idSensor, nome), min(min), max(max) {}
 
 fora::~fora() {}
 

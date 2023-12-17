@@ -6,7 +6,7 @@
 
 class aspersor : public aparelho{
 public:
-    aspersor(string cmd);
+    aspersor(string cmd, string type);
     ~aspersor();
 
     virtual void set_cmd(string comando) override;

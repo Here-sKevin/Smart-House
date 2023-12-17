@@ -51,6 +51,7 @@ public:
 
     string getAsStringProps() const;
     string getAsStringComp() const;
+    string getAsStringRegras(int id_proc) const;
 
 
 private:

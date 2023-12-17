@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Lampada.h"
 
-lampada::lampada(string cmd) : aparelho(cmd) {}
+lampada::lampada(string cmd, string type) : aparelho(cmd, type) {}
 
 lampada::~lampada() {}
 

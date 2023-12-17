@@ -48,16 +48,16 @@ void zona::create_comp(string type, string cmd, int zone_id) {
     }
     if(type == "a") {
         if(cmd == "aquecedor") {
-            aparelhos.push_back(new aquecedor("desliga"));
+            aparelhos.push_back(new aquecedor("desliga", cmd));
         }
         if(cmd == "aspersor") {
-            aparelhos.push_back(new aspersor("desliga"));
+            aparelhos.push_back(new aspersor("desliga", cmd));
         }
         if(cmd == "refrigerador") {
-            aparelhos.push_back(new refrigerador("desliga"));
+            aparelhos.push_back(new refrigerador("desliga", cmd));
         }
         if(cmd == "lampada") {
-            aparelhos.push_back(new lampada("desliga"));
+            aparelhos.push_back(new lampada("desliga", cmd));
         }
     }
 }
@@ -265,15 +265,27 @@ string zona::getAsStringProps() const {
 
 string zona::getAsStringComp() const {
     std::ostringstream os;
+    os << "Sensores\n";
     for(auto & sensor : sensores) {
         os << "s " << sensor->get_id() << " " << sensor->get_prop() << "\n";
     }
+    os << "Aparelhos\n";
     for(auto & aparelho : aparelhos) {
-        os << "a " << aparelho->get_id() << "\n";
+        os << "a " << aparelho->get_id() << " " << aparelho->get_type() << "\n";
     }
+    os << "Processadores\n";
     for(auto & processador : processadores) {
         os << "p " << processador->get_id() << "\n";
     }
 
     return os.str();
+}
+
+string zona::getAsStringRegras(int id_proc) const {
+    for(auto & processador : processadores) {
+        if(processador->get_id() == id_proc){
+            return processador->getAsStringRegras();
+        }
+    }
+    return "";
 }

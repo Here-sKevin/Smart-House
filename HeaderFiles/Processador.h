@@ -33,6 +33,8 @@ public:
 
     int get_zona_asoc() const;
 
+    string getAsStringRegras() const;
+
 private:
     int id;
     string comando;

@@ -5,7 +5,7 @@
 
 class fora : public regra {
 public:
-    fora(int idSensor, int min, int max);
+    fora(int idSensor, int min, int max, string nome);
     ~fora();
     virtual bool check_interval_regra(int val) const override;
     bool check_regra(int val) const override;

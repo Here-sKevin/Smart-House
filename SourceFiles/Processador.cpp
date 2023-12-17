@@ -5,6 +5,7 @@
 #include "../HeaderFiles/Maior.h"
 #include "../HeaderFiles/Entre.h"
 #include "../HeaderFiles/Fora.h"
+#include <sstream>
 
 int processador::id_proc=1;
 
@@ -26,19 +27,19 @@ processador::~processador() {
 void processador::add_regra(string cmd, int idSensor, int val1, int val2) {
     // regras.push_back(new regra(cmd));
     if(cmd == "igual_a"){
-        regras.push_back(new igual(idSensor, val1));
+        regras.push_back(new igual(idSensor, val1, cmd));
     }
     if(cmd == "menor_que"){
-        regras.push_back(new menor(idSensor, val1));
+        regras.push_back(new menor(idSensor, val1, cmd));
     }
     if(cmd == "maior_que") {
-        regras.push_back(new maior(idSensor, val1));
+        regras.push_back(new maior(idSensor, val1, cmd));
     }
     if(cmd == "entre"){
-        regras.push_back(new entre(idSensor, val1, val2));
+        regras.push_back(new entre(idSensor, val1, val2, cmd));
     }
     if(cmd == "fora"){
-        regras.push_back(new fora(idSensor, val1, val2));
+        regras.push_back(new fora(idSensor, val1, val2, cmd));
     }
 }
 
@@ -123,6 +124,16 @@ string processador::get_nome_saved() const {
 
 int processador::get_zona_asoc() const {
     return zona_id;
+}
+
+string processador::getAsStringRegras() const {
+    std::ostringstream os;
+
+    os << "Regras \n";
+    for(auto & regra : regras) {
+        os << "Id: " << regra->get_id() << " nome: " << regra->get_nome() << " SensorId: " << regra->get_id_sensor() << "\n";
+    }
+    return os.str();
 }
 
 

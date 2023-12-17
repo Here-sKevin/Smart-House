@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Aquecedor.h"
 
-aquecedor::aquecedor(string cmd) : aparelho(cmd) {}
+aquecedor::aquecedor(string cmd, string type) : aparelho(cmd,type) {}
 
 aquecedor::~aquecedor() = default;
 

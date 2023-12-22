@@ -2,16 +2,8 @@
 #include "../HeaderFiles/Propriedade.h"
 
 
-propriedade::propriedade(string type) : has_sensor(false) {
+propriedade::propriedade(string type) {
     this->id.insert(pair<string,int>(type,0));
-}
-
-bool propriedade::get_sensor() const {
-    return has_sensor;
-}
-
-void propriedade::set_sensor(bool sensor) {
-    has_sensor = sensor;
 }
 
 propriedade::~propriedade() {
@@ -35,12 +27,14 @@ int propriedade::get_value() const {
     for (auto itr = id.begin(); itr != id.end(); itr++) {
         return itr->second;
     }
+    return 0;
 }
 
 string propriedade::get_type() const {
     for (auto itr = id.begin(); itr != id.end(); itr++) {
         return itr->first;
     }
+    return "";
 }
 
 

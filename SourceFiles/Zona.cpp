@@ -19,24 +19,8 @@ using namespace std;
 
 int zona::zona_id = 1;
 
-string zona::list_zona_comp(int id) const {
-    return {};
-}
-
-string zona::list_zona_prop(int id) const {
-    return {};
-}
-
-void zona::mod_props(int id, string nome, int val) {
-
-}
-
 int zona::get_id() const {
     return this->id;
-}
-
-void zona::delete_comp(int id, char type, int id_comp) {
-
 }
 
 void zona::create_comp(string type, string cmd, int zone_id) {
@@ -48,16 +32,16 @@ void zona::create_comp(string type, string cmd, int zone_id) {
     }
     if(type == "a") {
         if(cmd == "aquecedor") {
-            aparelhos.push_back(new aquecedor("desliga", cmd));
+            aparelhos.push_back(new aquecedor(cmd));
         }
         if(cmd == "aspersor") {
-            aparelhos.push_back(new aspersor("desliga", cmd));
+            aparelhos.push_back(new aspersor(cmd));
         }
         if(cmd == "refrigerador") {
-            aparelhos.push_back(new refrigerador("desliga", cmd));
+            aparelhos.push_back(new refrigerador(cmd));
         }
         if(cmd == "lampada") {
-            aparelhos.push_back(new lampada("desliga", cmd));
+            aparelhos.push_back(new lampada(cmd));
         }
     }
 }
@@ -129,7 +113,7 @@ void zona::cria_regra(int id_proc, string regra, int id_sensor, int val1, int va
         if(processador->get_id() == id_proc) {
             for(auto & sensor : sensores) {
                 if(sensor->get_id() == id_sensor) {
-                    processador->add_regra(regra, id_sensor, val1, val2);
+                    processador->add_regra(regra, id_sensor, val1, val2,  sensor->clone());
                     // sensor->set_regras_ids(processador->get_last_id_regra());
                 }
             }
@@ -207,7 +191,13 @@ void zona::delete_comp(string type, int id) {
 void zona::set_id_proc_aparelho(int id_proc, int id_aparelho) {
     for(auto & processador : processadores) {
         if(id_proc == processador->get_id()) {
-            processador->set_asoc_aparelho(id_aparelho);
+            for(auto & aparelho: aparelhos) {
+                if(id_aparelho == aparelho->get_id()) {
+                    processador->set_asoc_aparelho(id_aparelho, aparelho->clone());
+                }
+
+            }
+
         }
     }
 }
@@ -218,10 +208,6 @@ void zona::remove_id_proc_aparelho(int id_proc, int id_aparelho) {
             processador->set_ades_aparelho(id_aparelho);
         }
     }
-}
-
-void zona::send_cmd(int id_aparelho, string cmd) {
-
 }
 
 processador *zona::duplica(int id_proc, string nome) {
@@ -289,3 +275,48 @@ string zona::getAsStringRegras(int id_proc) const {
     }
     return "";
 }
+void zona::exec_action() {
+    for(auto &processador : processadores) {
+        int countFalse = 0;
+        for(int i = 0; i < processador->get_Size_regras(); i++) {
+            for(auto & sensor:sensores) {
+                if(sensor->get_id() == processador->get_idSensor_regra(i)){
+                    for(auto & propriedade:propriedades) {
+                        if(sensor->get_prop() == propriedade->get_type()){
+                            bool result = processador->check_val_regra(propriedade->get_value(),i);
+                            if(!result) {
+                                countFalse++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(countFalse == 0) {
+            for(int i = 0; i < processador->get_Size_aparelhos(); i++) {
+                for(auto & aparelho: aparelhos){
+                    if(aparelho->get_id() == processador->get_aparelho_id(i)){
+                        for(auto & propriedade: propriedades) {
+                            if(aparelho->check_prop_type(processador->get_cmd(), propriedade->get_type())){
+                                propriedade->set_id_val(propriedade->get_type(),aparelho->get_val(processador->get_cmd(),propriedade->get_type()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void zona::send_cmd_aparelho(int id_aparelho, string comando) {
+    for(auto & aparelho: aparelhos) {
+        if(aparelho->get_id() == id_aparelho) {
+            for(auto & propriedade: propriedades) {
+                if(aparelho->check_prop_type(comando, propriedade->get_type())){
+                    propriedade->set_id_val(propriedade->get_type(),aparelho->get_val(comando,propriedade->get_type()));
+                }
+            }
+        }
+    }
+}
+

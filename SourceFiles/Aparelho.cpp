@@ -3,7 +3,7 @@
 
 int aparelho::id_aparelho = 1;
 
-aparelho::aparelho(string cmd, string type) : id(get_id_aparelho()), cmd(cmd), type(type) {
+aparelho::aparelho(string type) : id(get_id_aparelho()), type(type) {
     set_id_aparelho();
 }
 

@@ -6,11 +6,17 @@
 
 class aspersor : public aparelho{
 public:
-    aspersor(string cmd, string type);
+    aspersor(string type);
     ~aspersor();
 
-    virtual void set_cmd(string comando) override;
+    bool check_prop_type(const string& cmd, const string& type) const override;
+    int get_val(const string& cmd, const string& type) override;
+
+    virtual aspersor* clone();
+
 private:
+    map<string, int> propsAlterLiga;
+    map<string, int> propsAlterDesliga;
 };
 
 #endif //POO_2324_ASPERSOR_H

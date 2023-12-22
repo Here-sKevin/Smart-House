@@ -5,9 +5,10 @@ radiacao::radiacao(string type) : propriedade(type), val_min(0) {}
 
 radiacao::~radiacao() {}
 
-void radiacao::ativa_efeito(string cmd, string aparelho) {
+void radiacao::ativa_efeito(string cmd, int val) {
 
 }
+
 
 
 

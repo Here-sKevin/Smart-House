@@ -6,11 +6,16 @@
 
 class lampada : public aparelho{
 public:
-    lampada(string cmd, string type);
+    lampada(string type);
     ~lampada();
 
-    virtual void set_cmd(string comando) override;
+    bool check_prop_type(const string& cmd, const string& type) const override;
+    int get_val(const string& cmd, const string& type) override;
+
+    virtual lampada* clone();
 private:
+    map<string, int> propsAlterLiga;
+    map<string, int> propsAlterDesliga;
 };
 
 #endif //POO_2324_LAMPADA_H

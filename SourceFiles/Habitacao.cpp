@@ -199,7 +199,7 @@ void habitacao::remove_id_aparelho_proc(int zona_id, int id_proc, int id_aparelh
 void habitacao::send_cmd(int id_zona, int id_aparelho, string comando) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-
+            zona->send_cmd_aparelho(id_aparelho,comando);
         }
     }
 }
@@ -258,6 +258,12 @@ string habitacao::getAsStringRegras(int id_zona, int id_proc) const {
         }
     }
     return "";
+}
+
+void habitacao::exec_action() {
+    for(auto & zona : zonas) {
+       zona->exec_action();
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, const habitacao& h)

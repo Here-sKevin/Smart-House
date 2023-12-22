@@ -14,11 +14,7 @@ class zona {
 public:
     zona(int x, int y);
     ~zona();
-    string list_zona_comp(int id) const; // lista os componentes da zona
-    string list_zona_prop(int id) const; // lista as propriedades da zona
-    void mod_props(int id, string nome, int val); // modifica a propriedade
     void create_comp(string type, string cmd, int zone_id); // cria componente na zona indicada
-    void delete_comp(int id, char type,int id_comp); // elimina componente
     int get_id() const; //devolve id da zona
     int get_x() const; // devolve a posicao x
     int get_y() const; // devolve a posicao y
@@ -43,8 +39,6 @@ public:
     void set_id_proc_aparelho(int id_proc, int id_aparelho);
     void remove_id_proc_aparelho(int id_proc, int id_aparelho);
 
-    void send_cmd(int id_aparelho, string cmd);
-
     processador* duplica(int id_proc, string nome);
 
     void set_proc_saved(processador& p);
@@ -53,6 +47,9 @@ public:
     string getAsStringComp() const;
     string getAsStringRegras(int id_proc) const;
 
+    void exec_action();
+
+    void send_cmd_aparelho(int id_aparelho,string comando);
 
 private:
     vector<sensor*> sensores;

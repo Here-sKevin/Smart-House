@@ -3,16 +3,16 @@
 #define POO_2324_REGRA_H
 #include <string>
 #include <iostream>
+#include "Sensor.h"
 
 using namespace std;
 
 class regra {
 public:
-    regra(int id_sensor, string nome);
+    regra(int id_sensor, string nome, sensor *s);
     // regra(regra& o);
     ~regra();
     int get_id() const;
-    string get_cmd_regra() const;
     virtual bool check_regra(int val) const = 0;
     virtual bool check_interval_regra(int val) const = 0;
     virtual regra* clone() = 0;
@@ -25,6 +25,7 @@ public:
 private:
     int id;
     int id_sensor;
+    sensor *s;
 
     string nome;
 

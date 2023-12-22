@@ -3,7 +3,7 @@
 
 int regra::id_regra=1;
 
-regra::regra(int id_sensor, string nome) : id(get_id_regra()), id_sensor(id_sensor), nome(nome) {
+regra::regra(int id_sensor, string nome, sensor *s) : id(get_id_regra()), id_sensor(id_sensor), nome(nome), s(s) {
     set_id_regra();
 }
 
@@ -13,11 +13,6 @@ regra::~regra() {
 
 int regra::get_id() const {
     return id;
-}
-
-string regra::get_cmd_regra() const {
-    // return comando;
-    return nullptr;
 }
 
 int regra::get_id_regra() {
@@ -33,6 +28,7 @@ string regra::get_nome() const {
 }
 
 int regra::get_id_sensor() const {
-    return id_sensor;
+    // return id_sensor;
+    return s->get_id();
 }
 

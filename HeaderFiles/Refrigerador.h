@@ -6,11 +6,16 @@
 
 class refrigerador : public aparelho{
 public:
-    refrigerador(string cmd, string type);
+    refrigerador(string type);
     ~refrigerador();
 
-    virtual void set_cmd(string comando) override;
+    bool check_prop_type(const string& cmd, const string& type) const override;
+    int get_val(const string& cmd, const string& type) override;
+
+    refrigerador* clone() override;
 private:
+    map<string, int> propsAlterLiga;
+    map<string, int> propsAlterDesliga;
 };
 
 #endif //POO_2324_REFRIGERADOR_H

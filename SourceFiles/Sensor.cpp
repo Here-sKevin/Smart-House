@@ -3,7 +3,7 @@
 
 int sensor::id_sensor = 1;
 
-sensor::sensor(string cmd) : id(get_id_sensor()), has_prop(!(cmd == "")), prop(cmd) {
+sensor::sensor(string cmd) : id(get_id_sensor()), prop(cmd) {
     set_id_sensor();
 }
 
@@ -42,5 +42,9 @@ void sensor::delete_regra_assoc(int id_regra) {
 
 string sensor::get_prop() const {
     return prop;
+}
+
+sensor *sensor::clone() {
+    return new sensor(*this);
 }
 

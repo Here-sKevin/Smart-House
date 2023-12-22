@@ -118,12 +118,14 @@ void interface::cmd_validator(const string& line, Terminal& t) {
     in >> cmd;
     if(map || cmd == "hnova" || cmd == "exec" || cmd == "sair") {
         if(cmd == "prox") {
-
+            habit->exec_action();
         }
         else if(cmd == "avanca") {
             int param;
             in >> param;
-
+            for(int i=0; i < param; i++){
+                habit->exec_action();
+            }
         }
         else if(cmd == "hnova"){
             int paraml, paramc;
@@ -373,7 +375,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 procSave.push_back(habit->duplica(param1,param2, param3));
-                // ps.insert(pair<string,int>(param3,habit->duplica(param1,param2)));
+               // ps.insert(pair<string,int>(param3,habit->duplica(param1,param2,param3)));
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
@@ -458,11 +460,6 @@ void interface::start(bool flag, Terminal& t) {
         create_visual(t);
 }
 
-void interface::cmd_input() {
-    cout << error << endl;
-    std::cout << "Comando: ";
-}
-
 void interface::set_map_state(bool active) {
     this->map = active;
 }
@@ -523,15 +520,4 @@ bool interface::get_map_state() const {
     return map;
 }
 
-int interface::get_info_lines() const {
-    return quant_info_lines;
-}
-
-void interface::set_info_lines() {
-    quant_info_lines = quant_info_lines + 1;
-}
-
-void interface::reset_info_lines() {
-    quant_info_lines = 0;
-}
 

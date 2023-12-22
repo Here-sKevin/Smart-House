@@ -7,7 +7,7 @@ class temperatura : public propriedade {
 public:
     temperatura(string type);
     ~temperatura();
-    void ativa_efeito(string cmd, string aparelho) override;
+    void ativa_efeito(string cmd, int val) override;
 
 private:
     int val_min;

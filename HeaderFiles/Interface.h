@@ -19,27 +19,19 @@ public:
     void cmd_validator(const string& line, Terminal& t); // execucao dos comandos inseridos pelo utilizador
     void start(bool flag, Terminal& t); // inicia o simulador
     bool file_reader(const string& file_name, Terminal& t); // leitura dos ficheiros e execução/leitura do conteudo
-    void cmd_input(); // desenho para insecao de comandos
-    bool get_map_state() const;
+    bool get_map_state() const; // verifica se existe limites de habitacao
     void set_map_state(bool active); //estado de criação do mapa do simulador
     bool file_type(const string& file_name); // verificacao da extencao do ficheiro (helper)
     void create_visual(Terminal& t); // desenha na console com recurso a bibioteca
     void create_visual_zonas(int x, int y, Terminal& t); // desenha as zonas na console com recurso a bibioteca
-    int get_info_lines() const;
-    void set_info_lines();
-    void reset_info_lines();
-
 
 private:
     string error;
     bool map = false;
     habitacao *habit;
     vector <Window*> visual_zonas;
-    int quant_info_lines = 0;
     vector<processador*> procSave;
-    std::map<string, processador*> ps;
-
-
+    //std::map<string, processador*> ps;
 };
 
 #endif //POO_2324_INTERFACE_H

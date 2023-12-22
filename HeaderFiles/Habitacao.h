@@ -53,6 +53,8 @@ public:
     int get_srczona() const;
     void set_srczona(int zona);
 
+    void exec_action();
+
 private:
     vector <zona*> zonas;
     int linhas;

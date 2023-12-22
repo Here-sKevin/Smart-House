@@ -12,20 +12,16 @@ public:
      propriedade(string type);
      ~propriedade();
 
-    bool get_sensor() const;
-    void set_sensor(bool sensor);
-
     bool get_id_name(string nome) const;
     void set_id_val(string nome, int valor);
 
-    virtual void ativa_efeito(string cmd, string aparelho) = 0;
+    virtual void ativa_efeito(string cmd, int val) = 0;
     int get_value() const;
     string get_type() const;
 
 
 private:
     map<string, int> id;
-    bool has_sensor;
 };
 
 

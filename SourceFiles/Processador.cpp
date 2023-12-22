@@ -9,7 +9,7 @@
 
 int processador::id_proc=1;
 
-processador::processador(string cmd, int zone_id) : id(get_id_proc()), comando(cmd), id_aparelho(0), zona_id(zone_id){
+processador::processador(string cmd, int zone_id) : id(get_id_proc()), comando(cmd), zona_id(zone_id){
     set_id_proc();
 }
 
@@ -24,22 +24,22 @@ processador::~processador() {
     regras.clear();
 }
 
-void processador::add_regra(string cmd, int idSensor, int val1, int val2) {
+void processador::add_regra(string cmd, int idSensor, int val1, int val2, sensor *sens) {
     // regras.push_back(new regra(cmd));
     if(cmd == "igual_a"){
-        regras.push_back(new igual(idSensor, val1, cmd));
+        regras.push_back(new igual(idSensor, val1, cmd,sens));
     }
     if(cmd == "menor_que"){
-        regras.push_back(new menor(idSensor, val1, cmd));
+        regras.push_back(new menor(idSensor, val1, cmd, sens));
     }
     if(cmd == "maior_que") {
-        regras.push_back(new maior(idSensor, val1, cmd));
+        regras.push_back(new maior(idSensor, val1, cmd, sens));
     }
     if(cmd == "entre"){
-        regras.push_back(new entre(idSensor, val1, val2, cmd));
+        regras.push_back(new entre(idSensor, val1, val2, cmd, sens));
     }
     if(cmd == "fora"){
-        regras.push_back(new fora(idSensor, val1, val2, cmd));
+        regras.push_back(new fora(idSensor, val1, val2, cmd, sens));
     }
 }
 
@@ -49,10 +49,6 @@ int processador::get_id_proc() {
 
 void processador::set_id_proc() {
     id_proc++;
-}
-
-int processador::get_last_id_regra() {
-    return regras[regras.size()-1]->get_id();
 }
 
 void processador::set_cmd(string cmd) {
@@ -77,27 +73,29 @@ void processador::delete_regra(int id_regra) {
     }
 }
 
-void processador::set_asoc_aparelho(int id) {
+void processador::set_asoc_aparelho(int ida, aparelho *p) {
     bool flag = false;
-    for(auto & id_ap : id_aparelho) {
-        if(id_ap == id){
+    for(auto & Allapa : AllAparelhos) {
+        if(Allapa->get_id() == ida){
             flag = true;
         }
     }
-    if(!flag)
-        id_aparelho.push_back(id);
+    if(!flag) {
+        AllAparelhos.push_back(p);
+    }
+
 }
 
 void processador::set_ades_aparelho(int id) {
     int i = -1, index = -1;
-    for(auto & id_ap : id_aparelho) {
+    for(auto & AllApa : AllAparelhos) {
         i++;
-        if(id_ap == id){
+        if(AllApa->get_id() == id){
             index = i;
         }
     }
     if(index > -1) {
-        id_aparelho.erase(id_aparelho.begin() + i);
+        AllAparelhos.erase(AllAparelhos.begin()+index);
     }
 }
 
@@ -134,6 +132,26 @@ string processador::getAsStringRegras() const {
         os << "Id: " << regra->get_id() << " nome: " << regra->get_nome() << " SensorId: " << regra->get_id_sensor() << "\n";
     }
     return os.str();
+}
+
+int processador::get_aparelho_id(int position) const {
+    return AllAparelhos[position]->get_id();
+}
+
+int processador::get_idSensor_regra(int position) const {
+    return regras[position]->get_id_sensor();
+}
+
+int processador::get_Size_regras() const {
+    return regras.size();
+}
+
+bool processador::check_val_regra(int val, int regra_position) const {
+    return regras[regra_position]->check_regra(val);
+}
+
+int processador::get_Size_aparelhos() const {
+    return AllAparelhos.size();
 }
 
 

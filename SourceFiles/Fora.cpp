@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Fora.h"
 
-fora::fora(int idSensor, int min, int max, string nome) : regra(idSensor, nome), min(min), max(max) {}
+fora::fora(int idSensor, int min, int max, string nome, sensor *sens) : regra(idSensor, nome, sens), min(min), max(max) {}
 
 fora::~fora() {}
 
@@ -13,7 +13,10 @@ bool fora::check_interval_regra(int val) const {
 }
 
 bool fora::check_regra(int val) const {
-    return false;
+    if(val < min || val > max)
+        return true;
+    else
+        return false;
 }
 
 fora *fora::clone() {

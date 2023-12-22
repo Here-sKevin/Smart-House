@@ -5,6 +5,7 @@
 #include "Sensor.h"
 #include <vector>
 #include "../HeaderFiles/Regra.h"
+#include "Aparelho.h"
 
 using namespace std;
 
@@ -14,8 +15,7 @@ public:
     processador(const processador& o, string nome);
     ~processador();
     int get_id() const; // retorna o id do processador
-    void add_regra(string cmd, int IdSensor, int val1, int val2);
-    int get_last_id_regra();
+    void add_regra(string cmd, int IdSensor, int val1, int val2, sensor *sens);
     static int get_id_proc() ;
     static void set_id_proc();
 
@@ -24,7 +24,7 @@ public:
 
     void delete_regra(int id_regra);
 
-    void set_asoc_aparelho(int id);
+    void set_asoc_aparelho(int id, aparelho *p);
     void set_ades_aparelho(int id);
 
     processador& operator=(const processador& ref);
@@ -34,12 +34,18 @@ public:
     int get_zona_asoc() const;
 
     string getAsStringRegras() const;
+    int get_Size_aparelhos() const;
+    int get_aparelho_id(int position) const;
+
+    int get_idSensor_regra(int position) const;
+    int get_Size_regras() const;
+    bool check_val_regra(int val, int regra_position) const;
 
 private:
     int id;
     string comando;
     vector<regra*> regras;
-    vector<int> id_aparelho;
+    vector<aparelho*> AllAparelhos;
     string nome;
     int zona_id;
 

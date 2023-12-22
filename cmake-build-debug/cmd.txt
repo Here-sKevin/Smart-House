@@ -1,5 +1,7 @@
 hnova 2 2
 znova 1 1
-znova 1 2
-znova 2 2
-znova 2 1
+cnovo 1 s temperatura
+cnovo 1 p liga
+cnovo 1 a aquecedor
+rnova 1 1 menor_que 1 100
+asoc 1 1 1

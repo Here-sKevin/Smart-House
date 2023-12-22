@@ -19,9 +19,11 @@ public:
 
     string get_prop() const;
 
+    sensor* clone();
+
+
 private:
     int id;
-    bool has_prop;
     string prop;
     vector<int> regras_ids;
     static int id_sensor;

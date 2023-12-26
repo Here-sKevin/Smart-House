@@ -8,7 +8,6 @@ public:
     menor(int idSensor, int val, string nome, sensor *sens);
     ~menor();
     virtual bool check_regra(int val) const override;
-    bool check_interval_regra(int val) const override;
     virtual menor* clone() override;
 
 private:

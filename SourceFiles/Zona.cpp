@@ -135,9 +135,6 @@ void zona::delete_regra(int id_proc, int id_regra) {
             processador->delete_regra(id_regra);
         }
     }
-    for(auto & sensor : sensores) {
-        sensor->delete_regra_assoc(id_regra);
-    }
 }
 
 void zona::set_prop(string nome, int valor) {

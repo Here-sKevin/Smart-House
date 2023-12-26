@@ -138,7 +138,6 @@ void interface::cmd_validator(const string& line, Terminal& t) {
                     if(!get_map_state()) {
                         habit = new habitacao(paraml,paramc);
                         set_map_state(true);
-                        habit->draw_map(paraml, paramc);
                     }
                     else{
                         t << move_to(1, 1) << "Habitacao ja criada";

@@ -8,6 +8,7 @@ public:
     vibracao(string type);
     ~vibracao();
     void ativa_efeito(string cmd, int val) override;
+
 private:
     int val_min = 0;
 };

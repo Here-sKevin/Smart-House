@@ -26,10 +26,6 @@ int habitacao::get_colunas() const {
     return this->colunas;
 }
 
-std::string habitacao::list_zonas() const {
-    return {};
-}
-
 void habitacao::create_zona(int x, int y, Terminal& t) {
     if(state2create_zona(x,y)){
         zonas.push_back(new zona(x, y));
@@ -80,30 +76,6 @@ void habitacao::cria_comp(int id, string c, string cmd) {
            zona->create_comp(c, cmd, id);
         }
     }
-}
-
-void habitacao::draw_map(int x, int y) {
-
-    for (int i = 0; i < x * 2; i++)
-    {
-        for (int j = 0; j < y * 2; j++)
-        {
-            if (i % 2 == 0) {
-                cout << " " << "";
-            }
-            else {
-                if (j % 2 == 0) {
-                    cout << " " << "";
-                }
-                else {
-                    cout << "." << "";
-                }
-            }
-            if (j + 1 == y * 2)
-                cout << endl;
-        }
-    }
-
 }
 
 string habitacao::to_string() const {

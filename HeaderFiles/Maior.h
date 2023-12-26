@@ -8,7 +8,6 @@ public:
     maior(int idSensor, int val, string nome, sensor *sens);
     ~maior();
     virtual bool check_regra(int val) const override;
-    bool check_interval_regra(int val) const override;
     virtual maior* clone() override;
 
 private:

@@ -8,6 +8,7 @@ public:
     som(string type);
     ~som();
     void ativa_efeito(string cmd, int val) override;
+
 private:
     int val_min = 0;
 };

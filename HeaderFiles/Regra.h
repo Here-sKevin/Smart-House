@@ -9,26 +9,21 @@ using namespace std;
 
 class regra {
 public:
-    regra(int id_sensor, string nome, sensor *s);
-    // regra(regra& o);
-    ~regra();
-    int get_id() const;
-    virtual bool check_regra(int val) const = 0;
-    virtual bool check_interval_regra(int val) const = 0;
-    virtual regra* clone() = 0;
+    regra(int id_sensor, string nome, sensor *s); // construtor com parametros
+    ~regra(); // destrutor por defeito
+    int get_id() const; // retorna id da regra
+    virtual bool check_regra(int val) const = 0; // verificacao se o valor esta entre os limites da regra
+    virtual regra* clone() = 0; // retorna copia do objeto com novo ponteriro
+    static int get_id_regra(); // retorna id dinamico a definir nas novas regras
+    static void set_id_regra(); // define o proximo id de uma nova regra
+    string get_nome() const; // retorna o nome da regra
+    int get_id_sensor() const; // retorna o id do sensor associado a regra
 
-    static int get_id_regra();
-    static void set_id_regra();
-
-    string get_nome() const;
-    int get_id_sensor() const;
 private:
     int id;
     int id_sensor;
     sensor *s;
-
     string nome;
-
     static int id_regra;
 };
 

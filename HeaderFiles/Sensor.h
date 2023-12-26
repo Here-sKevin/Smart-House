@@ -7,25 +7,17 @@
 
 class sensor{
 public:
-    sensor(string cmd);
-    ~sensor();
-
-    void set_regras_ids(int id);
-    int get_id() const;
-    static int get_id_sensor() ;
-    static void set_id_sensor();
-
-    void delete_regra_assoc(int id_regra);
-
-    string get_prop() const;
-
-    sensor* clone();
-
+    sensor(string cmd); // construtor com parametros
+    ~sensor(); // destrutor por defeito
+    int get_id() const; // retorna id do sensor
+    static int get_id_sensor() ; // retorna o id dinamico a definir no novo sensor
+    static void set_id_sensor(); // define o proximo id para um novo sensor
+    string get_prop() const; // retorna a propriedade liga do sensor
+    sensor* clone(); // retorna o objeto com um novo ponteiro
 
 private:
     int id;
     string prop;
-    vector<int> regras_ids;
     static int id_sensor;
 };
 

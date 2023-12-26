@@ -3,11 +3,8 @@
 
 vibracao::vibracao(string type) : propriedade(type), val_min(0) {}
 
-vibracao::~vibracao() {}
+vibracao::~vibracao() = default;
 
-void vibracao::ativa_efeito(string cmd, int val) {
-
-}
 
 
 

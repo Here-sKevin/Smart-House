@@ -8,10 +8,10 @@ class fumo : public propriedade {
 public:
     fumo(string type);
     ~fumo();
-    void ativa_efeito(string cmd, int val) override;
+
 private:
-    int val_min = 0;
-    int val_max = 100;
+    int val_min;
+    int val_max;
 };
 
 #endif //POO_2324_FUMO_H

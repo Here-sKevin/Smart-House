@@ -3,11 +3,8 @@
 
 radiacao::radiacao(string type) : propriedade(type), val_min(0) {}
 
-radiacao::~radiacao() {}
+radiacao::~radiacao() = default;
 
-void radiacao::ativa_efeito(string cmd, int val) {
-
-}
 
 
 

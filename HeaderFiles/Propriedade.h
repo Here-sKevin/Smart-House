@@ -13,7 +13,7 @@ public:
      ~propriedade();
     bool get_id_name(string nome) const; // retona tipo de propriedade
     void set_id_val(string nome, int valor); // define valor da propriedade
-    virtual void ativa_efeito(string cmd, int val) = 0; // TODO
+    // virtual void ativa_efeito(string cmd, int val) = 0; // TODO
     int get_value() const; // retorna valor da propriedade
     string get_type() const; // retorna tipo de propriedade
 private:

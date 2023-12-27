@@ -157,8 +157,6 @@ void zona::cria_regra(int id_proc, string regra, int id_sensor, int val1, int va
             for(auto & sensor : sensores) {
                 if(sensor->get_id() == id_sensor) {
                     processador->add_regra(regra, id_sensor, val1, val2,  sensor);
-                    // processador->add_regra(regra, id_sensor, val1, val2,  sensor->clone());
-                    // sensor->set_regras_ids(processador->get_last_id_regra());
                 }
             }
         }
@@ -186,11 +184,6 @@ void zona::set_prop(string nome, int valor) {
         if(prop.first == nome) {
             prop.second->set_valor(valor);
         }
-
-
-        /*if(prop->get_id_name(nome)){
-            prop->set_id_val(nome,valor);
-        }*/
     }
 }
 
@@ -323,42 +316,9 @@ string zona::getAsStringRegras(int id_proc) const {
     return "";
 }
 void zona::exec_action() {
-
     for(auto & processador :  processadores) {
         processador->exec_action();
     }
-
-
-    /*for(auto &processador : processadores) {
-        int countFalse = 0;
-        for(int i = 0; i < processador->get_Size_regras(); i++) {
-            for(auto & sensor:sensores) {
-                if(sensor->get_id() == processador->get_idSensor_regra(i)){
-                    for(auto & propriedade:propriedades) {
-                        if(sensor->get_prop() == propriedade->get_type()){
-                            bool result = processador->check_val_regra(propriedade->get_value(),i);
-                            if(!result) {
-                                countFalse++;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if(countFalse == 0) {
-            for(int i = 0; i < processador->get_Size_aparelhos(); i++) {
-                for(auto & aparelho: aparelhos){
-                    if(aparelho->get_id() == processador->get_aparelho_id(i)){
-                        for(auto & propriedade: propriedades) {
-                            if(aparelho->check_prop_type(processador->get_cmd(), propriedade->get_type())){
-                                propriedade->set_id_val(propriedade->get_type(),aparelho->get_val(processador->get_cmd(),propriedade->get_type()));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }*/
 }
 
 void zona::send_cmd_aparelho(int id_aparelho, const string& comando) {
@@ -367,14 +327,5 @@ void zona::send_cmd_aparelho(int id_aparelho, const string& comando) {
             aparelho->set_val_change(comando);
         }
     }
-    /*for(auto & aparelho: aparelhos) {
-        if(aparelho->get_id() == id_aparelho) {
-            for(auto & propriedade: propriedades) {
-                if(aparelho->check_prop_type(comando, propriedade->get_type())){
-                    propriedade->set_id_val(propriedade->get_type(),aparelho->get_val(comando,propriedade->get_type()));
-                }
-            }
-        }
-    }*/
 }
 

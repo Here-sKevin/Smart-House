@@ -7,8 +7,8 @@ class maior : public regra{
 public:
     maior(int idSensor, int val, string nome, sensor *sens);
     ~maior();
-    virtual bool check_regra(int val) const override;
-    virtual maior* clone() override;
+    bool check_regra(int val) const override;
+    maior* clone() override;
 
 private:
     int valor;

@@ -26,13 +26,7 @@ public:
     processador& operator=(const processador& ref); // operador de associação por suporte ao cosntrutor por cópia
     int get_zona_asoc() const; // retorna zona em que o processador esta inserido (para fins de colocação do processador em memoria de volta ao simulador)
     string getAsStringRegras() const; // lista informação das regras do processador
-    int get_Size_aparelhos() const; // retorna quantidade de aparelhos associados ao processador
-    int get_aparelho_id(int position) const; // retorna id do aparelho associado ao processador
-    int get_idSensor_regra(int position) const; // retorna id do sensor associado a regra
-    int get_Size_regras() const; // retorna quantidade de regras do processador
-    bool check_val_regra(int val, int regra_position) const; // verificação se o valor esta entre os limites indicado na regra
-
-    void exec_action();
+    void exec_action(); // executa as ações de passagem de tempo
 
 private:
     int id;
@@ -40,7 +34,6 @@ private:
     vector<regra*> regras;
     vector<aparelho*> AllAparelhos;
     int zona_id;
-
     static int id_proc;
 };
 

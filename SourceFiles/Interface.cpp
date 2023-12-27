@@ -74,11 +74,6 @@ void interface::config() {
         t.init_color(i, i, 0);
     }
 
-    // Window wmsg = Window(0, 0, 50, 24);
-    // Window wzonas = Window(81, 1, 39, 24);
-    //Window wcmd = Window(1, 25, 119, 4);
-
-
     print_size(t);
     while(flag) {
         flag = start(flag, t);
@@ -108,7 +103,6 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
 
     istringstream in(line);
     string cmd;
-    //t.clear();
 
     in >> cmd;
     if(map || cmd == "hnova" || cmd == "exec" || cmd == "sair") {
@@ -494,13 +488,9 @@ void interface::create_visual_zonas(int x, int y, Terminal& t) {
 
 
 bool interface::create_visual(Terminal& t) {
-    // Window wmsg = Window(0, 0, 50, 24);
-    // Window wzonas = Window(81, 1, 39, 24);
-    // Window wcmd = Window(1, 25, 119, 4);
 
     if(get_map_state())
         create_visual_zonas(habit->get_linhas(),habit->get_colunas(), t);
-
 
     std::string str_in;
     t << move_to(6, t.getNumRows()-4) << "Comando: ";
@@ -508,8 +498,6 @@ bool interface::create_visual(Terminal& t) {
     t.clear();
     bool res = cmd_validator(str_in, t);
     return res;
-    //new Window(1, 1, 20, 20);
-    //new Window(1, 1, 20, 20);
 
 }
 

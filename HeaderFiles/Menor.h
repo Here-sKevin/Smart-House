@@ -7,8 +7,8 @@ class menor : public regra{
 public:
     menor(int idSensor, int val, string nome, sensor *sens);
     ~menor();
-    virtual bool check_regra(int val) const override;
-    virtual menor* clone() override;
+    bool check_regra(int val) const override;
+    menor* clone() override;
 
 private:
     int valor;

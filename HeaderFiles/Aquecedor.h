@@ -8,13 +8,10 @@ class aquecedor : public aparelho{
 public:
     aquecedor(string type, propriedade *t, propriedade *s);
     ~aquecedor();
-    virtual aquecedor* clone();
-
+    aquecedor* clone() override;
     void set_val_change(string cmd) override;
 
 private:
-    //map<string, int> propsAlterLiga;
-    //map<string, int> propsAlterDesliga;
     map<string, propriedade*> props;
 };
 

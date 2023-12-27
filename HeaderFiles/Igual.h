@@ -7,8 +7,9 @@ class igual : public regra {
 public:
     igual(int idSensor, int val, string nome, sensor *sens);
     ~igual();
-    virtual bool check_regra(int val) const override;
-    virtual igual* clone() override;
+    bool check_regra(int val) const override;
+    igual* clone() override;
+
 private:
     int valor;
 };

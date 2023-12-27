@@ -8,7 +8,7 @@ public:
     fora(int idSensor, int min, int max, string nome, sensor * sens);
     ~fora();
     bool check_regra(int val) const override;
-    virtual fora* clone() override;
+    fora* clone() override;
 private:
     int min;
     int max;

@@ -7,8 +7,6 @@ class radiacao : public propriedade {
 public:
     radiacao();
     ~radiacao();
-    //int get_val_min() const override;
-    //int get_val_max() const override;
     void set_valor(int v) override;
 
 private:

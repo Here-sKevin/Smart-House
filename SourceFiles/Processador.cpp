@@ -129,26 +129,6 @@ string processador::getAsStringRegras() const {
     return os.str();
 }
 
-int processador::get_aparelho_id(int position) const {
-    return AllAparelhos[position]->get_id();
-}
-
-int processador::get_idSensor_regra(int position) const {
-    return regras[position]->get_id_sensor();
-}
-
-int processador::get_Size_regras() const {
-    return regras.size();
-}
-
-bool processador::check_val_regra(int val, int regra_position) const {
-    return regras[regra_position]->check_regra(val);
-}
-
-int processador::get_Size_aparelhos() const {
-    return AllAparelhos.size();
-}
-
 void processador::exec_action() {
     int denied = 0;
     for(auto & regra : regras) {

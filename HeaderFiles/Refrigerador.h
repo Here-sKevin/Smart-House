@@ -10,12 +10,9 @@ public:
     refrigerador(string type, propriedade *t, propriedade *s);
     ~refrigerador();
     refrigerador* clone() override;
-
     void set_val_change(string cmd) override;
 
 private:
-    //map<string, int> propsAlterLiga;
-    //map<string, int> propsAlterDesliga;
     map<string, propriedade*> props;
 };
 

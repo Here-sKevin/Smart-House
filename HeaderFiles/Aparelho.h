@@ -14,16 +14,11 @@ public:
     int get_id_aparelho() const; //retorna valor do id static para ids dinamicos
     void set_id_aparelho() const; // define o id do proximo aparelho
     string get_type() const; // retona o tipo de aparelho
-    //virtual bool check_prop_type(const string& cmd, const string& type) const = 0; //verifica se a propriedade em questão vai ser alterado conforme a possibilidade desse aparelho o alterar
-    //virtual int get_val(const string& cmd, const string& type) = 0; // retorna valor que vai ser incrementado/decrementado no valor da propriedade
     virtual aparelho* clone() = 0; // retorna objeto com novo ponteiro
     int get_instance() const;
     void set_instance();
     bool get_isOn() const;
     void set_isOn();
-
-    //---------------
-
     virtual void set_val_change(string cmd) = 0;
 
 private:

@@ -43,7 +43,6 @@ private:
     vector<sensor*> sensores;
     vector<aparelho*> aparelhos;
     map<string,propriedade*> propriedades;
-    // vector<propriedade*> propriedades;
     vector<processador*> processadores;
     int id;
     int x;

@@ -14,7 +14,7 @@ public:
     static void set_id_sensor(); // define o proximo id para um novo sensor
     string get_prop() const; // retorna a propriedade liga do sensor
     sensor* clone(); // retorna o objeto com um novo ponteiro
-    int get_prop_val() const;
+    int get_prop_val() const; // retorna valor da propriedade
 
 private:
     int id;

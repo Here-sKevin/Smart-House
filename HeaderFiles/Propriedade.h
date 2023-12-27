@@ -10,11 +10,11 @@ using namespace std;
 
 class propriedade{
 public:
-     propriedade();
-     ~propriedade();
-    int get_valor() const;
-    virtual void set_valor(int v) = 0;
-    void set_new_val(int v);
+     propriedade(); // construtor
+     ~propriedade(); // destrutor
+    int get_valor() const; // retorna o valor atual da propriedade
+    virtual void set_valor(int v) = 0; // valida os limites do valor da propriedade
+    void set_new_val(int v); // atualiza o valor da propriedade
 
 private:
     int valor;

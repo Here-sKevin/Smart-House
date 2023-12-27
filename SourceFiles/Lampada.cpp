@@ -5,8 +5,6 @@ lampada::lampada(string type, propriedade *l) : aparelho(type) {
 
     props.insert(pair<string,propriedade*>("luz",l));
 
-    /*this->propsAlterLiga.insert(pair<string,int>("luz",900));
-    this->propsAlterDesliga.insert(pair<string,int>("luz",-900));*/
 }
 
 lampada *lampada::clone() {

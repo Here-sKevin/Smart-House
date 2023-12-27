@@ -5,9 +5,6 @@ refrigerador::refrigerador(string type, propriedade *t, propriedade *s) : aparel
     props.insert(pair<string,propriedade*>("temperatura",t));
     props.insert(pair<string,propriedade*>("som",s));
 
-    /*this->propsAlterLiga.insert(pair<string,int>("temperatura",-1));
-    this->propsAlterLiga.insert(pair<string,int>("som",20));
-    this->propsAlterDesliga.insert(pair<string,int>("som",-20));*/
 }
 
 

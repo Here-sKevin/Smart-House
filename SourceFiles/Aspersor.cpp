@@ -5,10 +5,6 @@ aspersor::aspersor(string type, propriedade *h, propriedade *f) : aparelho(type)
     props.insert(pair<string,propriedade*>("humidade",h));
     props.insert(pair<string,propriedade*>("fumo",f));
 
-    /*this->propsAlterLiga.insert(pair<string,int>("humidade",50));
-    this->propsAlterLiga.insert(pair<string,int>("vibracao",100));
-    this->propsAlterLiga.insert(pair<string,int>("fumo",0));
-    this->propsAlterDesliga.insert(pair<string,int>("vibracao",-100));*/
 }
 
 

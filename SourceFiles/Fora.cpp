@@ -3,7 +3,7 @@
 
 fora::fora(int idSensor, int min, int max, string nome, sensor *sens) : regra(idSensor, nome, sens), min(min), max(max) {}
 
-fora::~fora() {}
+fora::~fora() = default;
 
 bool fora::check_regra(int val) const {
     if(val < min || val > max)

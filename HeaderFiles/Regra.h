@@ -18,7 +18,7 @@ public:
     static void set_id_regra(); // define o proximo id de uma nova regra
     string get_nome() const; // retorna o nome da regra
     int get_id_sensor() const; // retorna o id do sensor associado a regra
-    bool check_regra_val() const;
+    bool check_regra_val() const; // verifica a validação da regra em questão
 
 private:
     int id;

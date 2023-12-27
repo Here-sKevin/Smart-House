@@ -5,8 +5,11 @@
 
 class temperatura : public propriedade {
 public:
-    temperatura(string type);
+    temperatura();
     ~temperatura();
+    //int get_val_min() const override;
+    //int get_val_max() const override;
+    void set_valor(int v) override;
 
 private:
     int val_min;

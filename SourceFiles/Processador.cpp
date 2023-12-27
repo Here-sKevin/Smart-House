@@ -99,9 +99,8 @@ void processador::set_ades_aparelho(int id) {
     }
 }
 
-processador::processador(const processador &o, string nome) {
+processador::processador(const processador &o) {
     *this = o;
-    this->nome = nome;
 }
 
 processador &processador::operator=(const processador &ref) {
@@ -114,10 +113,6 @@ processador &processador::operator=(const processador &ref) {
         }
     }
     return *this;
-}
-
-string processador::get_nome_saved() const {
-    return nome;
 }
 
 int processador::get_zona_asoc() const {
@@ -152,6 +147,20 @@ bool processador::check_val_regra(int val, int regra_position) const {
 
 int processador::get_Size_aparelhos() const {
     return AllAparelhos.size();
+}
+
+void processador::exec_action() {
+    int denied = 0;
+    for(auto & regra : regras) {
+        if(!regra->check_regra_val()){
+            denied++;
+        }
+    }
+    if(denied == 0) {
+        for(auto & aparelho : AllAparelhos) {
+            aparelho->set_val_change(get_cmd());
+        }
+    }
 }
 
 

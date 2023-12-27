@@ -1,5 +1,6 @@
 
 #include "../HeaderFiles/Interface.h"
+#include "../HeaderFiles/Processador.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -20,12 +21,7 @@ interface::~interface() {
     }
     visual_zonas.clear();
 
-    for(auto & save : procSave) {
-        delete save;
-    }
-    procSave.clear();
-    cout << "Destrutor Interface" << endl;
-
+    delete habit;
 }
 
 void interface::menu() {
@@ -71,7 +67,7 @@ void print_size(Terminal& t) {
 
 void interface::config() {
     string line, cmd;
-    bool flag = false;
+    bool flag = true;
     Terminal &t = Terminal::instance();
 
     for(int i=1; i<20; i++) {
@@ -84,9 +80,8 @@ void interface::config() {
 
 
     print_size(t);
-    while(true) {
-        start(flag, t);
-        flag = true;
+    while(flag) {
+        flag = start(flag, t);
     }
 }
 
@@ -107,9 +102,9 @@ bool interface::file_reader(const string& file_name, Terminal& t) {
     return true;
 }
 
-void interface::cmd_validator(const string& line, Terminal& t) {
+bool interface::cmd_validator(const string& line, Terminal& t) {
     if (line.empty())
-        return;
+        return true;
 
     istringstream in(line);
     string cmd;
@@ -373,8 +368,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && param2 != 0 && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
-                procSave.push_back(habit->duplica(param1,param2, param3));
-               // ps.insert(pair<string,int>(param3,habit->duplica(param1,param2,param3)));
+                ps.insert(pair<string,processador*>(param3,habit->duplica(param1,param2)));
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
@@ -386,9 +380,9 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(!param.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
-                for(auto & save : procSave) {
-                    if(param == save->get_nome_saved()) {
-                        habit->set_proc_saved(*save);
+                for (auto itr = ps.begin(); itr != ps.end(); itr++) {
+                    if(param == itr->first){
+                        habit->set_proc_saved(*itr->second);
                     }
                 }
             }
@@ -403,17 +397,15 @@ void interface::cmd_validator(const string& line, Terminal& t) {
 
             if(!param.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
-                int i=-1, index=-1;
-                for(auto & save : procSave) {
-                    i++;
-                    if(param == save->get_nome_saved()) {
-                       index=i;
+                bool found = false;
+                for (auto itr = ps.begin(); itr != ps.end(); itr++) {
+                    if(param == itr->first){
+                        found=true;
                     }
                 }
-                if(index>-1) {
-                    delete procSave[index];
-                    procSave.erase(procSave.begin() + i);
-                }
+                if(found)
+                    ps.erase(param);
+
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
@@ -423,9 +415,11 @@ void interface::cmd_validator(const string& line, Terminal& t) {
         else if(cmd == "plista") {
             std::ostringstream os;
             os << "Procesadores gravados em memoria \n";
-            for(auto & save : procSave) {
-                os << "Nome: " << save->get_nome_saved() << " Id: " << save->get_id() << " ZonaId: " << save->get_zona_asoc() << "\n";
+
+            for (auto itr = ps.begin(); itr != ps.end(); itr++) {
+                os << "Nome: " << itr->first << " Id: " << itr->second->get_id() << " ZonaId: " << itr->second->get_zona_asoc() << "\n";
             }
+
             t << os.str();
         }
         else if(cmd == "exec"){
@@ -441,7 +435,7 @@ void interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "sair") {
-            exit(0);
+            return false;
         }
         else{
             t << move_to(1, 1) << "Comando nao existe ! Inserir comando valido";
@@ -452,11 +446,15 @@ void interface::cmd_validator(const string& line, Terminal& t) {
         t << move_to(1, 1) << "Tamanho do mapa do simulador nao existe!\n Cria antes de efetuar qualquer outro comando \n(hnova <num linhas><num colunas>)";
 
     }
+    return true;
 }
 
-void interface::start(bool flag, Terminal& t) {
-    if(flag)
-        create_visual(t);
+bool interface::start(bool flag, Terminal& t) {
+    if(flag){
+        flag = create_visual(t);
+        return flag;
+    }
+    return flag;
 }
 
 void interface::set_map_state(bool active) {
@@ -495,7 +493,7 @@ void interface::create_visual_zonas(int x, int y, Terminal& t) {
 
 
 
-void interface::create_visual(Terminal& t) {
+bool interface::create_visual(Terminal& t) {
     // Window wmsg = Window(0, 0, 50, 24);
     // Window wzonas = Window(81, 1, 39, 24);
     // Window wcmd = Window(1, 25, 119, 4);
@@ -508,8 +506,8 @@ void interface::create_visual(Terminal& t) {
     t << move_to(6, t.getNumRows()-4) << "Comando: ";
     t >> str_in;
     t.clear();
-    cmd_validator(str_in, t);
-
+    bool res = cmd_validator(str_in, t);
+    return res;
     //new Window(1, 1, 20, 20);
     //new Window(1, 1, 20, 20);
 

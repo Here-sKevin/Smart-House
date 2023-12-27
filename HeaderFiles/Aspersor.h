@@ -3,18 +3,21 @@
 #define POO_2324_ASPERSOR_H
 
 #include "../HeaderFiles/Aparelho.h"
+#include "Propriedade.h"
 
 class aspersor : public aparelho{
 public:
-    aspersor(string type);
+    aspersor(string type, propriedade *h, propriedade *f);
     ~aspersor();
-    bool check_prop_type(const string& cmd, const string& type) const override;
-    int get_val(const string& cmd, const string& type) override;
     virtual aspersor* clone();
 
+    void set_val_change(string cmd) override;
+
 private:
-    map<string, int> propsAlterLiga;
-    map<string, int> propsAlterDesliga;
+    //map<string, int> propsAlterLiga;
+    //map<string, int> propsAlterDesliga;
+
+    map<string, propriedade*> props;
 };
 
 #endif //POO_2324_ASPERSOR_H

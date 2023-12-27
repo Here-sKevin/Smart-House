@@ -32,3 +32,8 @@ int regra::get_id_sensor() const {
     return s->get_id();
 }
 
+bool regra::check_regra_val() const {
+    return this->check_regra(s->get_prop_val());
+}
+
+

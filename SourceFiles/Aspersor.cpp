@@ -1,51 +1,53 @@
 
 #include "../HeaderFiles/Aspersor.h"
 
-aspersor::aspersor(string type) : aparelho(type) {
-    this->propsAlterLiga.insert(pair<string,int>("humidade",50));
+aspersor::aspersor(string type, propriedade *h, propriedade *f) : aparelho(type) {
+    props.insert(pair<string,propriedade*>("humidade",h));
+    props.insert(pair<string,propriedade*>("fumo",f));
+
+    /*this->propsAlterLiga.insert(pair<string,int>("humidade",50));
     this->propsAlterLiga.insert(pair<string,int>("vibracao",100));
     this->propsAlterLiga.insert(pair<string,int>("fumo",0));
-    this->propsAlterDesliga.insert(pair<string,int>("vibracao",100));
+    this->propsAlterDesliga.insert(pair<string,int>("vibracao",-100));*/
 }
 
-bool aspersor::check_prop_type(const string &cmd, const string &type) const {
-    if(cmd == "liga") {
-        for (auto itr = propsAlterLiga.begin(); itr != propsAlterLiga.end(); itr++) {
-            if(itr->first == type){
-                return true;
-            }
-        }
-    }
-    if(cmd == "desliga") {
-        for (auto itr = propsAlterDesliga.begin(); itr != propsAlterDesliga.end(); itr++) {
-            if(itr->first == type){
-                return true;
-            }
-        }
-    }
-    return false;
-}
 
-int aspersor::get_val(const string &cmd, const string &type) {
-    if(cmd == "liga") {
-        for (auto itr = propsAlterLiga.begin(); itr != propsAlterLiga.end(); itr++) {
-            if(itr->first == type){
-                return itr->second;
-            }
-        }
-    }
-    if(cmd == "desliga") {
-        for (auto itr = propsAlterDesliga.begin(); itr != propsAlterDesliga.end(); itr++) {
-            if(itr->first == type){
-                return itr->second;
-            }
-        }
-    }
-    return false;
-}
 
 aspersor *aspersor::clone() {
     return new aspersor(*this);
+}
+
+void aspersor::set_val_change(string cmd) {
+    set_instance();
+    for(auto & prop : props) {
+        if(cmd == "liga") {
+            if(!get_isOn() && cmd == "liga") {
+                if(prop.first == "humidade") {
+                    prop.second->set_valor(50);
+                }
+                if(prop.first == "fumo") {
+                    prop.second->set_valor(0);
+                }
+                if(prop.first == "vibracao") {
+                    prop.second->set_valor(100);
+                }
+            }
+        }
+        if(cmd == "desliga") {
+            if(prop.first == "vibracao") {
+                if(get_isOn() && cmd == "desliga")
+                    prop.second->set_valor(-100);
+            }
+        }
+
+    }
+
+    if(get_isOn() && cmd == "desliga"){
+        set_isOn();
+    }
+    if(!get_isOn() && cmd == "liga") {
+        set_isOn();
+    }
 }
 
 aspersor::~aspersor() = default;

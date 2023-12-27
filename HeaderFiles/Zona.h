@@ -31,18 +31,19 @@ public:
     void delete_comp(string type, int id); // elimina componente indicado
     void set_id_proc_aparelho(int id_proc, int id_aparelho); // associação do aparelho ao processador
     void remove_id_proc_aparelho(int id_proc, int id_aparelho); // desassocia aparelho do processador
-    processador* duplica(int id_proc, string nome); // retorna copia do objeto com novo ponteiro
+    processador* duplica(int id_proc); // retorna copia do objeto com novo ponteiro
     void set_proc_saved(processador& p); // guarda processador em memoria
     string getAsStringProps() const; // lista informação das propriedades da zona indicada
     string getAsStringComp() const; // lista informação dos componentes da zona indicada
     string getAsStringRegras(int id_proc) const; // lista informacao das regras do processador indicado
     void exec_action(); // executa ações de passagem do tempo
-    void send_cmd_aparelho(int id_aparelho,string comando); // envio manual do comando ao aparelho
+    void send_cmd_aparelho(int id_aparelho,const string& comando); // envio manual do comando ao aparelho
 
 private:
     vector<sensor*> sensores;
     vector<aparelho*> aparelhos;
-    vector<propriedade*> propriedades;
+    map<string,propriedade*> propriedades;
+    // vector<propriedade*> propriedades;
     vector<processador*> processadores;
     int id;
     int x;

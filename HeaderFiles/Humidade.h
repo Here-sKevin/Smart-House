@@ -5,8 +5,12 @@
 
 class humidade : public propriedade {
 public:
-    humidade(string type);
+    humidade();
     ~humidade();
+    //int get_val_min() const override;
+    //int get_val_max() const override;
+    void set_valor(int v) override;
+
 private:
     int val_min = 0;
     int val_max = 100;

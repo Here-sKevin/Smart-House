@@ -176,11 +176,11 @@ void habitacao::send_cmd(int id_zona, int id_aparelho, string comando) {
     }
 }
 
-processador *habitacao::duplica(int id_zona, int id_proc, string nome) {
+processador *habitacao::duplica(int id_zona, int id_proc) {
 
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            return zona->duplica(id_proc, nome);
+            return zona->duplica(id_proc);
         }
     }
 

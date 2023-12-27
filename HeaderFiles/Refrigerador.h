@@ -3,18 +3,20 @@
 #define POO_2324_REFRIGERADOR_H
 
 #include "../HeaderFiles/Aparelho.h"
+#include "Propriedade.h"
 
 class refrigerador : public aparelho{
 public:
-    refrigerador(string type);
+    refrigerador(string type, propriedade *t, propriedade *s);
     ~refrigerador();
-    bool check_prop_type(const string& cmd, const string& type) const override;
-    int get_val(const string& cmd, const string& type) override;
     refrigerador* clone() override;
 
+    void set_val_change(string cmd) override;
+
 private:
-    map<string, int> propsAlterLiga;
-    map<string, int> propsAlterDesliga;
+    //map<string, int> propsAlterLiga;
+    //map<string, int> propsAlterDesliga;
+    map<string, propriedade*> props;
 };
 
 #endif //POO_2324_REFRIGERADOR_H

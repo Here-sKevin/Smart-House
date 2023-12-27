@@ -1,49 +1,41 @@
 
 #include "../HeaderFiles/Lampada.h"
 
-lampada::lampada(string type) : aparelho(type) {
-    this->propsAlterLiga.insert(pair<string,int>("luz",900));
-    this->propsAlterDesliga.insert(pair<string,int>("luz",900));
-}
+lampada::lampada(string type, propriedade *l) : aparelho(type) {
 
-bool lampada::check_prop_type(const string &cmd, const string &type) const {
-    if(cmd == "liga") {
-        for (auto itr = propsAlterLiga.begin(); itr != propsAlterLiga.end(); itr++) {
-            if(itr->first == type){
-                return true;
-            }
-        }
-    }
-    if(cmd == "desliga") {
-        for (auto itr = propsAlterDesliga.begin(); itr != propsAlterDesliga.end(); itr++) {
-            if(itr->first == type){
-                return true;
-            }
-        }
-    }
-    return false;
-}
+    props.insert(pair<string,propriedade*>("luz",l));
 
-int lampada::get_val(const string &cmd, const string &type) {
-    if(cmd == "liga") {
-        for (auto itr = propsAlterLiga.begin(); itr != propsAlterLiga.end(); itr++) {
-            if(itr->first == type){
-                return itr->second;
-            }
-        }
-    }
-    if(cmd == "desliga") {
-        for (auto itr = propsAlterDesliga.begin(); itr != propsAlterDesliga.end(); itr++) {
-            if(itr->first == type){
-                return itr->second;
-            }
-        }
-    }
-    return false;
+    /*this->propsAlterLiga.insert(pair<string,int>("luz",900));
+    this->propsAlterDesliga.insert(pair<string,int>("luz",-900));*/
 }
 
 lampada *lampada::clone() {
     return new lampada(*this);
+}
+
+void lampada::set_val_change(string cmd) {
+    set_instance();
+    for(auto & prop : props) {
+        if(cmd == "liga") {
+            if(prop.first == "luz") {
+                if(!get_isOn() && cmd == "liga")
+                    prop.second->set_valor(900);
+            }
+        }
+        if(cmd == "desliga") {
+            if(prop.first == "luz") {
+                if(get_isOn() && cmd == "desliga")
+                    prop.second->set_valor(-900);
+            }
+        }
+    }
+
+    if(get_isOn() && cmd == "desliga"){
+        set_isOn();
+    }
+    if(!get_isOn() && cmd == "liga") {
+        set_isOn();
+    }
 }
 
 lampada::~lampada() = default;

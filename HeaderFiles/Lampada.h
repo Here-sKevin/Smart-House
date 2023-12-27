@@ -3,18 +3,20 @@
 #define POO_2324_LAMPADA_H
 
 #include "../HeaderFiles/Aparelho.h"
+#include "Propriedade.h"
 
 class lampada : public aparelho{
 public:
-    lampada(string type);
+    lampada(string type, propriedade *l);
     ~lampada();
-    bool check_prop_type(const string& cmd, const string& type) const override;
-    int get_val(const string& cmd, const string& type) override;
     virtual lampada* clone();
 
+    void set_val_change(string cmd) override;
+
 private:
-    map<string, int> propsAlterLiga;
-    map<string, int> propsAlterDesliga;
+    //map<string, int> propsAlterLiga;
+    //map<string, int> propsAlterDesliga;
+    map<string, propriedade*> props;
 };
 
 #endif //POO_2324_LAMPADA_H

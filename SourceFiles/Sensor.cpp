@@ -3,7 +3,7 @@
 
 int sensor::id_sensor = 1;
 
-sensor::sensor(string cmd) : id(get_id_sensor()), prop(cmd) {
+sensor::sensor(string cmd, propriedade *pp) : id(get_id_sensor()), prop(cmd), p(pp) {
     set_id_sensor();
 }
 
@@ -29,5 +29,9 @@ string sensor::get_prop() const {
 
 sensor *sensor::clone() {
     return new sensor(*this);
+}
+
+int sensor::get_prop_val() const {
+    return p->get_valor();
 }
 

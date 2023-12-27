@@ -234,13 +234,14 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "crem") {
-            int param1, param3;
+            int param1;
+            string param3;
             string param2;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && !param2.empty()  && param3 != 0) {
+            if(param1 != 0 && !param2.empty()  && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->delete_comp(param1,param2,param3);
 
@@ -250,8 +251,8 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "rnova"){
-            int param1, param2, param4, param5, param6;
-            string param3;
+            int param1, param5, param6;
+            string param2,param3,param4;
             in >> param1;
             in >> param2;
             in >> param3;
@@ -259,7 +260,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param5;
             in >> param6;
 
-            if(param1 != 0 && param2 != 0 && !param3.empty() && param4 != 0) {
+            if(param1 != 0 && !param2.empty() && !param3.empty() && !param4.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->cria_regra(param1,param2,param3,param4, param5,param6);
             }
@@ -269,13 +270,13 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
 
         }
         else if(cmd == "pmuda") {
-            int param1, param2;
-            string param3;
+            int param1;
+            string param2, param3;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+            if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->change_proc_cmd(param1,param2,param3);
             }
@@ -284,11 +285,12 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "rlista"){
-            int param1, param2;
+            int param1;
+            string param2;
             in >> param1;
             in >> param2;
 
-            if(param1 != 0 && param2 != 0) {
+            if(param1 != 0 && !param2.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 t << habit->getAsStringRegras(param1,param2);
             }
@@ -297,12 +299,13 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "rrem") {
-            int param1, param2, param3;
+            int param1, param3;
+            string param2;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && param3 != 0) {
+            if(param1 != 0 && !param2.empty() && param3 != 0) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->delete_regra(param1,param2,param3);
             }
@@ -311,12 +314,13 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "asoc"){
-            int param1, param2, param3;
+            int param1;
+            string param2, param3;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && param3 != 0) {
+            if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->set_id_aparelho_proc(param1,param2,param3);
             }
@@ -325,12 +329,13 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "ades") {
-            int param1, param2, param3;
+            int param1;
+            string param2,param3;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && param3 != 0) {
+            if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 habit->remove_id_aparelho_proc(param1,param2,param3);
             }
@@ -339,28 +344,28 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "acom"){
-            int param1, param2;
-            string param3;
+            int param1;
+            string param2,param3;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+            if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->send_cmd(param1,param2,param3);
+                habit->send_cmd(cmd,param1,param2,param3);
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
             }
         }
         else if(cmd == "psalva") {
-            int param1, param2;
-            string param3;
+            int param1;
+            string param2,param3;
             in >> param1;
             in >> param2;
             in >> param3;
 
-            if(param1 != 0 && param2 != 0 && !param3.empty()) {
+            if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso";
                 ps.insert(pair<string,processador*>(param3,habit->duplica(param1,param2)));
             }

@@ -13,8 +13,9 @@ aspersor *aspersor::clone() {
     return new aspersor(*this);
 }
 
-void aspersor::set_val_change(string cmd) {
-    set_instance();
+void aspersor::set_val_change(string user_cmd,string cmd) {
+    if(user_cmd != "acom")
+        set_instance();
     for(auto & prop : props) {
         if(cmd == "liga") {
             if(!get_isOn() && cmd == "liga") {

@@ -5,7 +5,7 @@
 
 class entre : public regra {
 public:
-    entre(int idSensor, int min, int max, string nome, sensor *sens);
+    entre(string idSensor, int min, int max, string nome, sensor *sens);
     ~entre();
     bool check_regra(int val) const override;
     virtual entre* clone() override;

@@ -151,7 +151,7 @@ void zona::set_zona_id() {
     zona_id++;
 }
 
-void zona::cria_regra(int id_proc, string regra, int id_sensor, int val1, int val2) {
+void zona::cria_regra(string id_proc, string regra, string id_sensor, int val1, int val2) {
     for(auto & processador : processadores) {
         if(processador->get_id() == id_proc) {
             for(auto & sensor : sensores) {
@@ -163,7 +163,7 @@ void zona::cria_regra(int id_proc, string regra, int id_sensor, int val1, int va
     }
 }
 
-void zona::change_proc_cmd(int id_proc, string cmd) {
+void zona::change_proc_cmd(string id_proc, string cmd) {
     for(auto & processador : processadores) {
         if(processador->get_id() == id_proc) {
             processador->set_cmd(cmd);
@@ -171,7 +171,7 @@ void zona::change_proc_cmd(int id_proc, string cmd) {
     }
 }
 
-void zona::delete_regra(int id_proc, int id_regra) {
+void zona::delete_regra(string id_proc, int id_regra) {
     for(auto & processador : processadores) {
         if(processador->get_id() == id_proc) {
             processador->delete_regra(id_regra);
@@ -187,7 +187,7 @@ void zona::set_prop(string nome, int valor) {
     }
 }
 
-void zona::delete_comp(string type, int id) {
+void zona::delete_comp(string type, string id) {
     int i = -1, index = -1;
     if(type == "s") {
         for(auto & sensor : sensores) {
@@ -227,7 +227,7 @@ void zona::delete_comp(string type, int id) {
     }
 }
 
-void zona::set_id_proc_aparelho(int id_proc, int id_aparelho) {
+void zona::set_id_proc_aparelho(const string& id_proc, const string& id_aparelho) {
     for(auto & processador : processadores) {
         if(id_proc == processador->get_id()) {
             for(auto & aparelho: aparelhos) {
@@ -241,7 +241,7 @@ void zona::set_id_proc_aparelho(int id_proc, int id_aparelho) {
     }
 }
 
-void zona::remove_id_proc_aparelho(int id_proc, int id_aparelho) {
+void zona::remove_id_proc_aparelho(string id_proc, string id_aparelho) {
     for(auto & processador : processadores) {
         if(id_proc == processador->get_id()) {
             processador->set_ades_aparelho(id_aparelho);
@@ -249,7 +249,7 @@ void zona::remove_id_proc_aparelho(int id_proc, int id_aparelho) {
     }
 }
 
-processador *zona::duplica(int id_proc) {
+processador *zona::duplica(string id_proc) {
     for(auto & proc : processadores) {
         if(id_proc == proc->get_id()) {
             return new processador(*proc);
@@ -274,6 +274,7 @@ void zona::set_proc_saved(processador &p) {
         delete processadores[index];
         processadores.erase(processadores.begin() + i);
         processadores.push_back(new processador(p));
+
     }
     else{
         processadores.push_back(new processador(p));
@@ -307,7 +308,7 @@ string zona::getAsStringComp() const {
     return os.str();
 }
 
-string zona::getAsStringRegras(int id_proc) const {
+string zona::getAsStringRegras(string id_proc) const {
     for(auto & processador : processadores) {
         if(processador->get_id() == id_proc){
             return processador->getAsStringRegras();
@@ -321,10 +322,10 @@ void zona::exec_action() {
     }
 }
 
-void zona::send_cmd_aparelho(int id_aparelho, const string& comando) {
+void zona::send_cmd_aparelho(string user_cmd,string id_aparelho, const string& comando) {
     for(auto & aparelho : aparelhos) {
         if(aparelho->get_id() == id_aparelho) {
-            aparelho->set_val_change(comando);
+            aparelho->set_val_change(user_cmd,comando);
         }
     }
 }

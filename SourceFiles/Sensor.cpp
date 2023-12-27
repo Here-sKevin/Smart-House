@@ -3,8 +3,8 @@
 
 int sensor::id_sensor = 1;
 
-sensor::sensor(string cmd, propriedade *pp) : id(get_id_sensor()), prop(cmd), p(pp) {
-    set_id_sensor();
+sensor::sensor(string cmd, propriedade *pp) : id("s" + to_string(generetedId())), prop(cmd), p(pp) {
+    //set_id_sensor();
 }
 
 sensor::~sensor() {
@@ -19,7 +19,7 @@ void sensor::set_id_sensor() {
     id_sensor++;
 }
 
-int sensor::get_id() const {
+string sensor::get_id() const {
     return id;
 }
 

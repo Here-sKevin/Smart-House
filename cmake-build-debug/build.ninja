@@ -205,6 +205,12 @@ build CMakeFiles/POO_2324.dir/SourceFiles/Fora.cpp.obj: CXX_COMPILER__POO_2324_u
   OBJECT_DIR = CMakeFiles\POO_2324.dir
   OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
 
+build CMakeFiles/POO_2324.dir/SourceFiles/Componente.cpp.obj: CXX_COMPILER__POO_2324_unscanned_Debug C$:/Users/KevinRodrigues/CLionProjects/POO_2324/SourceFiles/Componente.cpp || cmake_object_order_depends_target_POO_2324
+  DEP_FILE = CMakeFiles\POO_2324.dir\SourceFiles\Componente.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\POO_2324.dir
+  OBJECT_FILE_DIR = CMakeFiles\POO_2324.dir\SourceFiles
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target POO_2324
@@ -213,7 +219,7 @@ build CMakeFiles/POO_2324.dir/SourceFiles/Fora.cpp.obj: CXX_COMPILER__POO_2324_u
 #############################################
 # Link the executable POO_2324.exe
 
-build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Regra.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Temperatura.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Luz.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Radiacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Vibracao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Humidade.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Fumo.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Som.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aquecedor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aspersor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Refrigerador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Lampada.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Igual.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Menor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Maior.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Entre.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Fora.cpp.obj | C$:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a
+build POO_2324.exe: CXX_EXECUTABLE_LINKER__POO_2324_Debug CMakeFiles/POO_2324.dir/main.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Interface.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Habitacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Zona.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Sensor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Processador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aparelho.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Propriedade.cpp.obj CMakeFiles/POO_2324.dir/library/Terminal.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Regra.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Temperatura.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Luz.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Radiacao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Vibracao.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Humidade.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Fumo.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Som.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aquecedor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Aspersor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Refrigerador.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Lampada.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Igual.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Menor.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Maior.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Entre.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Fora.cpp.obj CMakeFiles/POO_2324.dir/SourceFiles/Componente.cpp.obj | C$:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\POO_2324.dir

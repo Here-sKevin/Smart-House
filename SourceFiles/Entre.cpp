@@ -1,7 +1,7 @@
 
 #include "../HeaderFiles/Entre.h"
 
-entre::entre(int idSensor, int min, int max, string nome, sensor *sens) : regra(idSensor, nome, sens), min(min), max(max) {}
+entre::entre(string idSensor, int min, int max, string nome, sensor *sens) : regra(idSensor, nome, sens), min(min), max(max) {}
 
 entre::~entre() = default;
 

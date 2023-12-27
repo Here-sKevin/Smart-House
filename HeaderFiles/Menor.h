@@ -5,7 +5,7 @@
 
 class menor : public regra{
 public:
-    menor(int idSensor, int val, string nome, sensor *sens);
+    menor(string idSensor, int val, string nome, sensor *sens);
     ~menor();
     bool check_regra(int val) const override;
     menor* clone() override;

@@ -5,7 +5,7 @@
 
 class fora : public regra {
 public:
-    fora(int idSensor, int min, int max, string nome, sensor * sens);
+    fora(string idSensor, int min, int max, string nome, sensor * sens);
     ~fora();
     bool check_regra(int val) const override;
     fora* clone() override;

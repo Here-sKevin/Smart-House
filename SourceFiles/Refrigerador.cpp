@@ -13,8 +13,9 @@ refrigerador *refrigerador::clone() {
     return new refrigerador(*this);
 }
 
-void refrigerador::set_val_change(string cmd) {
-    set_instance();
+void refrigerador::set_val_change(string user_cmd,string cmd) {
+    if(user_cmd != "acom")
+        set_instance();
     for(auto & prop : props) {
         if(cmd == "liga") {
             if(prop.first == "temperatura") {

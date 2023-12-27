@@ -112,7 +112,7 @@ int habitacao::get_zona_id(int x, int y) {
     return 0;
 }
 
-void habitacao::cria_regra(int id_zona, int id_proc, string regra, int id_sensor, int val1, int val2) {
+void habitacao::cria_regra(int id_zona, string id_proc, string regra, string id_sensor, int val1, int val2) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             zona->cria_regra(id_proc, regra, id_sensor, val1, val2);
@@ -120,7 +120,7 @@ void habitacao::cria_regra(int id_zona, int id_proc, string regra, int id_sensor
     }
 }
 
-void habitacao::change_proc_cmd(int id_zona, int id_proc, string cmd) {
+void habitacao::change_proc_cmd(int id_zona, string id_proc, string cmd) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             zona->change_proc_cmd(id_proc, cmd);
@@ -128,7 +128,7 @@ void habitacao::change_proc_cmd(int id_zona, int id_proc, string cmd) {
     }
 }
 
-void habitacao::delete_regra(int id_zona, int id_proc, int id_regra) {
+void habitacao::delete_regra(int id_zona, string id_proc, int id_regra) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             zona->delete_regra(id_proc, id_regra);
@@ -144,7 +144,7 @@ void habitacao::set_prop(int id_zona, string nome, int valor) {
     }
 }
 
-void habitacao::delete_comp(int id_zona, string type, int id) {
+void habitacao::delete_comp(int id_zona, string type, string id) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             zona->delete_comp(type,id);
@@ -152,7 +152,7 @@ void habitacao::delete_comp(int id_zona, string type, int id) {
     }
 }
 
-void habitacao::set_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho) {
+void habitacao::set_id_aparelho_proc(int zona_id, string id_proc, string id_aparelho) {
     for(auto & zona : zonas) {
         if(zona->get_id() == zona_id) {
             zona->set_id_proc_aparelho(id_proc,id_aparelho);
@@ -160,7 +160,7 @@ void habitacao::set_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho) 
     }
 }
 
-void habitacao::remove_id_aparelho_proc(int zona_id, int id_proc, int id_aparelho) {
+void habitacao::remove_id_aparelho_proc(int zona_id, string id_proc, string id_aparelho) {
     for(auto & zona : zonas) {
         if(zona->get_id() == zona_id) {
             zona->remove_id_proc_aparelho(id_proc,id_aparelho);
@@ -168,15 +168,15 @@ void habitacao::remove_id_aparelho_proc(int zona_id, int id_proc, int id_aparelh
     }
 }
 
-void habitacao::send_cmd(int id_zona, int id_aparelho, string comando) {
+void habitacao::send_cmd(string user_cmd, int id_zona, string id_aparelho, string comando) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->send_cmd_aparelho(id_aparelho,comando);
+            zona->send_cmd_aparelho(user_cmd,id_aparelho,comando);
         }
     }
 }
 
-processador *habitacao::duplica(int id_zona, int id_proc) {
+processador *habitacao::duplica(int id_zona, string id_proc) {
 
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
@@ -223,7 +223,7 @@ string habitacao::getAsStringComp() const {
     return "";
 }
 
-string habitacao::getAsStringRegras(int id_zona, int id_proc) const {
+string habitacao::getAsStringRegras(int id_zona, string id_proc) const {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             return zona->getAsStringRegras(id_proc);

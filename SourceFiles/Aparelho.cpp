@@ -3,13 +3,13 @@
 
 int aparelho::id_aparelho = 1;
 
-aparelho::aparelho(string type) : id(get_id_aparelho()), type(type), instance(0), isOn(false) {
-    set_id_aparelho();
+aparelho::aparelho(string type) : id("a" + to_string(generetedId())), type(type), instance(0), isOn(false) {
+    //set_id_aparelho();
 }
 
 aparelho::~aparelho() = default;
 
-int aparelho::get_id() const {
+string aparelho::get_id() const {
     return id;
 }
 

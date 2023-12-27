@@ -55,5 +55,7 @@ add_executable(POO_2324 main.cpp
         SourceFiles/Entre.cpp
         HeaderFiles/Fora.h
         SourceFiles/Fora.cpp
+        HeaderFiles/Componente.h
+        SourceFiles/Componente.cpp
 )
 target_link_libraries(${PROJECT_NAME} C:/Users/KevinRodrigues/CLionProjects/PDCurses-3.9/wincon/pdcurses.a)

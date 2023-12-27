@@ -5,7 +5,7 @@
 
 class igual : public regra {
 public:
-    igual(int idSensor, int val, string nome, sensor *sens);
+    igual(string idSensor, int val, string nome, sensor *sens);
     ~igual();
     bool check_regra(int val) const override;
     igual* clone() override;

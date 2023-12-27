@@ -9,11 +9,11 @@
 
 int processador::id_proc=1;
 
-processador::processador(string cmd, int zone_id) : id(get_id_proc()), comando(cmd), zona_id(zone_id){
-    set_id_proc();
+processador::processador(string cmd, int zone_id) : id("p" + to_string(generetedId())), comando(cmd), zona_id(zone_id){
+    //set_id_proc();
 }
 
-int processador::get_id() const {
+string processador::get_id() const {
     return id;
 }
 
@@ -24,7 +24,7 @@ processador::~processador() {
     regras.clear();
 }
 
-void processador::add_regra(string cmd, int idSensor, int val1, int val2, sensor *sens) {
+void processador::add_regra(string cmd, string idSensor, int val1, int val2, sensor *sens) {
     // regras.push_back(new regra(cmd));
     if(cmd == "igual_a"){
         regras.push_back(new igual(idSensor, val1, cmd,sens));
@@ -73,7 +73,7 @@ void processador::delete_regra(int id_regra) {
     }
 }
 
-void processador::set_asoc_aparelho(int ida, aparelho *p) {
+void processador::set_asoc_aparelho(string ida, aparelho *p) {
     bool flag = false;
     for(auto & Allapa : AllAparelhos) {
         if(Allapa->get_id() == ida){
@@ -86,7 +86,7 @@ void processador::set_asoc_aparelho(int ida, aparelho *p) {
 
 }
 
-void processador::set_ades_aparelho(int id) {
+void processador::set_ades_aparelho(string id) {
     int i = -1, index = -1;
     for(auto & AllApa : AllAparelhos) {
         i++;
@@ -138,7 +138,7 @@ void processador::exec_action() {
     }
     if(denied == 0) {
         for(auto & aparelho : AllAparelhos) {
-            aparelho->set_val_change(get_cmd());
+            aparelho->set_val_change("",get_cmd());
         }
     }
 }

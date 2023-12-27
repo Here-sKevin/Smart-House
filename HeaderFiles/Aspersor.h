@@ -10,7 +10,7 @@ public:
     aspersor(string type, propriedade *h, propriedade *f);
     ~aspersor();
     aspersor* clone() override;
-    void set_val_change(string cmd) override;
+    void set_val_change(string user_cmd,string cmd) override;
 
 private:
     map<string, propriedade*> props;

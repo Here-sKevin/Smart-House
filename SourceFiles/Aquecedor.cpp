@@ -13,8 +13,9 @@ aquecedor *aquecedor::clone() {
     return new aquecedor(*this);
 }
 
-void aquecedor::set_val_change(string cmd) {
-    set_instance();
+void aquecedor::set_val_change(string user_cmd,string cmd) {
+    if(user_cmd != "acom")
+        set_instance();
     for(auto & prop : props) {
         if(cmd == "liga") {
             if(prop.first == "temperatura") {

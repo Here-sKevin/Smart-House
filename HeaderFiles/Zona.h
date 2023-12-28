@@ -31,7 +31,7 @@ public:
     string delete_comp(const string& type, const string& id); // elimina componente indicado
     string set_id_proc_aparelho(const string& id_proc, const string& id_aparelho); // associação do aparelho ao processador
     string remove_id_proc_aparelho(const string& id_proc, const string& id_aparelho); // desassocia aparelho do processador
-    processador* duplica(const string& id_proc); // retorna copia do objeto com novo ponteiro
+    processador* duplica_processador(const string& id_proc); // retorna copia do objeto com novo ponteiro
     void set_proc_saved(processador& p); // guarda processador em memoria
     string getAsStringProps() const; // lista informação das propriedades da zona indicada
     string getAsStringComp() const; // lista informação dos componentes da zona indicada

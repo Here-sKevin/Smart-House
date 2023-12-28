@@ -295,7 +295,7 @@ string zona::remove_id_proc_aparelho(const string& id_proc, const string& id_apa
     return "Processador indicado nao se encontra na zona\n";
 }
 
-processador *zona::duplica(const string& id_proc) {
+processador *zona::duplica_processador(const string& id_proc) {
     for(auto & proc : processadores) {
         if(id_proc == proc->get_id()) {
             return new processador(*proc);

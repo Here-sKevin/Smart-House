@@ -33,7 +33,7 @@ public:
     string set_id_aparelho_proc(int zona_id, const string& id_proc, const string& id_aparelho); //associacao do aparelho ao processador
     string remove_id_aparelho_proc(int zona_id, const string& id_proc, const string& id_aparelho); //desassociacao do aparelho ao processador
     string send_cmd(const string& user_cmd, int id_zona, const string& id_aparelho, const string& comando); // comando manual ao aparelho
-    processador* duplica(int id_zona, const string& id_proc); // retorna cópia do objeto com um novo ponteiro
+    processador* duplica_processador(int id_zona, const string& id_proc); // retorna cópia do objeto com um novo ponteiro
     void set_proc_saved(processador& p); // guarda processador em memoria
     string getAsStringProps() const; // lista informacoes das propriedades da zona
     string getAsStringComp() const; // lista informações dos componentes da zona

@@ -187,11 +187,11 @@ string habitacao::send_cmd(const string& user_cmd, int id_zona, const string& id
     return "Zona indicada nao existe\n";
 }
 
-processador *habitacao::duplica(int id_zona, const string& id_proc) {
+processador *habitacao::duplica_processador(int id_zona, const string& id_proc) {
 
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            return zona->duplica(id_proc);
+            return zona->duplica_processador(id_proc);
         }
     }
 

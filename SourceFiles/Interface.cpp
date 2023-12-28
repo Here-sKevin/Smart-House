@@ -367,7 +367,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
                 t << move_to(1, 1) << "Parametros validados com sucesso\n";
-                ps.insert(pair<string,processador*>(param3,habit->duplica(param1,param2)));
+                ps.insert(pair<string,processador*>(param3,habit->duplica_processador(param1,param2)));
             }
             else{
                 t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";

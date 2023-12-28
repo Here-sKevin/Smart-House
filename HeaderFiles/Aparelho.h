@@ -24,7 +24,6 @@ public:
 
 private:
     string id;
-    // int id;
     static int id_aparelho;
     string type;
     int instance;

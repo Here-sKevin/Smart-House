@@ -14,17 +14,13 @@ public:
     processador(string cmd, int zone_id); // construtor com parametros
     processador(const processador& o); // construtor por cópia
     ~processador(); // destrutor por defeito
-    //int get_id() const; // retorna o id do processador
     string get_id() const; // retorna o id do processador
-    //void add_regra(string cmd, int IdSensor, int val1, int val2, sensor *sens); // adicion nova regra ao processador
     string add_regra(const string& cmd, const string& IdSensor, int val1, int val2, sensor *sens); // adicion nova regra ao processador
     static int get_id_proc() ; // retorna id do processador
     static void set_id_proc(); // define id do processador
     void set_cmd(string cmd); // define comando do processador
     string get_cmd() const; // retorna comando atual do processador
     string delete_regra(int id_regra); // elimina regra associada ao processador
-    //void set_asoc_aparelho(int id, aparelho *p); // associa aparelho ao processador
-    //void set_ades_aparelho(int id); // desassocia aparelho ao processador
     string set_asoc_aparelho(const string& id, aparelho *p); // associa aparelho ao processador
     string set_ades_aparelho(const string& id); // desassocia aparelho ao processador
     processador& operator=(const processador& ref); // operador de associação por suporte ao cosntrutor por cópia
@@ -39,7 +35,6 @@ public:
 
 private:
     string id;
-    //int id;
     string comando;
     vector<regra*> regras;
     vector<aparelho*> AllAparelhos;

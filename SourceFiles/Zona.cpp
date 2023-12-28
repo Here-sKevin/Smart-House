@@ -334,7 +334,6 @@ void zona::set_proc_saved(processador &p) {
             }
         }
         if(!exists){
-            //processadores[processadores.size()-1]->remove_regra(j);
             positionR.push_back(j);
         }
         else{

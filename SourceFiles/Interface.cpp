@@ -172,7 +172,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             }
         }
         else if(cmd == "zlista"){
-            t << move_to(1, 1) << habit->to_string();
+            t << habit->to_string();
         }
         else if(cmd == "zcomp") {
             int param;

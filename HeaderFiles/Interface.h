@@ -26,11 +26,10 @@ public:
     void create_visual_zonas(int x, int y, Terminal& t); // desenha as zonas na console com recurso a bibioteca
 
 private:
-    string error;
     bool map = false;
     habitacao *habit;
-    vector <Window*> visual_zonas;
     std::map<string, processador*> ps;
+    vector <Window*> visual_zonas;
 };
 
 #endif //POO_2324_INTERFACE_H

@@ -24,28 +24,19 @@ public:
     void add_propriedades(); // adiciona propriedades a zona
     static int get_zona_id() ; // retorna id da zona indicada
     static void set_zona_id(); // define id da zona
-    //void cria_regra(int id_proc, string regra, int id_sensor, int val1, int val2); // criação de uma nova regra
     string cria_regra(const string& id_proc, const string& regra, const string& id_sensor, int val1, int val2); // criação de uma nova regra
-    //void change_proc_cmd(int id_proc, string cmd); // alteracao do comando do processador
     string change_proc_cmd(const string& id_proc, const string& cmd); // alteracao do comando do processador
-    //void delete_regra(int id_proc, int id_regra); // elimina a regra indicada
     string delete_regra(const string& id_proc, int id_regra); // elimina a regra indicada
     void set_prop(const string& nome, int valor); // altera valor da propriedade
-    //void delete_comp(string type, int id); // elimina componente indicado
     string delete_comp(const string& type, const string& id); // elimina componente indicado
-    //void set_id_proc_aparelho(int id_proc, int id_aparelho); // associação do aparelho ao processador
     string set_id_proc_aparelho(const string& id_proc, const string& id_aparelho); // associação do aparelho ao processador
-    //void remove_id_proc_aparelho(int id_proc, int id_aparelho); // desassocia aparelho do processador
     string remove_id_proc_aparelho(const string& id_proc, const string& id_aparelho); // desassocia aparelho do processador
-    //processador* duplica(int id_proc); // retorna copia do objeto com novo ponteiro
     processador* duplica(const string& id_proc); // retorna copia do objeto com novo ponteiro
     void set_proc_saved(processador& p); // guarda processador em memoria
     string getAsStringProps() const; // lista informação das propriedades da zona indicada
     string getAsStringComp() const; // lista informação dos componentes da zona indicada
-    //string getAsStringRegras(int id_proc) const; // lista informacao das regras do processador indicado
     string getAsStringRegras(const string& id_proc) const; // lista informacao das regras do processador indicado
     void exec_action(); // executa ações de passagem do tempo
-    //void send_cmd_aparelho(string user_cmd,int id_aparelho,const string& comando); // envio manual do comando ao aparelho
     string send_cmd_aparelho(const string& user_cmd,const string& id_aparelho,const string& comando); // envio manual do comando ao aparelho
 
 private:

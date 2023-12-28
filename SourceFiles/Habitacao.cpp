@@ -249,12 +249,6 @@ void habitacao::exec_action() {
     }
 }
 
-std::ostream& operator<<(std::ostream& out, const habitacao& h)
-{
-    out << h.getAsStringProps();
-
-    return out;
-}
 
 
 

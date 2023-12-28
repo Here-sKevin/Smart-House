@@ -17,14 +17,12 @@ public:
     static int get_id_regra(); // retorna id dinamico a definir nas novas regras
     static void set_id_regra(); // define o proximo id de uma nova regra
     string get_nome() const; // retorna o nome da regra
-    //int get_id_sensor() const; // retorna o id do sensor associado a regra
     string get_id_sensor() const; // retorna o id do sensor associado a regra
     string get_id_sensor_local() const; // retorna o id do sensor associado a regra
     bool check_regra_val() const; // verifica a validação da regra em questão
 
 private:
     int id;
-    //int id_sensor;
     string id_sensor;
     sensor *s;
     string nome;

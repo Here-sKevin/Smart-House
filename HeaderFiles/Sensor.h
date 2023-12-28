@@ -9,7 +9,6 @@ class sensor : componente{
 public:
     sensor(string cmd, propriedade *pp); // construtor com parametros
     ~sensor(); // destrutor por defeito
-    //int get_id() const; // retorna id do sensor
     string get_id() const; // retorna id do sensor
     static int get_id_sensor() ; // retorna o id dinamico a definir no novo sensor
     static void set_id_sensor(); // define o proximo id para um novo sensor
@@ -19,7 +18,6 @@ public:
 
 private:
     string id;
-    //int id;
     string prop;
     propriedade *p;
     static int id_sensor;

@@ -2,12 +2,15 @@ hnova 2 2
 znova 1 1
 znova 2 2
 cnovo 1 s temperatura
+cnovo 1 s luz
 cnovo 1 p liga
 cnovo 1 a aquecedor
-rnova 1 1 menor_que 1 100
+rnova 1 p3 menor_que s1 100
+rnova 1 p3 menor_que s2 100
+asoc 1 p3 a4
 cnovo 2 s temperatura
 cnovo 2 p liga
 cnovo 2 a aquecedor
-rnova 1 1 menor_que 1 100
-asoc 1 p2 a3
-asoc 2 p5 a6
+rnova 2 p6 menor_que s5 100
+asoc 2 p6 a7
+psalva 1 p3 proc1

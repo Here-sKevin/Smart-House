@@ -36,4 +36,10 @@ bool regra::check_regra_val() const {
     return this->check_regra(s->get_prop_val());
 }
 
+string regra::get_id_sensor_local() const {
+    return id_sensor;
+}
+
+
+
 

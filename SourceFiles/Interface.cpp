@@ -121,7 +121,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> paraml;
             in >> paramc;
             if(paraml != 0 && paramc != 0) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
 
                 if((paraml >= 2 && paraml <= 4) && (paramc >= 2 && paramc <= 4)){
                     if(!get_map_state()) {
@@ -129,21 +129,21 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
                         set_map_state(true);
                     }
                     else{
-                        t << move_to(1, 1) << "Habitacao ja criada";
+                        t << move_to(1, 1) << "Habitacao ja criada\n";
                     }
                 }
                 else {
-                    t <<move_to(1, 1) << "A habitacao devera ter um tamanho minimo de 2x2 e maximo de 4x4";
+                    t <<move_to(1, 1) << "A habitacao devera ter um tamanho minimo de 2x2 e maximo de 4x4\n";
                 }
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "hrem") {
             delete habit;
             set_map_state(false);
-            t << move_to(1, 1) << "Habitacao eliminada!";
+            t << move_to(1, 1) << "Habitacao eliminada!\n";
         }
         else if(cmd == "znova"){
 
@@ -152,11 +152,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> paramc;
 
             if(paraml != 0 && paramc != 0) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->create_zona(paraml, paramc, t);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->create_zona(paraml, paramc);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "zrem") {
@@ -164,11 +164,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
 
             if(param != 0) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->delete_zona(param);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->delete_zona(param);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "zlista"){
@@ -184,7 +184,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
                 t << habit->getAsStringComp();
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "zprops"){
@@ -197,7 +197,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
                 t << habit->getAsStringProps();
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "pmod") {
@@ -208,11 +208,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && param3 != 0) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->set_prop(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->set_prop(param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
 
         }
@@ -226,11 +226,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->cria_comp(param1, param2, param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->cria_comp(param1, param2, param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "crem") {
@@ -242,12 +242,12 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty()  && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->delete_comp(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->delete_comp(param1,param2,param3);
 
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "rnova"){
@@ -261,11 +261,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param6;
 
             if(param1 != 0 && !param2.empty() && !param3.empty() && !param4.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->cria_regra(param1,param2,param3,param4, param5,param6);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->cria_regra(param1,param2,param3,param4, param5,param6);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
 
         }
@@ -277,11 +277,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->change_proc_cmd(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->change_proc_cmd(param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "rlista"){
@@ -291,11 +291,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param2;
 
             if(param1 != 0 && !param2.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
                 t << habit->getAsStringRegras(param1,param2);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "rrem") {
@@ -306,11 +306,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && param3 != 0) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->delete_regra(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->delete_regra(param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "asoc"){
@@ -321,11 +321,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->set_id_aparelho_proc(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->set_id_aparelho_proc(param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "ades") {
@@ -336,11 +336,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->remove_id_aparelho_proc(param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->remove_id_aparelho_proc(param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "acom"){
@@ -351,11 +351,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
-                habit->send_cmd(cmd,param1,param2,param3);
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
+                t << habit->send_cmd(cmd,param1,param2,param3);
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "psalva") {
@@ -366,11 +366,11 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param3;
 
             if(param1 != 0 && !param2.empty() && !param3.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
                 ps.insert(pair<string,processador*>(param3,habit->duplica(param1,param2)));
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
         }
         else if(cmd == "prepoe"){
@@ -378,7 +378,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
 
             if(!param.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
                 for (auto itr = ps.begin(); itr != ps.end(); itr++) {
                     if(param == itr->first){
                         habit->set_proc_saved(*itr->second);
@@ -386,7 +386,7 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
                 }
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
 
         }
@@ -395,19 +395,22 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
 
             if(!param.empty()) {
-                t << move_to(1, 1) << "Parametros validados com sucesso";
+                t << move_to(1, 1) << "Parametros validados com sucesso\n";
                 bool found = false;
                 for (auto itr = ps.begin(); itr != ps.end(); itr++) {
                     if(param == itr->first){
                         found=true;
                     }
                 }
-                if(found)
+                if(found){
                     ps.erase(param);
+                    t << "Processador em memoria foi eliminado \n";
+                }
+
 
             }
             else{
-                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando";
+                t << move_to(1, 1) << "Parametros nao corresponder ao tipo de comando\n";
             }
 
         }
@@ -426,18 +429,18 @@ bool interface::cmd_validator(const string& line, Terminal& t) {
             in >> param;
             if(file_type(param)) {
                 if(!file_reader(param, t)) {
-                    t << move_to(1, 1) << "Ficheiro nao existe!";
+                    t << move_to(1, 1) << "Ficheiro nao existe!\n";
                 }
             }
             else {
-                t << move_to(1, 1) << "Extensao do ficheiro nao e um ficheiro de texto (<NomeFicheiro>.txt) ";
+                t << move_to(1, 1) << "Extensao do ficheiro nao e um ficheiro de texto (<NomeFicheiro>.txt) \n";
             }
         }
         else if(cmd == "sair") {
             return false;
         }
         else{
-            t << move_to(1, 1) << "Comando nao existe ! Inserir comando valido";
+            t << move_to(1, 1) << "Comando nao existe ! Inserir comando valido\n";
         }
 
     }

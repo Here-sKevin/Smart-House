@@ -19,6 +19,7 @@ public:
     string get_nome() const; // retorna o nome da regra
     //int get_id_sensor() const; // retorna o id do sensor associado a regra
     string get_id_sensor() const; // retorna o id do sensor associado a regra
+    string get_id_sensor_local() const; // retorna o id do sensor associado a regra
     bool check_regra_val() const; // verifica a validação da regra em questão
 
 private:

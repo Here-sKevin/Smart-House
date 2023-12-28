@@ -24,23 +24,29 @@ processador::~processador() {
     regras.clear();
 }
 
-void processador::add_regra(string cmd, string idSensor, int val1, int val2, sensor *sens) {
+string processador::add_regra(const string& cmd, const string& idSensor, int val1, int val2, sensor *sens) {
     // regras.push_back(new regra(cmd));
     if(cmd == "igual_a"){
         regras.push_back(new igual(idSensor, val1, cmd,sens));
+        return "Regra: igual_a foi adicionada\n";
     }
     if(cmd == "menor_que"){
         regras.push_back(new menor(idSensor, val1, cmd, sens));
+        return "Regra: menor_que foi adicionada\n";
     }
     if(cmd == "maior_que") {
         regras.push_back(new maior(idSensor, val1, cmd, sens));
+        return "Regra: maior_que foi adicionada\n";
     }
     if(cmd == "entre"){
         regras.push_back(new entre(idSensor, val1, val2, cmd, sens));
+        return "Regra: entre foi adicionada\n";
     }
     if(cmd == "fora"){
         regras.push_back(new fora(idSensor, val1, val2, cmd, sens));
+        return "Regra: fora foi adicionada\n";
     }
+    return "Nao existe tipo de regra inserida\n";
 }
 
 int processador::get_id_proc() {
@@ -59,7 +65,7 @@ string processador::get_cmd() const {
     return comando;
 }
 
-void processador::delete_regra(int id_regra) {
+string processador::delete_regra(int id_regra) {
     int i = -1, index = -1;
     for(auto & regra : regras) {
         i++;
@@ -70,10 +76,12 @@ void processador::delete_regra(int id_regra) {
     if(index > -1) {
         delete regras[index];
         regras.erase(regras.begin() + i);
+        return "Regra foi eliminada\n";
     }
+    return "Regra nao foi encontrada\n";
 }
 
-void processador::set_asoc_aparelho(string ida, aparelho *p) {
+string processador::set_asoc_aparelho(const string& ida, aparelho *p) {
     bool flag = false;
     for(auto & Allapa : AllAparelhos) {
         if(Allapa->get_id() == ida){
@@ -82,11 +90,13 @@ void processador::set_asoc_aparelho(string ida, aparelho *p) {
     }
     if(!flag) {
         AllAparelhos.push_back(p);
+        return "Aparelho foi associado ao processador\n";
     }
+    return "Aparelho nao foi associado ao processador \n";
 
 }
 
-void processador::set_ades_aparelho(string id) {
+string processador::set_ades_aparelho(const string& id) {
     int i = -1, index = -1;
     for(auto & AllApa : AllAparelhos) {
         i++;
@@ -96,7 +106,9 @@ void processador::set_ades_aparelho(string id) {
     }
     if(index > -1) {
         AllAparelhos.erase(AllAparelhos.begin()+index);
+        return "Aparelho foi desassociado do processador\n";
     }
+    return "Aparelho nao foi desassociado do processador\n";
 }
 
 processador::processador(const processador &o) {
@@ -142,6 +154,39 @@ void processador::exec_action() {
         }
     }
 }
+
+int processador::get_size_regras() const {
+    return regras.size();
+}
+
+string processador::get_id_sensor(int position) const {
+    return regras[position]->get_id_sensor_local();
+}
+
+void processador::remove_regra(int position) {
+    delete regras[position];
+    regras.erase(regras.begin()+position);
+}
+
+bool processador::check_asoc_regra_sensor(const string& id_s) const {
+    for(auto & r : regras) {
+        if(r->get_id_sensor_local() == id_s){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool processador::check_asoc_proc_aparelho(const string& id_a) const {
+    for(auto & all : AllAparelhos) {
+        if(all->get_id() == id_a){
+            return true;
+        }
+    }
+    return false;
+}
+
+
 
 
 

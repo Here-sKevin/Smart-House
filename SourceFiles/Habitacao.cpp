@@ -26,17 +26,18 @@ int habitacao::get_colunas() const {
     return this->colunas;
 }
 
-void habitacao::create_zona(int x, int y, Terminal& t) {
+string habitacao::create_zona(int x, int y) {
     if(state2create_zona(x,y)){
         zonas.push_back(new zona(x, y));
         zonas[zonas.size()-1]->add_propriedades();
+        return "Zona criada!\n";
     }
     else {
-        t << move_to(70, 0) << "Nao e possivel criar zona nestas coordenadas!";
+        return "Nao e possivel criar zona nestas coordenadas!\n";
     }
 }
 
-void habitacao::delete_zona(int id) {
+string habitacao::delete_zona(int id) {
     int i = -1, index;
     bool can_delete = false;
     for(const auto& zona : zonas) {
@@ -50,9 +51,10 @@ void habitacao::delete_zona(int id) {
     if(can_delete) {
         delete zonas[index];
         zonas.erase(zonas.begin()+index);
+        return "Zona eliminada!\n";
     }
     else {
-        cout << "Zona com o id inserido nao existe!" << endl;
+        return"Zona com o id inserido nao existe!\n";
     }
 }
 
@@ -70,12 +72,13 @@ bool habitacao::state2create_zona(int x, int y) const {
         return false;
 }
 
-void habitacao::cria_comp(int id, string c, string cmd) {
+string habitacao::cria_comp(int id, const string& c, const string& cmd) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id) {
-           zona->create_comp(c, cmd, id);
+           return zona->create_comp(c, cmd, id);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
 string habitacao::to_string() const {
@@ -112,71 +115,79 @@ int habitacao::get_zona_id(int x, int y) {
     return 0;
 }
 
-void habitacao::cria_regra(int id_zona, string id_proc, string regra, string id_sensor, int val1, int val2) {
+string habitacao::cria_regra(int id_zona, const string& id_proc, const string& regra, const string& id_sensor, int val1, int val2) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->cria_regra(id_proc, regra, id_sensor, val1, val2);
+            return zona->cria_regra(id_proc, regra, id_sensor, val1, val2);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::change_proc_cmd(int id_zona, string id_proc, string cmd) {
+string habitacao::change_proc_cmd(int id_zona, const string& id_proc, const string& cmd) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->change_proc_cmd(id_proc, cmd);
+            return zona->change_proc_cmd(id_proc, cmd);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::delete_regra(int id_zona, string id_proc, int id_regra) {
+string habitacao::delete_regra(int id_zona, const string& id_proc, int id_regra) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->delete_regra(id_proc, id_regra);
+            return zona->delete_regra(id_proc, id_regra);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::set_prop(int id_zona, string nome, int valor) {
+string habitacao::set_prop(int id_zona, const string& nome, int valor) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-           zona->set_prop(nome, valor);
+            zona->set_prop(nome, valor);
         }
     }
+    return "Propriedades adicionadas a zona\n";
 }
 
-void habitacao::delete_comp(int id_zona, string type, string id) {
+string habitacao::delete_comp(int id_zona, const string& type, const string& id) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->delete_comp(type,id);
+            return zona->delete_comp(type,id);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::set_id_aparelho_proc(int zona_id, string id_proc, string id_aparelho) {
+string habitacao::set_id_aparelho_proc(int zona_id, const string& id_proc, const string& id_aparelho) {
     for(auto & zona : zonas) {
         if(zona->get_id() == zona_id) {
-            zona->set_id_proc_aparelho(id_proc,id_aparelho);
+            return zona->set_id_proc_aparelho(id_proc,id_aparelho);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::remove_id_aparelho_proc(int zona_id, string id_proc, string id_aparelho) {
+string habitacao::remove_id_aparelho_proc(int zona_id, const string& id_proc, const string& id_aparelho) {
     for(auto & zona : zonas) {
         if(zona->get_id() == zona_id) {
-            zona->remove_id_proc_aparelho(id_proc,id_aparelho);
+            return zona->remove_id_proc_aparelho(id_proc,id_aparelho);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-void habitacao::send_cmd(string user_cmd, int id_zona, string id_aparelho, string comando) {
+string habitacao::send_cmd(const string& user_cmd, int id_zona, const string& id_aparelho, const string& comando) {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
-            zona->send_cmd_aparelho(user_cmd,id_aparelho,comando);
+            return zona->send_cmd_aparelho(user_cmd,id_aparelho,comando);
         }
     }
+    return "Zona indicada nao existe\n";
 }
 
-processador *habitacao::duplica(int id_zona, string id_proc) {
+processador *habitacao::duplica(int id_zona, const string& id_proc) {
 
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
@@ -223,7 +234,7 @@ string habitacao::getAsStringComp() const {
     return "";
 }
 
-string habitacao::getAsStringRegras(int id_zona, string id_proc) const {
+string habitacao::getAsStringRegras(int id_zona, const string& id_proc) const {
     for(auto & zona : zonas) {
         if(zona->get_id() == id_zona) {
             return zona->getAsStringRegras(id_proc);

@@ -39,12 +39,28 @@ string processador::add_regra(const string& cmd, const string& idSensor, int val
         return "Regra: maior_que foi adicionada\n";
     }
     if(cmd == "entre"){
-        regras.push_back(new entre(idSensor, val1, val2, cmd, sens));
-        return "Regra: entre foi adicionada\n";
+        if(val1 > val2){
+            return "Valor minimo e maior que o valor maximo! \nPara efeito da regra 'entre' nao e valido";
+        }
+        else if(val1 == val2){
+            return "Valor minimo e igual que o valor maximo! \nPara efeito da regra 'entre' nao e valido";
+        }
+        else {
+            regras.push_back(new entre(idSensor, val1, val2, cmd, sens));
+            return "Regra: entre foi adicionada\n";
+        }
     }
     if(cmd == "fora"){
-        regras.push_back(new fora(idSensor, val1, val2, cmd, sens));
-        return "Regra: fora foi adicionada\n";
+        if(val1 > val2){
+            return "Valor minimo e maior que o valor maximo! \nPara efeito da regra 'fora' nao e valido";
+        }
+        else if(val1 == val2){
+            return "Valor minimo e igual que o valor maximo! \nPara efeito da regra 'fora' nao e valido";
+        }
+        else {
+            regras.push_back(new fora(idSensor, val1, val2, cmd, sens));
+            return "Regra: fora foi adicionada\n";
+        }
     }
     return "Nao existe tipo de regra inserida\n";
 }
@@ -164,13 +180,20 @@ string processador::exec_action() {
         }
     }
     if(denied == 0) {
-        set_activated(true);
-
-        for (auto &aparelho: AllAparelhos) {
-            aparelho->set_val_change(get_cmd());
+        if(get_cmd() == "desliga" && get_activated()){
+            for(auto & allApa : AllAparelhos) {
+                if(allApa->get_type() == "aspersor") {
+                    allApa->set_val_change_desliga();
+                }
+            }
+        }
+        else{
+            set_activated(true);
+            for (auto &aparelho: AllAparelhos) {
+                aparelho->set_val_change(get_cmd());
+            }
         }
         return get_cmd();
-
     }
     else{
         if(get_cmd() == "liga" && get_activated()){

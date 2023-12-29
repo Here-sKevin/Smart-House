@@ -27,16 +27,16 @@ public:
     int get_zona_asoc() const; // retorna zona em que o processador esta inserido (para fins de colocação do processador em memoria de volta ao simulador)
     string getAsStringRegras() const; // lista informação das regras do processador
     string exec_action(); // executa as ações de passagem de tempo
-    int get_size_regras() const;
-    string get_id_sensor(int position) const;
-    void remove_regra(int position);
-    bool check_asoc_regra_sensor(const string& id_s) const;
-    bool check_asoc_proc_aparelho(const string& id_a) const;
-    int get_id_regra(int position) const;
-    int get_size_Allaparelhos() const;
-    string get_id_aparelho(int position);
-    bool get_activated() const;
-    void set_activated(bool active);
+    int get_size_regras() const; // devolve tamanho do vetor de regras
+    string get_id_sensor(int position) const; // devolve id do sensor associado a regra
+    void remove_regra(int position); // elimina a regra por posicao no vetor
+    bool check_asoc_regra_sensor(const string& id_s) const; // verifica se o sensor associado na regra é o mesmo que o sensor a comparar
+    bool check_asoc_proc_aparelho(const string& id_a) const; // verifica se o aparelho associado no processador é o mesmo que o aparelho a comparar
+    int get_id_regra(int position) const; // devolve id da regra por posicao
+    int get_size_Allaparelhos() const; // devolve tamanho do vetor de aparelhos associados ao processador
+    string get_id_aparelho(int position); // devolve id do aparelho
+    bool get_activated() const; // devolve estado do processador
+    void set_activated(bool active); // define estado do processador
 
 private:
     string id;

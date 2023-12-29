@@ -35,8 +35,13 @@ string zona::create_comp(const string& type, const string& cmd, int zone_id) {
         return "Sensor criado!\n";
     }
     if(type == "p") {
-        processadores.push_back(new processador(cmd, zone_id));
-        return "Processador criado!\n";
+        if(cmd == "liga" || cmd == "desliga") {
+            processadores.push_back(new processador(cmd, zone_id));
+            return "Processador criado!\n";
+        }
+        else{
+            return "Comando indicado nao e valido!";
+        }
     }
     if(type == "a") {
         if(cmd == "aquecedor") {
@@ -53,9 +58,10 @@ string zona::create_comp(const string& type, const string& cmd, int zone_id) {
             aparelhos.push_back(new aquecedor(cmd, t, s));
             return "Aquecedor criado!\n";
         }
-        if(cmd == "aspersor") {
+        else if(cmd == "aspersor") {
             propriedade *h;
             propriedade *f;
+            propriedade *v;
             for(auto & prop : propriedades) {
                 if(prop.first == "humidade") {
                     h = prop.second;
@@ -63,11 +69,14 @@ string zona::create_comp(const string& type, const string& cmd, int zone_id) {
                 if(prop.first == "fumo"){
                     f = prop.second;
                 }
+                if(prop.first == "vibracao"){
+                    v = prop.second;
+                }
             }
-            aparelhos.push_back(new aspersor(cmd, h, f));
+            aparelhos.push_back(new aspersor(cmd, h, f, v));
             return "Aspersor criado!\n";
         }
-        if(cmd == "refrigerador") {
+        else if(cmd == "refrigerador") {
             propriedade *t;
             propriedade *s;
             for(auto & prop : propriedades) {
@@ -81,7 +90,7 @@ string zona::create_comp(const string& type, const string& cmd, int zone_id) {
             aparelhos.push_back(new refrigerador(cmd, t, s));
             return "Refrigerador criado!\n";
         }
-        if(cmd == "lampada") {
+        else if(cmd == "lampada") {
             propriedade *l;
             for(auto & prop : propriedades) {
                 if(prop.first == "luz"){
@@ -90,6 +99,9 @@ string zona::create_comp(const string& type, const string& cmd, int zone_id) {
             }
             aparelhos.push_back(new lampada(cmd, l));
             return "Lampada criado!\n";
+        }
+        else {
+            return "Tipo de aparelho indicado nao existe!";
         }
     }
     return "Tipo de componente indicado nao existe\n";
@@ -318,7 +330,7 @@ void zona::set_proc_saved(processador &p) {
     }
     if(flag) {
         delete processadores[index];
-        processadores.erase(processadores.begin() + i);
+        processadores.erase(processadores.begin() + index);
         processadores.push_back(new processador(p));
 
     }
@@ -393,7 +405,7 @@ string zona::getAsStringComp() const {
     }
     os << "Processadores\n";
     for(auto & processador : processadores) {
-        os << "p " << processador->get_id() << "\n";
+        os << "p " << processador->get_id() << " " << processador->get_cmd() <<  "\n";
     }
 
     return os.str();

@@ -4,7 +4,6 @@
 refrigerador::refrigerador(string type, propriedade *t, propriedade *s) : aparelho(type) {
     props.insert(pair<string,propriedade*>("temperatura",t));
     props.insert(pair<string,propriedade*>("som",s));
-
 }
 
 
@@ -15,9 +14,11 @@ refrigerador *refrigerador::clone() {
 
 void refrigerador::set_val_change(string cmd) {
 
+    if(cmd == "liga")
+        set_instance();
+
     for(auto & prop : props) {
         if(cmd == "liga") {
-            set_instance();
             if(prop.first == "temperatura") {
                 if(get_instance()%3==0)
                     prop.second->set_valor(-1);

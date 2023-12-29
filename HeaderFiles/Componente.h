@@ -5,7 +5,7 @@
 class componente {
 
 public:
-    static int generetedId() ;
+    static int generetedId() ; // devolve inteiro para utilizar nos identificadores
 
 private:
     static int genereted_id;

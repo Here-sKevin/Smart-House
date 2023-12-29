@@ -39,10 +39,10 @@ public:
     string getAsStringComp() const; // lista informações dos componentes da zona
     string getAsStringRegras(int id_zona, const string& id_proc) const; // lista a informacao das regras do processador indicado
     int get_srczona() const; // utils para indicacao da zona
-    void set_srczona(int zona);//utilz para indicacao da zona
+    void set_srczona(int zona);//utils para indicacao da zona
     void exec_action(); // executa açoes da passagem de tempo/instancia
-    int get_instancia() const;
-    void set_instancia();
+    int get_instancia() const; // devolve instacia do tempo atual
+    void set_instancia(); // define a instacia do tempo atual
 
 private:
     vector <zona*> zonas;

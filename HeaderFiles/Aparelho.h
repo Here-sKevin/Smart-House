@@ -22,8 +22,8 @@ public:
     bool get_isOn() const; // devolve o estado do aparelho atual
     void set_isOn(); // define o estado atual do aparelho
     virtual void set_val_change(string cmd) = 0; // operações responsaveis pelos aparelhos
-    virtual void set_val_change_liga() = 0;
-    virtual void set_val_change_desliga() = 0;
+    virtual void set_val_change_liga() = 0; // operações para quando as regras sao falsas mas o processador com o comando "liga" ainda esta ativo
+    virtual void set_val_change_desliga() = 0; // operações quando o aparelho esta desligado
 
 private:
     string id;

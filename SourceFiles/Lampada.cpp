@@ -13,9 +13,11 @@ lampada *lampada::clone() {
 
 void lampada::set_val_change(string cmd) {
 
+    if(cmd == "liga")
+        set_instance();
+
     for(auto & prop : props) {
         if(cmd == "liga") {
-            set_instance();
             if(prop.first == "luz") {
                 if(!get_isOn() && cmd == "liga")
                     prop.second->set_valor(900);

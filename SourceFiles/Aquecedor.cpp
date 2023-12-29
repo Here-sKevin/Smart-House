@@ -15,10 +15,11 @@ aquecedor *aquecedor::clone() {
 
 void aquecedor::set_val_change(string cmd) {
 
+    if(cmd == "liga")
+        set_instance();
 
     for(auto & prop : props) {
         if(cmd == "liga") {
-            set_instance();
             if(prop.first == "temperatura") {
                 if(get_instance()%3 == 0){
                     if(get_instance() <= 50) {

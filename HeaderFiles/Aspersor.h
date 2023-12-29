@@ -7,7 +7,7 @@
 
 class aspersor : public aparelho{
 public:
-    aspersor(string type, propriedade *h, propriedade *f);
+    aspersor(string type, propriedade *h, propriedade *f, propriedade *v);
     ~aspersor();
     aspersor* clone() override;
     void set_val_change(string cmd) override;

@@ -46,5 +46,10 @@ void aparelho::set_isOn() {
     }
 }
 
+void aparelho::reset_instance() {
+    instance = 0;
+}
+
+
 
 

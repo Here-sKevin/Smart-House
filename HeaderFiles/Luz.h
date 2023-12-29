@@ -9,6 +9,7 @@ public:
     luz();
     ~luz();
     void set_valor(int v) override;
+    void set_val_pmod(int v) override;
 
 private:
     int val_min;

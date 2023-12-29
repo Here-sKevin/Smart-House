@@ -13,7 +13,8 @@ public:
      propriedade(); // construtor
      ~propriedade(); // destrutor
     int get_valor() const; // retorna o valor atual da propriedade
-    virtual void set_valor(int v) = 0; // valida os limites do valor da propriedade
+    virtual void set_valor(int v) = 0; // valida os limites do valor da propriedade (somatório)
+    virtual void set_val_pmod(int v) = 0; // valida os limites do valor da propriedade (valor direto)
     void set_new_val(int v); // atualiza o valor da propriedade
 
 private:

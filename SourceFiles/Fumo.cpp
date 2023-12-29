@@ -10,6 +10,12 @@ void fumo::set_valor(int v) {
     }
 }
 
+void fumo::set_val_pmod(int v) {
+    if(v >= val_min && v <= val_max){
+        this->set_new_val(v);
+    }
+}
+
 fumo::~fumo() = default;
 
 

@@ -11,6 +11,11 @@ void som::set_valor(int v) {
         this->set_new_val(this->get_valor()+v);
 }
 
+void som::set_val_pmod(int v) {
+    if(v >= val_min)
+        this->set_new_val(v);
+}
+
 som::~som() = default;
 
 

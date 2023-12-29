@@ -193,7 +193,7 @@ string zona::delete_regra(const string& id_proc, int id_regra) {
 void zona::set_prop(const string& nome, int valor) {
     for(auto & prop : propriedades) {
         if(prop.first == nome) {
-             prop.second->set_valor(valor);
+             prop.second->set_val_pmod(valor);
         }
     }
 }
@@ -325,26 +325,51 @@ void zona::set_proc_saved(processador &p) {
     else{
         processadores.push_back(new processador(p));
     }
+
+    vector<int> regra_ids;
     bool exists = false;
-    vector<int> positionR;
     for(int j = 0; j < processadores[processadores.size()-1]->get_size_regras(); j++) {
         for(auto & s: sensores){
             if(processadores[processadores.size()-1]->get_id_sensor(j) == s->get_id()){
                 exists=true;
             }
         }
+
         if(!exists){
-            positionR.push_back(j);
+            regra_ids.push_back(processadores[processadores.size()-1]->get_id_regra(j));
         }
         else{
             exists=false;
         }
     }
-    if(!positionR.empty()){
-        for(int k=0; k < positionR.size(); k++) {
-            processadores[processadores.size()-1]->remove_regra(positionR[k]);
+    if(!regra_ids.empty()){
+        for(int regraId : regra_ids) {
+            processadores[processadores.size()-1]->delete_regra(regraId);
         }
     }
+    vector<string> aparelhos_ids;
+    exists = false;
+    for(int i = 0; i <  processadores[processadores.size()-1]->get_size_Allaparelhos(); i++) {
+        for(auto & aparelho : aparelhos) {
+            if(processadores[processadores.size()-1]->get_id_aparelho(i) == aparelho->get_id()){
+                exists=true;
+            }
+        }
+
+        if(!exists){
+            aparelhos_ids.push_back(processadores[processadores.size()-1]->get_id_aparelho(i));
+        }
+        else{
+            exists=false;
+        }
+    }
+
+    if(!aparelhos_ids.empty()){
+        for(const string& apaId : aparelhos_ids) {
+            processadores[processadores.size()-1]->set_ades_aparelho(apaId);
+        }
+    }
+
 }
 
 string zona::getAsStringProps() const {
@@ -383,15 +408,28 @@ string zona::getAsStringRegras(const string& id_proc) const {
     return "";
 }
 void zona::exec_action() {
+    string cmd;
     for(auto & processador :  processadores) {
-        processador->exec_action();
+        cmd = processador->exec_action();
+        if(cmd != "none"){
+            for(auto & p : processadores) {
+                if(processador->get_id() != p->get_id()) {
+                    if(cmd == "liga" && p->get_cmd() == "desliga"){
+                        p->set_activated(false);
+                    }
+                    if(cmd == "desliga"){
+                        p->set_activated(false);
+                    }
+                }
+            }
+        }
     }
 }
 
 string zona::send_cmd_aparelho(const string& user_cmd,const string& id_aparelho, const string& comando) {
     for(auto & aparelho : aparelhos) {
         if(aparelho->get_id() == id_aparelho) {
-            aparelho->set_val_change(user_cmd,comando);
+            aparelho->set_val_change(comando);
             return "Comando manual foi enviado\n";
         }
     }

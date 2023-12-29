@@ -11,17 +11,18 @@ lampada *lampada::clone() {
     return new lampada(*this);
 }
 
-void lampada::set_val_change(string user_cmd,string cmd) {
-    if(user_cmd != "acom")
-        set_instance();
+void lampada::set_val_change(string cmd) {
+
     for(auto & prop : props) {
         if(cmd == "liga") {
+            set_instance();
             if(prop.first == "luz") {
                 if(!get_isOn() && cmd == "liga")
                     prop.second->set_valor(900);
             }
         }
         if(cmd == "desliga") {
+            reset_instance();
             if(prop.first == "luz") {
                 if(get_isOn() && cmd == "desliga")
                     prop.second->set_valor(-900);
@@ -35,6 +36,19 @@ void lampada::set_val_change(string user_cmd,string cmd) {
     if(!get_isOn() && cmd == "liga") {
         set_isOn();
     }
+}
+
+void lampada::set_val_change_liga() {
+    set_instance();
+    for(auto & prop : props) {
+        if (prop.first == "luz") {
+            prop.second->set_valor(900);
+        }
+    }
+}
+
+void lampada::set_val_change_desliga() {
+
 }
 
 lampada::~lampada() = default;

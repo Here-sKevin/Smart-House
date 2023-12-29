@@ -41,12 +41,15 @@ public:
     int get_srczona() const; // utils para indicacao da zona
     void set_srczona(int zona);//utilz para indicacao da zona
     void exec_action(); // executa açoes da passagem de tempo/instancia
+    int get_instancia() const;
+    void set_instancia();
 
 private:
     vector <zona*> zonas;
     int linhas;
     int colunas;
     int srczona;
+    int instancia;
 };
 
 

@@ -13,11 +13,12 @@ aquecedor *aquecedor::clone() {
     return new aquecedor(*this);
 }
 
-void aquecedor::set_val_change(string user_cmd,string cmd) {
-    if(user_cmd != "acom")
-        set_instance();
+void aquecedor::set_val_change(string cmd) {
+
+
     for(auto & prop : props) {
         if(cmd == "liga") {
+            set_instance();
             if(prop.first == "temperatura") {
                 if(get_instance()%3 == 0){
                     if(get_instance() <= 50) {
@@ -31,6 +32,7 @@ void aquecedor::set_val_change(string user_cmd,string cmd) {
             }
         }
         if(cmd == "desliga") {
+            reset_instance();
             if(prop.first == "som") {
                 if(get_isOn() && cmd == "desliga")
                     prop.second->set_valor(-5);
@@ -43,6 +45,27 @@ void aquecedor::set_val_change(string user_cmd,string cmd) {
     if(!get_isOn() && cmd == "liga") {
         set_isOn();
     }
+}
+
+void aquecedor::set_val_change_liga() {
+    set_instance();
+    for(auto & prop : props) {
+        if (prop.first == "temperatura") {
+            if (get_instance() % 3 == 0) {
+                if (get_instance() <= 50) {
+                    prop.second->set_valor(1);
+                }
+            }
+        }
+        if (prop.first == "som") {
+            if (get_instance() == 1)
+                prop.second->set_valor(5);
+        }
+    }
+}
+
+void aquecedor::set_val_change_desliga() {
+
 }
 
 

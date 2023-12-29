@@ -9,7 +9,7 @@
 
 int processador::id_proc=1;
 
-processador::processador(string cmd, int zone_id) : id("p" + to_string(generetedId())), comando(cmd), zona_id(zone_id){
+processador::processador(string cmd, int zone_id) : id("p" + to_string(generetedId())), comando(cmd), zona_id(zone_id), activated(false){
     //set_id_proc();
 }
 
@@ -75,7 +75,7 @@ string processador::delete_regra(int id_regra) {
     }
     if(index > -1) {
         delete regras[index];
-        regras.erase(regras.begin() + i);
+        regras.erase(regras.begin() + index);
         return "Regra foi eliminada\n";
     }
     return "Regra nao foi encontrada\n";
@@ -120,8 +120,23 @@ processador &processador::operator=(const processador &ref) {
         id = ref.id;
         comando=ref.comando;
         zona_id = ref.zona_id;
+
+        for(auto & regra : regras) {
+            delete regra;
+        }
+        regras.clear();
+
         for(auto & refregras : ref.regras) {
            regras.push_back(refregras->clone());
+        }
+
+        for(auto & apa : AllAparelhos) {
+            delete apa;
+        }
+        AllAparelhos.clear();
+
+        for(auto & refApa : ref.AllAparelhos) {
+            AllAparelhos.push_back(refApa->clone());
         }
     }
     return *this;
@@ -141,7 +156,7 @@ string processador::getAsStringRegras() const {
     return os.str();
 }
 
-void processador::exec_action() {
+string processador::exec_action() {
     int denied = 0;
     for(auto & regra : regras) {
         if(!regra->check_regra_val()){
@@ -149,10 +164,29 @@ void processador::exec_action() {
         }
     }
     if(denied == 0) {
-        for(auto & aparelho : AllAparelhos) {
-            aparelho->set_val_change("",get_cmd());
+        set_activated(true);
+
+        for (auto &aparelho: AllAparelhos) {
+            aparelho->set_val_change(get_cmd());
+        }
+        return get_cmd();
+
+    }
+    else{
+        if(get_cmd() == "liga" && get_activated()){
+            for(auto & aparelho : AllAparelhos) {
+                aparelho->set_val_change_liga();
+            }
+        }
+        if(get_cmd() == "desliga"){
+            for(auto & allApa : AllAparelhos) {
+                if(allApa->get_type() == "aspersor") {
+                    allApa->set_val_change_desliga();
+                }
+            }
         }
     }
+    return "none";
 }
 
 int processador::get_size_regras() const {
@@ -186,7 +220,22 @@ bool processador::check_asoc_proc_aparelho(const string& id_a) const {
     return false;
 }
 
+int processador::get_id_regra(int position) const {
+    return regras[position]->get_id();
+}
 
+int processador::get_size_Allaparelhos() const {
+    return AllAparelhos.size();
+}
 
+string processador::get_id_aparelho(int position) {
+    return AllAparelhos[position]->get_id();
+}
 
+bool processador::get_activated() const {
+    return activated;
+}
 
+void processador::set_activated(bool active) {
+    activated = active;
+}

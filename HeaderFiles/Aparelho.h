@@ -18,9 +18,12 @@ public:
     virtual aparelho* clone() = 0; // retorna objeto com novo ponteiro
     int get_instance() const; // retorna a instancia atual interna
     void set_instance(); // define a instancia atual interna
+    void reset_instance();
     bool get_isOn() const; // devolve o estado do aparelho atual
     void set_isOn(); // define o estado atual do aparelho
-    virtual void set_val_change(string user_cmd,string cmd) = 0; // operações responsaveis pelos aparelhos
+    virtual void set_val_change(string cmd) = 0; // operações responsaveis pelos aparelhos
+    virtual void set_val_change_liga() = 0;
+    virtual void set_val_change_desliga() = 0;
 
 private:
     string id;

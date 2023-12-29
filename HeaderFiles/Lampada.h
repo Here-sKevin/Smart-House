@@ -10,7 +10,9 @@ public:
     lampada(string type, propriedade *l);
     ~lampada();
     lampada* clone() override;
-    void set_val_change(string user_cmd,string cmd) override;
+    void set_val_change(string cmd) override;
+    void set_val_change_liga() override;
+    void set_val_change_desliga() override;
 
 private:
     map<string, propriedade*> props;

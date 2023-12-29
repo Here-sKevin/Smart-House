@@ -9,7 +9,7 @@
 
 using namespace std;
 
-habitacao::habitacao(int linhas, int colunas) : linhas(linhas), colunas(colunas) {}
+habitacao::habitacao(int linhas, int colunas) : linhas(linhas), colunas(colunas), instancia(0) {}
 
 habitacao::~habitacao() {
     for(auto & zona : zonas) {
@@ -244,9 +244,19 @@ string habitacao::getAsStringRegras(int id_zona, const string& id_proc) const {
 }
 
 void habitacao::exec_action() {
+    set_instancia();
+
     for(auto & zona : zonas) {
        zona->exec_action();
     }
+}
+
+int habitacao::get_instancia() const {
+    return instancia;
+}
+
+void habitacao::set_instancia() {
+    instancia++;
 }
 
 

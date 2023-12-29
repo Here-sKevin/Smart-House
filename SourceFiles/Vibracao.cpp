@@ -9,6 +9,11 @@ void vibracao::set_valor(int v) {
         this->set_new_val(this->get_valor()+v);
 }
 
+void vibracao::set_val_pmod(int v) {
+    if(v >= val_min)
+        this->set_new_val(v);
+}
+
 vibracao::~vibracao() = default;
 
 
